@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/croquis-interactivo-fisi/static/css/main.84cc9f1a.css",
+    "main.js": "/croquis-interactivo-fisi/static/js/main.7f1bf10e.js",
+    "index.html": "/croquis-interactivo-fisi/index.html",
+    "main.84cc9f1a.css.map": "/croquis-interactivo-fisi/static/css/main.84cc9f1a.css.map",
+    "main.7f1bf10e.js.map": "/croquis-interactivo-fisi/static/js/main.7f1bf10e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84cc9f1a.css",
+    "static/js/main.7f1bf10e.js"
+  ]
+}

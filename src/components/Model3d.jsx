@@ -64,9 +64,9 @@ function Model3d() {
     }
 
     /* Pisos */
-
+      // PRIMER PISO
       const shapePiso01 = new THREE.Shape();
-      shapePiso01.moveTo( 4, 1.5 );
+      shapePiso01.moveTo( 4, 1.5 ); // X, Z
       shapePiso01.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
       shapePiso01.lineTo( 9, -4.5 ); // aulas 100
       shapePiso01.lineTo( 9, -2 ); // quiosco y gradas
@@ -118,78 +118,152 @@ function Model3d() {
     piso01.position.y = -2;
     scene.add( piso01 );
 
-    // const material = new THREE.MeshStandardMaterial({ color: 0x4A4E69 });
-    // const piso1 = createObject(6, 0.1, 6,
-    //                             0,-2,0, material);
-    // piso1.position.y = -2;
-    // piso1.position.z = -1.5;
+    // SEGUNDO PISO
 
-    // const piso2 = piso1.clone();
-    // piso2.position.y = 0;
-    // scene.add(piso2);
+    const shapePiso02 = new THREE.Shape();
+      shapePiso02.moveTo( 4, 1.5 ); // X, Z
+      shapePiso02.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
+      shapePiso02.lineTo( 9, -4.5 ); // aulas 100
+      shapePiso02.lineTo( 9, -2 ); // quiosco y gradas
+      shapePiso02.lineTo( 11, -2 ); // quiosco y gradas
+      shapePiso02.lineTo( 11, -4.5 );
+      shapePiso02.lineTo( 13, -4.5 ); // aulas 100 lateral
+      shapePiso02.lineTo( 13, -9 );
+      shapePiso02.lineTo( 4, -9 ); // aulas 100 lateral
+      shapePiso02.lineTo( 4, -9 ); // aulas 100 lateral
+      shapePiso02.lineTo( 4, -25 ); // maquinas expendedoras
+      shapePiso02.lineTo( 12, -25 ); // maquinas expendedoras
+      shapePiso02.lineTo( 12, -32 ); // software pared este
+      shapePiso02.lineTo( -2, -32 ); // software pared norte
+      shapePiso02.lineTo( -2, -25 ); // software pared oeste
+      shapePiso02.lineTo( 1.5, -25 ); // software pared sur
+      shapePiso02.lineTo( 1.5, -24 ); // espacio
+      shapePiso02.lineTo( 1.5, -22 ); // fin parque
+      shapePiso02.lineTo( 1.5, -21 ); // pasillo
+      shapePiso02.lineTo( -3, -21 ); // Auditorio
+      shapePiso02.lineTo( -3, -15 ); // Auditorio
+      shapePiso02.lineTo( 1.5, -15 ); // Fin Auditorio
+      shapePiso02.lineTo( -1, -16 ); // baños
+      shapePiso02.lineTo( -1, -12 ); // baños
+      shapePiso02.lineTo( -1, -10 ); // gradas
+      shapePiso02.lineTo( -1, -9 ); // espacio
+      shapePiso02.lineTo( -1, -8 ); // usgom
+      shapePiso02.lineTo( -1, -7 ); // espacio
+      shapePiso02.lineTo( -1, -4.5); // direccion de escuela
 
-    // const piso3 = piso1.clone();
-    // piso3.position.y = 2;
-    // scene.add(piso3);
+      shapePiso02.lineTo( -3, -4.5 );
+      shapePiso02.lineTo( -3, 1.5 );
+      shapePiso02.moveTo( 4, 1.5 );
 
+    const geometryPiso02 = new THREE.ExtrudeGeometry( shapePiso02, extrudeSettings );
+    const materialPiso02 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
+    const piso02 = new THREE.Mesh( geometryPiso02, materialPiso02 ) ;
+    piso02.rotation.x = 3.141593/2;
+    piso02.position.y = -0;
+    scene.add( piso02 );
     
-    const shapeCamino = new THREE.Shape();
 
-    shapeCamino.moveTo( 0.5, 1.7 ); // inicio derecho
-    shapeCamino.lineTo( 0.5, -0.5 ); // recepcion1
-    shapeCamino.lineTo( 3.5, -0.5 ); // recepcion2
+    // CAMINO 1ER PISO
+    const shapeCamino1 = new THREE.Shape();
 
-    shapeCamino.lineTo( 3.5, -6.25 ); // pasillo salones derecho
-    shapeCamino.lineTo( 4, -6.25 ); // pasillo salones largo
+    shapeCamino1.moveTo( 0.5, 1.7 ); // inicio derecho
+    shapeCamino1.lineTo( 0.5, -0.5 ); // recepcion1
+    shapeCamino1.lineTo( 3.5, -0.5 ); // recepcion2
 
-    shapeCamino.lineTo( 9.1, -6.25 ); // pasillo salida izquierdo
-    shapeCamino.lineTo( 9.1, -4.3 ); // pasillo salida izquierdo
-    shapeCamino.lineTo( 8, -4.3 ); // pasillo salida izquierdo
-    shapeCamino.lineTo( 8 , -3.3 ); // pasillo salida derecho
-    shapeCamino.lineTo( 10.1, -3.3 ); // pasillo salida derecho
+    shapeCamino1.lineTo( 3.5, -6.25 ); // pasillo salones derecho
+    shapeCamino1.lineTo( 4, -6.25 ); // pasillo salones largo
+
+    shapeCamino1.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
+    shapeCamino1.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
+    shapeCamino1.lineTo( 8, -4.3 ); // pasillo salida izquierdo
+    shapeCamino1.lineTo( 8 , -3.3 ); // pasillo salida derecho
+    shapeCamino1.lineTo( 10.1, -3.3 ); // pasillo salida derecho
     
-    shapeCamino.lineTo( 10.1, -3.3 ); // pasillo escaleras derecho
-    shapeCamino.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
-    shapeCamino.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
-    shapeCamino.lineTo( 10.1, -4.3 ); // pasillo escaleras izquierda
+    shapeCamino1.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
+    shapeCamino1.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
 
+    shapeCamino1.lineTo( 10.9, -6.25 ); // pasillo salida derecho
 
-    shapeCamino.lineTo( 10.1, -6.25 ); // pasillo salida derecho
-
-    shapeCamino.lineTo( 12.5, -6.25 ); // pasillo salones largo
+    shapeCamino1.lineTo( 12.5, -6.25 ); // pasillo salones largo
     
-    shapeCamino.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
-    shapeCamino.lineTo( 12.5, -7.25 ); // pasillo salones largo
-    shapeCamino.lineTo( 4, -7.25 ); // pasillo salones largo
-    shapeCamino.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
+    shapeCamino1.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
+    shapeCamino1.lineTo( 12.5, -7.25 ); // pasillo salones largo
+    shapeCamino1.lineTo( 4, -7.25 ); // pasillo salones largo
+    shapeCamino1.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
     
-    shapeCamino.lineTo( 3.5, -28 ); // pasillo software
+    shapeCamino1.lineTo( 3.5, -28 ); // pasillo software
 
-    shapeCamino.lineTo( 11, -28 ); // pasillo software
-    shapeCamino.lineTo( 11, -29 ); // pasillo software
-    shapeCamino.lineTo( -1.5, -29 ); // pasillo software
-    shapeCamino.lineTo( -1.5, -28 ); // pasillo software
+    shapeCamino1.lineTo( 11, -28 ); // pasillo software
+    shapeCamino1.lineTo( 11, -29 ); // pasillo software
+    shapeCamino1.lineTo( -1.5, -29 ); // pasillo software
+    shapeCamino1.lineTo( -1.5, -28 ); // pasillo software
 
-    shapeCamino.lineTo( 2.5, -28 ); // pasillo principal
-    shapeCamino.lineTo( 2.5, -1.5 ); // recepcion2
-    shapeCamino.lineTo( -0.5, -1.5 ); // recepcion1
-    shapeCamino.lineTo( -0.5, 1.7 ); // inicio izquierdo
+    shapeCamino1.lineTo( 2.5, -28 ); // pasillo principal
+    shapeCamino1.lineTo( 2.5, -1.5 ); // recepcion2
+    shapeCamino1.lineTo( -0.5, -1.5 ); // recepcion1
+    shapeCamino1.lineTo( -0.5, 1.7 ); // inicio izquierdo
     
-    shapeCamino.lineTo( 0.5, 1.7 );
+    shapeCamino1.lineTo( 0.5, 1.7 );
 
-    const geometryCamino = new THREE.ExtrudeGeometry( shapeCamino, extrudeSettings );
+    const geometryCamino = new THREE.ExtrudeGeometry( shapeCamino1, extrudeSettings );
     const materialCamino = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
-    const camino = new THREE.Mesh( geometryCamino, materialCamino ) ;
-    camino.rotation.x = 3.141593/2;
-    camino.position.y = -1.9;
-    scene.add( camino );
+    const camino1 = new THREE.Mesh( geometryCamino, materialCamino ) ;
+    camino1.rotation.x = 3.141593/2;
+    camino1.position.y = -1.9;
+    scene.add( camino1 );
 
-    // const camino = createObject(1,0.1,1.5,
+    // CAMINO 2DO PISO
+    const shapeCamino2 = new THREE.Shape();
+    shapeCamino2.moveTo( 2.5, -0.5 ); // inicio derecho
+    shapeCamino2.lineTo( 3.5, -0.5 ); // recepcion2
+
+    shapeCamino2.lineTo( 3.5, -6.25 ); // pasillo salones derecho
+    shapeCamino2.lineTo( 4, -6.25 ); // pasillo salones largo
+
+    shapeCamino2.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
+    shapeCamino2.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
+    shapeCamino2.lineTo( 10.1, -3.3 ); // pasillo salida derecho
+    
+    shapeCamino2.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
+    shapeCamino2.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
+
+    shapeCamino2.lineTo( 10.9, -6.25 ); // pasillo salida derecho
+
+    shapeCamino2.lineTo( 12.5, -6.25 ); // pasillo salones largo
+    
+    shapeCamino2.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
+    shapeCamino2.lineTo( 12.5, -7.25 ); // pasillo salones largo
+    shapeCamino2.lineTo( 4, -7.25 ); // pasillo salones largo
+    shapeCamino2.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
+    
+    shapeCamino2.lineTo( 3.5, -28 ); // pasillo software
+
+    shapeCamino2.lineTo( 11, -28 ); // pasillo software
+    shapeCamino2.lineTo( 11, -29 ); // pasillo software
+    shapeCamino2.lineTo( -1.5, -29 ); // pasillo software
+    shapeCamino2.lineTo( -1.5, -28 ); // pasillo software
+
+    shapeCamino2.lineTo( 2.5, -28 ); // pasillo principal
+    shapeCamino2.lineTo( 2.5, -1.5 ); // recepcion2
+    
+    shapeCamino2.lineTo( 2.5, -0.5 );
+
+    const geometryCamino2 = new THREE.ExtrudeGeometry( shapeCamino2, extrudeSettings );
+    const materialCamino2 = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
+    const camino2 = new THREE.Mesh( geometryCamino2, materialCamino2 ) ;
+    camino2.rotation.x = 3.141593/2;
+    camino2.position.y = 0.1;
+    scene.add( camino2 );
+
+
+    // const camino1 = createObject(1,0.1,1.5,
                                   //0,2,0.9,
                                   //new THREE.MeshStandardMaterial({ color: 0x9A8C98 }));
 
 
     /* Aulas */
+
+    // MATERIALES
     const material1 = new THREE.MeshStandardMaterial({ color: 0xC9ADA7 });
     const materialAulas = new THREE.MeshStandardMaterial({ color: 0xF2E9E4 });
     const materialEscenarios = new THREE.MeshStandardMaterial({ color: 0x83c5be });
@@ -197,8 +271,8 @@ function Model3d() {
     const materialSSHH = new THREE.MeshStandardMaterial({ color: 0x90e0ef });
     const materialDeportes = new THREE.MeshStandardMaterial({ color: 0xc7f9cc });
     
-    const atencionDoc = createObject(1,0.5,1,
-                                      1.5,2,0.9,
+    const atencionDoc = createObject(1, 0.5, 1, // 
+                                      1.5, 2, 0.9,
                                       materialAdministrativos);
     
 

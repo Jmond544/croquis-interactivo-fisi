@@ -270,6 +270,11 @@ function Model3d() {
     const materialAdministrativos = new THREE.MeshStandardMaterial({ color: 0xf28482 });
     const materialSSHH = new THREE.MeshStandardMaterial({ color: 0x90e0ef });
     const materialDeportes = new THREE.MeshStandardMaterial({ color: 0xc7f9cc });
+    const materialComedor = new THREE.MeshStandardMaterial({color: 0xBAB7B7});
+    const materialDataCenter = new THREE.MeshStandardMaterial({color: 0xF7E11E4});
+
+
+    //Aulas del piso 1
     
     const atencionDoc = createObject(1, 0.5, 1, // 
                                       1.5, 2, 0.9,
@@ -341,6 +346,35 @@ function Model3d() {
       0,2,-31,
       materialAulas); 
 
+      //Aulas del piso 2
+
+      const SSHH_Sistemas_2 = createObject(1.5,0.5,3,
+        1.13,0,-13,
+        materialSSHH);
+
+      const SSHH_Software_2 = createObject(2,0.5,2,
+          7,0,-26,
+          materialSSHH); 
+
+          const comedor = createObject(4,0.5,5,
+            -0.2,0,-18,
+            materialComedor);
+      
+            const aulasNuevoPabellon2 = createObject(5,0.5,2,
+              6.5,0,-31,
+              materialAulas);
+
+        const aulasNuevoPabellon2_v2 = createObject(3.9,0.5,2,
+          0,0,-31,
+          materialAulas); 
+
+          const microDataCenter = createObject(2,0.5,2,
+            9.5,0,-26, materialDataCenter)
+
+            const decanato = createObject(3.9,0.5,3.6,
+              -1,0,-0.3, materialAdministrativos
+
+            )
 
       /* Linea */
 

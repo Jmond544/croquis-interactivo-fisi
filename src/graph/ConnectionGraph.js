@@ -1,5 +1,6 @@
 import Graph from "graphology";
 import { dijkstra } from "graphology-shortest-path";
+import {bidirectional} from 'graphology-shortest-path';
 import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 
 const graph = new Graph();
@@ -20,32 +21,29 @@ graph.addNode('SSHH_1_2',main_coord.SSHH_1_2);
 graph.addNode('aulaNP',main_coord.aulaNP);
 
 graph.addNode('dob_1_1',inter_coord.dob_1_1);
-graph.addNode('pre_cerceu',inter_coord.dob_1_1);
-graph.addNode('pre_AtDoc',inter_coord.dob_1_1);
-graph.addNode('dob_1_2',inter_coord.dob_1_1);
-graph.addNode('iniEscalera_1_1',inter_coord.dob_1_1);
-graph.addNode('pre_CC',inter_coord.dob_1_1);
-graph.addNode('pre_USGOM',inter_coord.dob_1_1);
-graph.addNode('pre_escalera_1_2',inter_coord.dob_1_1);
-graph.addNode('pre_SSHH_1_1',inter_coord.dob_1_1);
+graph.addNode('pre_cerceu',inter_coord.pre_cerceu);
+graph.addNode('pre_AtDoc',inter_coord.pre_AtDoc);
+graph.addNode('dob_1_2',inter_coord.dob_1_2);
+graph.addNode('iniEscalera_1_1',inter_coord.iniEscalera_1_1);
+graph.addNode('pre_CC',inter_coord.pre_CC);
+graph.addNode('pre_USGOM',inter_coord.pre_USGOM);
+graph.addNode('pre_escalera_1_2',inter_coord.pre_escalera_1_2);
+graph.addNode('pre_SSHH_1_1',inter_coord.pre_SSHH_1_1);
+graph.addNode('pre_auditorio',inter_coord.pre_auditorio);
+graph.addNode('pre_escalera_1_4',inter_coord.pre_escalera_1_4);
+graph.addNode('pre_SSHH_1_2',inter_coord.pre_SSHH_1_2);
+graph.addNode('pre_aulaNP',inter_coord.pre_aulaNP);
+graph.addNode('pre_escalera_1_5',inter_coord.pre_escalera_1_5);
+graph.addNode('iniEscalera_1_5',inter_coord.iniEscalera_1_5);
+graph.addNode('iniEscalera_1_4',inter_coord.iniEscalera_1_4);
+graph.addNode('iniEscalera_1_2',inter_coord.iniEscalera_1_2);
+graph.addNode('dob_1_3',inter_coord.dob_1_3);
+graph.addNode('pre_aulas100',inter_coord.pre_aulas100);
+graph.addNode('dob_1_4',inter_coord.dob_1_4);
+graph.addNode('dob_1_5',inter_coord.dob_1_5);
+graph.addNode('iniEscalera_1_6',inter_coord.iniEscalera_1_6);
+graph.addNode('pre_kiosko',inter_coord.pre_kiosko);
 
-// for (const nodeName in main_coord) {
-//   const coordinates = main_coord[nodeName];
-//   graph.addNode(nodeName, {
-//     x: coordinates.x,
-//     y: coordinates.y,
-//     z: coordinates.z,
-//   });
-// }
-
-// for (const nodeName in inter_coord) {
-//   const coordinates = main_coord[nodeName];
-//   graph.addNode(nodeName, {
-//     x: coordinates.x,
-//     y: coordinates.y,
-//     z: coordinates.z,
-//   });
-// }
 
 // Función para calcular la distancia entre dos nodos
 function calculateDistance(nodeA, nodeB) {
@@ -62,8 +60,8 @@ function calculateDistance(nodeA, nodeB) {
 // Agregar aristas automáticamente calculando la distancia
 function addEdgeWithDistance(source, target) {
   const distance = calculateDistance(source, target);
-  const edgeKey = `${source}->${target}`;
-  graph.addEdgeWithKey(edgeKey, source, target, { distance });
+  graph.addEdge(source, target, {weight: distance });
+  graph.addEdge(target, source, {weight: distance });
 }
 
 // Agregar aristas con distancia calculada automáticamente
@@ -76,15 +74,41 @@ addEdgeWithDistance("pre_cerceu", "pre_AtDoc");
 addEdgeWithDistance("pre_AtDoc", "atDoc");
 
 // Implementar Dijkstra
-const { distance, path } = dijkstra(graph, "entrada_1", {
-  attributes: "distance",
-});
 
 // Mostrar el resultado
 
-function mostrar() {
-  console.log("Distancias:", distance);
-  console.log("Camino de entrada_1 a atDoc:", path("atDoc"));
+function mostrar(source, target) {
+  const arrGen = [];
+  const list = [];
+  console.log(graph.hasEdge('cerseu','pre_cerceu'));
+  const path = dijkstra.bidirectional(graph, source, target);
+  console.log("Camino de entrada_1 a cerseu:", path);
+  for(const nodo in path){
+    console.log("Nodo:", path[nodo]);
+    const ejeX = graph.getNodeAttribute(path[nodo], 'x');
+    const ejeY = graph.getNodeAttribute(path[nodo], 'y');
+    const ejeZ = graph.getNodeAttribute(path[nodo], 'z');
+    const coordinates = {x: ejeX, y: ejeY, z:ejeZ};
+    console.log("  x:", coordinates.x );
+    console.log("  y:", coordinates.y );
+    console.log("  z:", coordinates.z );
+
+    list.push(coordinates);
+
+    if (/^midEscalera_.+$/.test(path[nodo])) {
+      arrGen.push([...list]);
+      list.length = 0;
+    }
+  }
+  if(arrGen.length === 0){
+    arrGen.push([...list]);
+  }
+  // for (const val in arrGen) {
+  //   for (const element in arrGen[val]) {
+  //     console.log(arrGen[val][element].x+';'+arrGen[val][element].y+';'+arrGen[val][element].z);
+  //   }
+  // }
+  return arrGen;
 }
 
 export { mostrar };

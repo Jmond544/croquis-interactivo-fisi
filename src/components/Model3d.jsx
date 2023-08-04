@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord , inter_coord} from "../route_coordinates/Coordinates";
-//import {mostrar} from '../graph/ConnectionGraph';
+import {mostrar} from '../graph/ConnectionGraph';
 
 function Model3d() {
   const mountRef = useRef(null);
@@ -12,12 +12,15 @@ function Model3d() {
   const [position, setPosition] = useState(false);
   
   useEffect(() => {
-    //mostrar();
+    
+    
+
     const initialCameraPosition = {
       x: 6,
       y: 5,
       z: 8,
     };
+
     const currentRef = mountRef.current;
     const { clientWidth: width, clientHeight: height } = currentRef;
 
@@ -50,6 +53,36 @@ function Model3d() {
     controls.dampingFactor = 0.04;
     controls.minDistance = 1;
     controls.maxDistance = 30;
+
+    /* TRAZADO DE RUTAS */
+
+    const materialTrazoRutas = new THREE.LineBasicMaterial( { color: 0x0000ff, linewidth: 0.1 });
+    let trazoRutaPiso01;
+    let trazoRutaPiso02;
+    let trazoRutaPiso03;
+    function generarTrazadorRuta(inicio, fin){
+      const resCamino = mostrar(inicio, fin);
+      for (const val in resCamino) {
+        const pointsRuta = [];
+        for (const element in resCamino[val]) {
+          pointsRuta.push( new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z) );
+        }
+        const geometryRuta = new THREE.BufferGeometry().setFromPoints( pointsRuta );
+        if(val === 0){
+          trazoRutaPiso01 = new THREE.Line( geometryRuta, materialTrazoRutas );
+          scene.add(trazoRutaPiso01)
+        }else if (val === 1) {
+          trazoRutaPiso02 = new THREE.Line( geometryRuta, materialTrazoRutas );
+          scene.add(trazoRutaPiso02)
+        }else {
+          trazoRutaPiso03 = new THREE.Line( geometryRuta, materialTrazoRutas );
+          scene.add(trazoRutaPiso03)
+        }
+        pointsRuta.length = 0;
+      }
+    }
+
+    generarTrazadorRuta('atDoc','dga');
 
     /* Funciones posicion */
     const ajustarEjeVertical = (objeto, valor) => {
@@ -348,52 +381,52 @@ function Model3d() {
 
     const material2 = new THREE.LineBasicMaterial( { color: 0x0000ff, linewidth: 0.1 });
     const points = [];
-    points.push( new THREE.Vector3(
-      main_coord.entrada_1.x,
-      main_coord.entrada_1.y,
-      main_coord.entrada_1.z ) );
-    points.push( new THREE.Vector3( 
-      inter_coord.dob_1_1.x,
-      inter_coord.dob_1_1.y,
-      inter_coord.dob_1_1.z
-     ) );
-     points.push( new THREE.Vector3(
-      main_coord.economia.x,
-      main_coord.economia.y,
-      main_coord.economia.z
-     ) );
-     points.push( new THREE.Vector3( 
-      inter_coord.dob_1_1.x,
-      inter_coord.dob_1_1.y,
-      inter_coord.dob_1_1.z
-     ) );
+    // points.push( new THREE.Vector3(
+    //   main_coord.entrada_1.x,
+    //   main_coord.entrada_1.y,
+    //   main_coord.entrada_1.z ) );
+    // points.push( new THREE.Vector3( 
+    //   inter_coord.dob_1_1.x,
+    //   inter_coord.dob_1_1.y,
+    //   inter_coord.dob_1_1.z
+    //  ) );
+    //  points.push( new THREE.Vector3(
+    //   main_coord.economia.x,
+    //   main_coord.economia.y,
+    //   main_coord.economia.z
+    //  ) );
+    //  points.push( new THREE.Vector3( 
+    //   inter_coord.dob_1_1.x,
+    //   inter_coord.dob_1_1.y,
+    //   inter_coord.dob_1_1.z
+    //  ) );
 
-     points.push( new THREE.Vector3( 
-      main_coord.dga.x,
-      main_coord.dga.y,
-      main_coord.dga.z
-     ) );
+    //  points.push( new THREE.Vector3( 
+    //   main_coord.dga.x,
+    //   main_coord.dga.y,
+    //   main_coord.dga.z
+    //  ) );
 
-     points.push( new THREE.Vector3( 
-      inter_coord.dob_1_1.x,
-      inter_coord.dob_1_1.y,
-      inter_coord.dob_1_1.z
-     ) );
-     points.push( new THREE.Vector3( 
-      inter_coord.pre_cerceu.x,
-      inter_coord.pre_cerceu.y,
-      inter_coord.pre_cerceu.z
-     ) );
-     points.push( new THREE.Vector3( 
-      main_coord.cerseu.x,
-      main_coord.cerseu.y,
-      main_coord.cerseu.z
-     ) );
-     points.push( new THREE.Vector3( 
-      inter_coord.pre_AtDoc.x,
-      inter_coord.pre_AtDoc.y,
-      inter_coord.pre_AtDoc.z
-     ) );
+    //  points.push( new THREE.Vector3( 
+    //   inter_coord.dob_1_1.x,
+    //   inter_coord.dob_1_1.y,
+    //   inter_coord.dob_1_1.z
+    //  ) );
+    //  points.push( new THREE.Vector3( 
+    //   inter_coord.pre_cerceu.x,
+    //   inter_coord.pre_cerceu.y,
+    //   inter_coord.pre_cerceu.z
+    //  ) );
+    //  points.push( new THREE.Vector3( 
+    //   main_coord.cerseu.x,
+    //   main_coord.cerseu.y,
+    //   main_coord.cerseu.z
+    //  ) );
+    //  points.push( new THREE.Vector3( 
+    //   inter_coord.pre_AtDoc.x,
+    //   inter_coord.pre_AtDoc.y,
+    //   inter_coord.pre_AtDoc.z
+    //  ) );
      points.push( new THREE.Vector3( 
       main_coord.atDoc.x,
       main_coord.atDoc.y,

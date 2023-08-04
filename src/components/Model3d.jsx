@@ -98,6 +98,7 @@ function Model3d() {
       shapePiso01.lineTo( -1, -7 ); // espacio
       shapePiso01.lineTo( -1, -4.5); // direccion de escuela
 
+
       shapePiso01.lineTo( -3, -4.5 );
       shapePiso01.lineTo( -3, 1.5 );
       shapePiso01.moveTo( 4, 1.5 );
@@ -117,6 +118,19 @@ function Model3d() {
     piso01.rotation.x = 3.141593/2;
     piso01.position.y = -2;
     scene.add( piso01 );
+
+    const shapePisoParque = new THREE.Shape();
+    shapePisoParque.moveTo(4,-25);
+    shapePisoParque.lineTo(4,-9);
+    shapePisoParque.lineTo(15,-9);
+    shapePisoParque.lineTo(15,-25);
+    shapePisoParque.moveTo(4,-25);
+    const geometryPisoParque = new THREE.ExtrudeGeometry(shapePisoParque,extrudeSettings);
+    const materialPisoParque = new THREE.MeshStandardMaterial({color: 0xDCDCDC});
+    const pisoParque = new THREE.Mesh(geometryPisoParque,materialPisoParque);
+    pisoParque.rotation.x = 3.141593/2;
+    pisoParque.position.y = -2;
+    scene.add(pisoParque)
 
     // SEGUNDO PISO
 
@@ -272,7 +286,7 @@ function Model3d() {
     const materialDeportes = new THREE.MeshStandardMaterial({ color: 0xc7f9cc });
     const materialComedor = new THREE.MeshStandardMaterial({color: 0xBAB7B7});
     const materialDataCenter = new THREE.MeshStandardMaterial({color: 0xF7E11E4});
-
+    const materialMagna = new THREE.MeshStandardMaterial({color: 0xF1E17E27})
 
     //Aulas del piso 1
     
@@ -356,11 +370,11 @@ function Model3d() {
           7,0,-26,
           materialSSHH); 
 
-          const comedor = createObject(4,0.5,5,
+      const comedor = createObject(4,0.5,5,
             -0.2,0,-18,
-            materialComedor);
+            materialComedor);    
       
-            const aulasNuevoPabellon2 = createObject(5,0.5,2,
+            const LaboratoriosNuevoPabellon = createObject(5,0.5,2,
               6.5,0,-31,
               materialAulas);
 
@@ -379,9 +393,27 @@ function Model3d() {
               6.5,0,-5.3,
               materialAulas); 
 
-              const publicidad = createObject(2.2,0.5,1.5,
+              const publicidad = createObject(2,0.5,1.5,
                 6,0,-8.2,
                 materialAdministrativos); 
+
+                const aulas200v2= createObject(2,0.5,1.5,
+                  8.1,0,-8.2,
+                  materialAulas);
+
+                  const tercio = createObject(1,0.5,1.5,
+                    9.7,0,-8.2,
+                    materialAdministrativos);
+
+                   const Magna = createObject(1,0.5,1.5,
+                    12,0,-8.2,
+                    materialMagna
+                   )
+
+                   const salaCatedraticos = createObject(0.7,0.5,0.7,
+                    3.6,0,-10,
+                    materialAdministrativos);
+                    
 
       /* Linea */
 

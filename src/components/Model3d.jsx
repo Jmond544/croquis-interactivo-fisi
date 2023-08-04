@@ -13,6 +13,8 @@ function Model3d() {
   const mountRef = useRef(null);
   const controlsRef = useRef(null);
   const [position, setPosition] = useState(false);
+  let currentOrigen = null;
+  let currentDestino = null;
 
   useEffect(() => {
 
@@ -64,28 +66,37 @@ function Model3d() {
     let trazoRutaPiso02;
     let trazoRutaPiso03;
     function generarTrazadorRuta(inicio, fin) {
-      const resCamino = mostrar(inicio, fin);
-      for (const val in resCamino) {
-        const pointsRuta = [];
-        for (const element in resCamino[val]) {
-          pointsRuta.push(new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z));
+      if(trazoRutaPiso01 != null){
+        scene.remove(trazoRutaPiso01)
+      }
+      if(trazoRutaPiso02 != null){
+        scene.remove(trazoRutaPiso02)
+      }
+      if(trazoRutaPiso03 != null){
+        scene.remove(trazoRutaPiso03)
+      }
+      if(inicio!=null && fin != null){
+        const resCamino = mostrar(inicio, fin);
+        for (const val in resCamino) {
+          const pointsRuta = [];
+          for (const element in resCamino[val]) {
+            pointsRuta.push(new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z));
+          }
+          const geometryRuta = new THREE.BufferGeometry().setFromPoints(pointsRuta);
+          if (val === 0) {
+            trazoRutaPiso01 = new THREE.Line(geometryRuta, materialTrazoRutas);
+            scene.add(trazoRutaPiso01)
+          } else if (val === 1) {
+            trazoRutaPiso02 = new THREE.Line(geometryRuta, materialTrazoRutas);
+            scene.add(trazoRutaPiso02)
+          } else {
+            trazoRutaPiso03 = new THREE.Line(geometryRuta, materialTrazoRutas);
+            scene.add(trazoRutaPiso03)
+          }
+          pointsRuta.length = 0;
         }
-        const geometryRuta = new THREE.BufferGeometry().setFromPoints(pointsRuta);
-        if (val === 0) {
-          trazoRutaPiso01 = new THREE.Line(geometryRuta, materialTrazoRutas);
-          scene.add(trazoRutaPiso01)
-        } else if (val === 1) {
-          trazoRutaPiso02 = new THREE.Line(geometryRuta, materialTrazoRutas);
-          scene.add(trazoRutaPiso02)
-        } else {
-          trazoRutaPiso03 = new THREE.Line(geometryRuta, materialTrazoRutas);
-          scene.add(trazoRutaPiso03)
-        }
-        pointsRuta.length = 0;
       }
     }
-
-    generarTrazadorRuta('entrada_1', 'iniEscalera_1_2');
 
     /* Funciones posicion */
     const ajustarEjeVertical = (objeto, valor) => {
@@ -1095,7 +1106,7 @@ function Model3d() {
       controls.update();
     };
 
-    controlsRef.current = { handleResetClick };
+    controlsRef.current = { handleResetClick, generarTrazadorRuta };
 
     renderer.render(scene, camera);
 
@@ -1118,13 +1129,21 @@ function Model3d() {
   useEffect(() => {
     controlsRef.current.handleResetClick();
   }, [position]);
-
+  
+  function callGenerarTrazadorRuta(origen, destino, tipo){
+    if (tipo === 'origen') {
+      currentOrigen = origen;
+    } else if (tipo === 'destino') {
+      currentDestino = destino;
+    }
+    controlsRef.current.generarTrazadorRuta(currentOrigen, currentDestino);
+  }
 
   return (
     <div className="container-principal">
       <div className="container-inputs">
-        <TextInputs tipo={'origen'}/>
-        <TextInputs tipo={'destino'}/>
+        <TextInputs tipo={'origen'} generarTrazadorRuta={callGenerarTrazadorRuta} />
+        <TextInputs tipo={'destino'} generarTrazadorRuta={callGenerarTrazadorRuta} />
       </div>
       <div ref={mountRef} className="container-3d"></div>
       <button onClick={() => setPosition(!position)}>Reset position</button>

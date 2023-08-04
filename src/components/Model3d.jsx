@@ -414,8 +414,8 @@ function Model3d() {
 
 
     //ESCALERAS
-    function crearEscaleras(x, y, z) {
-      const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
+    const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
+    function crearEscaleras1(x, y, z) {
     
       // Crear escaleraParte1
       const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
@@ -436,12 +436,131 @@ function Model3d() {
     
       return meshCombinado;
     }
-    
 
-    const escalera1_1 = crearEscaleras (3,2,1);
+
+    function crearEscaleras2(x, y, z) {
+
     
+      // Crear escaleraParte1
+      const escaleraParte1 = createObject(1 * Math.sqrt(2)-0.1, 0.04, 0.4, x , y - 1.4, z- 0.2, materialEscalera);
+      escaleraParte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
+    
+      // Crear escaleraParte2
+      const escaleraParte2 = createObject(1 * Math.sqrt(2)-0.1, 0.04, 0.4, x , y - 0.5, z+ 0.2, materialEscalera);
+      escaleraParte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
+    
+      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParte1.geometry,
+        escaleraParte2.geometry,
+      ],true);
+    
+      // Crear el Mesh combinado utilizando la geometría combinada y el material original
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+      return meshCombinado;
+    }
+
+    
+    
+    function crearEscaleras3(x, y, z) {
+    
+      // Crear escaleraParte1
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+    
+      // Crear escaleraParte2
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+    
+      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParte1.geometry,
+        escaleraParte2.geometry,
+      ],true);
+    
+      // Crear el Mesh combinado utilizando la geometría combinada y el material original
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+    
+      return meshCombinado;
+    }
+
+
+    const escalera1_1 = crearEscaleras1 (3,2,1);
     scene.add(escalera1_1);
 
+    const escalera1_2=crearEscaleras1(10.5,2,-2.5);
+    scene.add(escalera1_2);
+
+    const escalera1_3 = crearEscaleras2(1,2,-10.6);
+    scene.add(escalera1_3);
+
+    const escalera1_4 = crearEscaleras3(3.1,2,-30.5);
+    scene.add(escalera1_4);
+
+    const escalera1_5 = crearEscaleras3(10,2,-30.5);
+    scene.add(escalera1_5);
+
+    const escalera2_1 = crearEscaleras1 (3,0,1);
+    scene.add(escalera1_1);
+
+    const escalera2_2=crearEscaleras1(10.5,0,-2.5);
+    scene.add(escalera1_2);
+
+    const escalera2_3 = crearEscaleras2(1,0,-10.6);
+    scene.add(escalera1_3);
+
+    const escalera2_4 = crearEscaleras3(3.1,0,-30.5);
+    scene.add(escalera1_4);
+
+    const escalera2_5 = crearEscaleras3(10,0,-30.5);
+    scene.add(escalera1_5);
+
+
+
+
+    function crearEscaleras3(x, y, z) {
+    
+      // Crear escaleraParte1
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+    
+      // Crear escaleraParte2
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+    
+      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParte1.geometry,
+        escaleraParte2.geometry,
+      ],true);
+    
+      // Crear el Mesh combinado utilizando la geometría combinada y el material original
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+    
+      return meshCombinado;
+    }
+
+
+    function crearEscaleraParque(x,y,z){
+      const escaleraParque = createObject(1,2,3.4,
+        x,y,z,materialEscalera);
+        const escaleraParqueSubida = createObject(1,0.04,2*Math.sqrt(2)-0.1,
+    x,y-1,z+2.65,materialEscalera);
+    escaleraParqueSubida.rotation.x=Math.PI/4;
+    const escaleraParqueSubida2 = createObject(1,0.04,2*Math.sqrt(2)-0.1,
+    x,y-1,z-2.65,materialEscalera)
+    escaleraParqueSubida2.rotation.x=-Math.PI/4;
+    const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+      escaleraParqueSubida.geometry,
+      escaleraParqueSubida2.geometry,
+    ],true);
+
+    const meshCombinado = new THREE.Mesh(geometriaCombinada,materialEscalera);
+    return meshCombinado;
+    }
+
+    const escaleraParque = crearEscaleraParque(4.5,2,-17.9);
+    scene.add(escaleraParque);
 
 
 

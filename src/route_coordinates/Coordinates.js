@@ -23,6 +23,13 @@ const main_coord = {
 
   decanato: {x:-1, y:0.2, z:-1},
   comedor: {x:2, y:0.2, z:-17},
+  magna: {x:12, y:0.2, z:-8},
+  aulas200: {x:6.5, y:0.2, z:-6},
+  salaCatedraticos: {x:3.6, y:0.2, z:-10},
+  microDataCenter: {x:9.8, y:0.2, z:-27},
+  aulaNP2: {x:8, y:0.2, z:-30},
+  tercio:{x:9.7, y:0.2, z:-8},
+
   //Piso 3
 
 
@@ -64,22 +71,23 @@ const inter_coord = {
   //Piso 2
 
     //pre_
-
+    pre_aulaNP2: {x:8, y:0.2, z:-28.5},
     pre_SSHH_2_1: {x:3, y:0.2, z:-14.25},
     pre_SSHH_2_2: {x:6.5, y:0.2, z:-28.5},
     pre_escalera_2_2: {x:3, y:0.2, z:-9.7},
-    //pre_escalera_1_3: {x:4.5, y:-1.8, z:-11.5},
     pre_escalera_2_4: {x:3, y:0.2, z:-28.5},
     pre_escalera_2_5: {x:9.8, y:0.2, z:-28.5},
     pre_escalera_2_1: {x:3, y:0.2, z:-1},
     pre_comedor: {x:3, y:0.2, z:-17},
     pre_magna: {x:12, y:0.2, z:-6.75},
-
+    pre_salaCatedraticos : {x:3, y:0.2, z:-10},
+    pre_tercio: {x:9.7, y:0.2, z:-6.75},
 
     //dob_
 
     dob_2_3: {x:3, y:0.2, z:-6.75},
     dob_2_4: {x:10.4, y:0.2, z:-6.75},
+    dob_2_extra:{x:6.5, y:0.2, z:-6.75},
 
     //iniEscalera_
     iniEscalera_2_1: {x:3, y:0.2, z:-0.5},

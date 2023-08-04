@@ -6,6 +6,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 import { mostrar } from '../graph/ConnectionGraph';
 import TextInputs from "./TextInputs";
+import ButtonCheckBox from "./ButtonCheckBox";
 
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
@@ -1146,7 +1147,16 @@ function Model3d() {
         <TextInputs tipo={'destino'} generarTrazadorRuta={callGenerarTrazadorRuta} />
       </div>
       <div ref={mountRef} className="container-3d"></div>
-      <button onClick={() => setPosition(!position)}>Reset position</button>
+      <div className='barra-inferior'>
+        <div>
+          <button onClick={() => setPosition(!position)}>Reset position</button>
+        </div>
+        <div className="control-pisos">
+          <ButtonCheckBox tipo={'piso01'} />
+          <ButtonCheckBox tipo={'piso02'} />
+          <ButtonCheckBox tipo={'piso03'} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 const main_coord = {
+  //Piso 1
   entrada_1: { x: 0, y: -1.8, z: 1.5 },
   economia: {x:-1, y:-1.8, z:-1},
   dga: {x:-1, y:-1.8, z:-2},
@@ -17,6 +18,13 @@ const main_coord = {
   capilla: {x:7.5, y:-1.8, z:-10},
   vestidores: {x:10, y:-1.8, z:-13},
   entrada_3: {x:14, y:-1.8, z:-8},
+
+  //Piso 2
+
+
+  //Piso 3
+
+
 };
 
 const inter_coord = {
@@ -50,6 +58,25 @@ const inter_coord = {
   iniEscalera_1_6: {x:10.4, y:-1.8, z:-3.2},
   pre_kiosko: {x:9.2, y:-1.8, z:-3.8},
   mid_Escalera_1_1: {x:3, y:-0.8, z:1.5},
+
+
+  //Piso 2
+
+    //pre_
+
+    //dob_
+
+    //iniEscalera_
+
+    //mid_Escalera_
+
+    //fin_Escalera_
+
+  //Piso 3
+
+    //pre_
+
+    //dob_
 }
 
 export { main_coord, inter_coord };

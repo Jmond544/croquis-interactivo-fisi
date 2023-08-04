@@ -1,6 +1,5 @@
 import Graph from "graphology";
 import { dijkstra } from "graphology-shortest-path";
-import {bidirectional} from 'graphology-shortest-path';
 import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 
 const graph = new Graph();
@@ -72,6 +71,36 @@ addEdgeWithDistance("dob_1_1", "pre_cerceu");
 addEdgeWithDistance("cerseu", "pre_cerceu");
 addEdgeWithDistance("pre_cerceu", "pre_AtDoc");
 addEdgeWithDistance("pre_AtDoc", "atDoc");
+addEdgeWithDistance("pre_AtDoc", "dob_1_2");
+addEdgeWithDistance("iniEscalera_1_1", "dob_1_2");
+addEdgeWithDistance("pre_CC", "dob_1_2");
+addEdgeWithDistance("pre_CC", "CC");
+addEdgeWithDistance("pre_CC", "dob_1_3");
+addEdgeWithDistance("pre_aulas100", "dob_1_3");
+addEdgeWithDistance("aulas100", "pre_aulas100");
+addEdgeWithDistance("dob_1_4", "pre_aulas100");
+addEdgeWithDistance("dob_1_4", "dob_1_5");
+addEdgeWithDistance("iniEscalera_1_6", "dob_1_5");
+addEdgeWithDistance("pre_kiosko", "dob_1_5");
+addEdgeWithDistance("pre_kiosko", "kiosko");
+addEdgeWithDistance("pre_kiosko", "entrada_2");
+
+addEdgeWithDistance("pre_USGOM", "dob_1_3");
+addEdgeWithDistance("pre_USGOM", "USGOM");
+addEdgeWithDistance("pre_USGOM", "pre_escalera_1_2");
+addEdgeWithDistance("iniEscalera_1_2", "pre_escalera_1_2");
+addEdgeWithDistance("pre_SSHH_1_1", "pre_escalera_1_2");
+addEdgeWithDistance("pre_SSHH_1_1", "SSHH_1_1");
+addEdgeWithDistance("pre_SSHH_1_1", "pre_auditorio");
+addEdgeWithDistance("auditorio", "pre_auditorio");
+addEdgeWithDistance("pre_escalera_1_4", "pre_auditorio");
+addEdgeWithDistance("pre_escalera_1_4", "iniEscalera_1_4");
+addEdgeWithDistance("pre_escalera_1_4", "pre_SSHH_1_2");
+addEdgeWithDistance("SSHH_1_2", "pre_SSHH_1_2");
+addEdgeWithDistance("pre_aulaNP", "pre_SSHH_1_2");
+addEdgeWithDistance("pre_aulaNP", "aulaNP");
+addEdgeWithDistance("pre_aulaNP", "pre_escalera_1_5");
+addEdgeWithDistance("iniEscalera_1_5", "pre_escalera_1_5");
 
 // Implementar Dijkstra
 

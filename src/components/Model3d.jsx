@@ -323,6 +323,28 @@ function Model3d() {
                                   //0,2,0.9,
                                   //new THREE.MeshStandardMaterial({ color: 0x9A8C98 }));
 
+    /* Entradas */
+
+    const geometry = new THREE.TorusGeometry( 0.5, 0.2, 30, 100 ); 
+    const material = new THREE.MeshStandardMaterial( { color: 0xffff00 } ); 
+    const entrada1 = new THREE.Mesh( geometry, material );
+    entrada1.position.x = 0;
+    entrada1.position.y = -1.5;
+    entrada1.position.z = 1.9;
+    scene.add( entrada1 );
+
+    const entrada2 = new THREE.Mesh( geometry, material );
+    entrada2.position.x = 8;
+    entrada2.position.z = -3.8;
+    entrada2.position.y = -1.5;
+    entrada2.rotation.y = 3.141593/2;
+    scene.add( entrada2 );
+
+    const entrada3 = new THREE.Mesh( geometry, material );
+    entrada3.position.x = 14;
+    entrada3.position.z = -8;
+    entrada3.position.y = -1.5;
+    scene.add( entrada3 );
 
     /* Aulas */
 

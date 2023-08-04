@@ -18,6 +18,10 @@ graph.addNode('SSHH_1_1',main_coord.SSHH_1_1);
 graph.addNode('auditorio',main_coord.auditorio);
 graph.addNode('SSHH_1_2',main_coord.SSHH_1_2);
 graph.addNode('aulaNP',main_coord.aulaNP);
+graph.addNode('losa',main_coord.losa);
+graph.addNode('capilla',main_coord.capilla);
+graph.addNode('vestidores',main_coord.vestidores);
+graph.addNode('entrada_3',main_coord.entrada_3);
 
 graph.addNode('dob_1_1',inter_coord.dob_1_1);
 graph.addNode('pre_cerceu',inter_coord.pre_cerceu);
@@ -27,6 +31,12 @@ graph.addNode('iniEscalera_1_1',inter_coord.iniEscalera_1_1);
 graph.addNode('pre_CC',inter_coord.pre_CC);
 graph.addNode('pre_USGOM',inter_coord.pre_USGOM);
 graph.addNode('pre_escalera_1_2',inter_coord.pre_escalera_1_2);
+graph.addNode('dob_1_6',inter_coord.dob_1_6);
+graph.addNode('pre_escalera_1_3',inter_coord.pre_escalera_1_3);
+graph.addNode('iniEscalera_1_3',inter_coord.iniEscalera_1_3);
+graph.addNode('dob_1_7',inter_coord.dob_1_7);
+graph.addNode('pre_vestidores',inter_coord.pre_vestidores);
+graph.addNode('dob_1_8',inter_coord.dob_1_8);
 graph.addNode('pre_SSHH_1_1',inter_coord.pre_SSHH_1_1);
 graph.addNode('pre_auditorio',inter_coord.pre_auditorio);
 graph.addNode('pre_escalera_1_4',inter_coord.pre_escalera_1_4);
@@ -101,6 +111,17 @@ addEdgeWithDistance("pre_aulaNP", "pre_SSHH_1_2");
 addEdgeWithDistance("pre_aulaNP", "aulaNP");
 addEdgeWithDistance("pre_aulaNP", "pre_escalera_1_5");
 addEdgeWithDistance("iniEscalera_1_5", "pre_escalera_1_5");
+addEdgeWithDistance("dob_1_6", "pre_SSHH_1_1");
+addEdgeWithDistance("dob_1_6", "pre_escalera_1_2");
+addEdgeWithDistance("dob_1_6", "pre_escalera_1_3");
+addEdgeWithDistance("iniEscalera_1_3", "pre_escalera_1_3");
+addEdgeWithDistance("dob_1_7", "pre_escalera_1_3");
+addEdgeWithDistance("dob_1_7", "losa");
+addEdgeWithDistance("dob_1_7", "capilla");
+addEdgeWithDistance("dob_1_7", "pre_vestidores");
+addEdgeWithDistance("vestidores", "pre_vestidores");
+addEdgeWithDistance("dob_1_8", "pre_vestidores");
+addEdgeWithDistance("dob_1_8", "entrada_3");
 
 // Implementar Dijkstra
 

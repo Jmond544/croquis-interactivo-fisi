@@ -13,6 +13,10 @@ const main_coord = {
   auditorio: {x:2, y:-1.8, z:-17},
   SSHH_1_2: {x:6.5, y:-1.8, z:-27},
   aulaNP: {x:8, y:-1.8, z:-30},
+  losa: {x:7.5, y:-1.8, z:-15},
+  capilla: {x:7.5, y:-1.8, z:-10},
+  vestidores: {x:10, y:-1.8, z:-13},
+  entrada_3: {x:14, y:-1.8, z:-8},
 };
 
 const inter_coord = {
@@ -24,6 +28,12 @@ const inter_coord = {
   pre_CC: {x:3, y:-1.8, z:-6},
   pre_USGOM: {x:3, y:-1.8, z:-8},
   pre_escalera_1_2: {x:3, y:-1.8, z:-9.7},
+  dob_1_6: {x:3, y:-1.8, z:-11.5},
+  pre_escalera_1_3: {x:4.5, y:-1.8, z:-11.5},
+  iniEscalera_1_3: {x:4.5, y:-1.8, z:-12},
+  dob_1_7: {x:7.5, y:-1.8, z:-11.5},
+  pre_vestidores: {x:10, y:-1.8, z:-11.5},
+  dob_1_8: {x:14, y:-1.8, z:-11.5},
   pre_SSHH_1_1: {x:3, y:-1.8, z:-14.25},
   pre_auditorio: {x:3, y:-1.8, z:-17},
   pre_escalera_1_4: {x:3, y:-1.8, z:-28.5},

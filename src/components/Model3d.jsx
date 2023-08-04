@@ -82,7 +82,7 @@ function Model3d() {
       }
     }
 
-    generarTrazadorRuta('entrada_1','aulaNP');
+    generarTrazadorRuta('entrada_1','entrada_2');
 
     /* Funciones posicion */
     const ajustarEjeVertical = (objeto, valor) => {
@@ -240,6 +240,20 @@ function Model3d() {
     shapeCamino1.lineTo( 4, -7.25 ); // pasillo salones largo
     shapeCamino1.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
     
+    shapeCamino1.lineTo( 3.5, -11 ); // area verde
+
+    
+    shapeCamino1.lineTo( 13.5, -11 ); // area verde derecho
+    shapeCamino1.lineTo( 13.5, -8 ); // area verde derecho
+    
+    shapeCamino1.lineTo( 14.5, -8 ); // area verde izquierdo
+    shapeCamino1.lineTo( 14.5, -12 ); // area verde izquierdo
+    shapeCamino1.lineTo( 8, -12 ); // area verde
+    shapeCamino1.lineTo( 8, -15 ); // area verde
+    shapeCamino1.lineTo( 7, -16 ); // area verde
+    shapeCamino1.lineTo( 7, -12 ); // area verde
+    shapeCamino1.lineTo( 3.5, -12 ); // area verde
+    
     shapeCamino1.lineTo( 3.5, -28 ); // pasillo software
 
     shapeCamino1.lineTo( 11, -28 ); // pasillo software
@@ -375,12 +389,12 @@ function Model3d() {
       8,2,-10,
       material1);
 
-    const vestidores = createObject(5,0.5,8,
+    const losaDeportiva = createObject(5,0.5,8,
       9,2,-19,
       materialDeportes);
 
-    const losaDeportiva = createObject(3,0.5,1,
-      10.5,2,-12,
+    const vestidores = createObject(3,0.5,1,
+      10.5,2,-13,
       materialDeportes);
 
     const SSHH_Software_1 = createObject(2,0.5,2,
@@ -525,52 +539,52 @@ function Model3d() {
     //   main_coord.CC.y,
     //   main_coord.CC.z
     //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.pre_USGOM.x,
-    //   inter_coord.pre_USGOM.y,
-    //   inter_coord.pre_USGOM.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.pre_escalera_1_2.x,
-    //   inter_coord.pre_escalera_1_2.y,
-    //   inter_coord.pre_escalera_1_2.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.iniEscalera_1_2.x,
-    //   inter_coord.iniEscalera_1_2.y,
-    //   inter_coord.iniEscalera_1_2.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.pre_SSHH_1_1.x,
-    //   inter_coord.pre_SSHH_1_1.y,
-    //   inter_coord.pre_SSHH_1_1.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   main_coord.SSHH_1_1.x,
-    //   main_coord.SSHH_1_1.y,
-    //   main_coord.SSHH_1_1.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.pre_auditorio.x,
-    //   inter_coord.pre_auditorio.y,
-    //   inter_coord.pre_auditorio.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   main_coord.auditorio.x,
-    //   main_coord.auditorio.y,
-    //   main_coord.auditorio.z
-    //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.pre_escalera_1_4.x,
-    //   inter_coord.pre_escalera_1_4.y,
-    //   inter_coord.pre_escalera_1_4.z
-    //  ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.pre_USGOM.x,
+     inter_coord.pre_USGOM.y,
+     inter_coord.pre_USGOM.z
+    ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.pre_escalera_1_2.x,
+     inter_coord.pre_escalera_1_2.y,
+     inter_coord.pre_escalera_1_2.z
+    ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.iniEscalera_1_2.x,
+     inter_coord.iniEscalera_1_2.y,
+     inter_coord.iniEscalera_1_2.z
+    ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.pre_SSHH_1_1.x,
+     inter_coord.pre_SSHH_1_1.y,
+     inter_coord.pre_SSHH_1_1.z
+    ) );
+    points.push( new THREE.Vector3( 
+     main_coord.SSHH_1_1.x,
+     main_coord.SSHH_1_1.y,
+     main_coord.SSHH_1_1.z
+    ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.pre_auditorio.x,
+     inter_coord.pre_auditorio.y,
+     inter_coord.pre_auditorio.z
+    ) );
+    points.push( new THREE.Vector3( 
+     main_coord.auditorio.x,
+     main_coord.auditorio.y,
+     main_coord.auditorio.z
+    ) );
+    points.push( new THREE.Vector3( 
+     inter_coord.pre_escalera_1_4.x,
+     inter_coord.pre_escalera_1_4.y,
+     inter_coord.pre_escalera_1_4.z
+    ) );
 
-    //  points.push( new THREE.Vector3( 
-    //    main_coord.SSHH_1_2.x,
-    //    main_coord.SSHH_1_2.y,
-    //    main_coord.SSHH_1_2.z
-    //    ) );
+    points.push( new THREE.Vector3( 
+      main_coord.SSHH_1_2.x,
+      main_coord.SSHH_1_2.y,
+      main_coord.SSHH_1_2.z
+      ) );
     // points.push( new THREE.Vector3( 
     // inter_coord.pre_aulaNP.x,
     // inter_coord.pre_aulaNP.y,

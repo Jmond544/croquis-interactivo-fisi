@@ -746,7 +746,7 @@ function Model3d() {
     const musica = createObject(2, 0.5, 1.8,
       2, -2, -31,materialEscenarios
     )
-    const publicidad = createObject(2, 0.5, 1.5,
+    const publicidad = createObject(1, 0.5, 1.5,
           6, -2, -8.2,
           materialAdministrativos);
     const SSHH_Sistemas_3 = createObject(1.5, 0.5, 3,
@@ -771,6 +771,21 @@ function Model3d() {
         const dirSist = createObject(1.5, 0.5, 2,
           1.13, -2, -5.9,
           materialAdministrativos) ;
+
+          const soporte = createObject(1, 0.5, 1.5,
+            9, -2, -8.2,
+            materialAdministrativos);
+
+            const DepAcaSist = createObject(1,0.5,1.5,
+              10.1,-2,-8.2,materialAdministrativos);
+
+              const Laboratorios3_1 = createObject(2.7, 0.5, 1.5,
+                10, -2, -26,
+                materialAulas);
+
+                const Laboratorios3_2 = createObject(4.7, 0.5, 1.5,
+                  6.5, -2, -5.3,
+                  materialAulas);
 
     /* Linea */
 

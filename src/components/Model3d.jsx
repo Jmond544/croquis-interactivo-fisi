@@ -770,7 +770,7 @@ function Model3d() {
 
         const dirSist = createObject(1.5, 0.5, 2,
           1.13, -2, -5.9,
-          materialAdministrativos);
+          materialAdministrativos) ;
 
     /* Linea */
 

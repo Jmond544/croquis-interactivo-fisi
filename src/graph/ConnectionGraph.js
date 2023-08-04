@@ -52,6 +52,7 @@ graph.addNode('dob_1_4',inter_coord.dob_1_4);
 graph.addNode('dob_1_5',inter_coord.dob_1_5);
 graph.addNode('iniEscalera_1_6',inter_coord.iniEscalera_1_6);
 graph.addNode('pre_kiosko',inter_coord.pre_kiosko);
+graph.addNode('mid_Escalera_1_1',inter_coord.mid_Escalera_1_1);
 
 
 // Función para calcular la distancia entre dos nodos
@@ -122,6 +123,7 @@ addEdgeWithDistance("dob_1_7", "pre_vestidores");
 addEdgeWithDistance("vestidores", "pre_vestidores");
 addEdgeWithDistance("dob_1_8", "pre_vestidores");
 addEdgeWithDistance("dob_1_8", "entrada_3");
+addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_1_1");
 
 // Implementar Dijkstra
 
@@ -145,7 +147,7 @@ function mostrar(source, target) {
 
     list.push(coordinates);
 
-    if (/^midEscalera_.+$/.test(path[nodo])) {
+    if (/^mid_Escalera_.+$/.test(path[nodo])) {
       arrGen.push([...list]);
       list.length = 0;
     }

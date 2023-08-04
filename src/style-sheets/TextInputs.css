@@ -11,6 +11,10 @@
     padding: 5px 10px;
 }
 
+.icon-left {
+    color: rgb(231, 164, 40);
+}
+
 .inpuit-button {
     display: flex;
     align-items: center;

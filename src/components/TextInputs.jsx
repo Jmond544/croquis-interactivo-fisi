@@ -4,17 +4,42 @@ import { AiFillPushpin } from "react-icons/ai";
 import { MdMyLocation } from "react-icons/md";
 import '../style-sheets/TextInputs.css';
 
-function TextInputs( { tipo } ) {
+function TextInputs( { tipo, generarTrazadorRuta } ) {
 
-	const [origen, setOrigen] = useState(0);
+  const [origen, setOrigen] = useState(null);
+  const [destino, setDestino] = useState(null);
+
+  const handleInputChange = (event) => {
+    const inputValue = event.target.value;
+    try {
+      const selectedOption = Array.from(event.target.list.options).find(
+        (option) => option.value === inputValue
+      );
+      
+      if (tipo === 'origen') {
+        setOrigen(selectedOption.id);
+      } else if (tipo === 'destino') {
+        setDestino(selectedOption.id);
+      }
+    } catch (error) {
+      if (tipo === 'origen') {
+        setOrigen(null);
+      } else if (tipo === 'destino') {
+        setDestino(null);
+      }
+    }
+  };
 
 
   return (
     <div className='container-input'>
-        {tipo === 'origen' ? <MdMyLocation /> : <FaLocationArrow />}
+        <div className='icon-left'>
+            {tipo === 'origen' ? <MdMyLocation /> : <FaLocationArrow />}
+        </div>
         <input placeholder={tipo === 'origen' ? 'Elija una ubicación de origen' : 'Elija una ubicación de destino'}
             list='ubicacionesDisponibles'
-            className='custom-input'></input>
+            className='custom-input'
+            onChange={handleInputChange}></input>
         <datalist id='ubicacionesDisponibles' className='custom-datalist'>
             <option 
                 value="Entrada 01" 
@@ -50,7 +75,7 @@ function TextInputs( { tipo } ) {
                 value="SSHH antiguo pabellon" 
                 id='SSHH_1_1'>Primer piso</option>
             <option 
-                value="" 
+                value="Auditorio" 
                 id='auditorio'>Primer piso</option>
             <option 
                 value="SSHH nuevo pabellón" 
@@ -72,7 +97,8 @@ function TextInputs( { tipo } ) {
                 id='entrada_3'>Primer piso</option>
             
         </datalist>
-        <button className='inpuit-button'>
+        <button className='inpuit-button'
+                onClick={() => generarTrazadorRuta(origen, destino, tipo) }>
             <AiFillPushpin />
         </button>
     </div>

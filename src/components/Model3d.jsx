@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 import { mostrar } from '../graph/ConnectionGraph';
-
+import TextInputs from "./TextInputs";
 
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
@@ -1059,6 +1059,10 @@ function Model3d() {
 
   return (
     <div className="container-principal">
+      <div className="container-inputs">
+        <TextInputs tipo={'origen'}/>
+        <TextInputs tipo={'destino'}/>
+      </div>
       <div ref={mountRef} className="container-3d"></div>
       <button onClick={() => setPosition(!position)}>Reset position</button>
     </div>

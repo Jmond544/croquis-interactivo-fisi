@@ -806,30 +806,22 @@ function Model3d() {
 
     
 
-    points.push(new THREE.Vector3(
-       inter_coord.pre_comedor.x,
-       inter_coord.pre_comedor.y,
-       inter_coord.pre_comedor.z
-     ));
+  
+    function addPointToPoints(coord) {
+      points.push(new THREE.Vector3(
+        coord.x,
+        coord.y,
+        coord.z
+      ));
+    }
+    
 
-     points.push(new THREE.Vector3(
-      inter_coord.dob_2_4.x,
-      inter_coord.dob_2_4.y,
-      inter_coord.dob_2_4.z
-    ));
+    addPointToPoints(inter_coord.pre_tercio);
+    addPointToPoints(main_coord.tercio);
+    //addPointToPoints(main_coord)
+    
 
 
-    points.push(new THREE.Vector3(
-      inter_coord.pre_magna.x,
-      inter_coord.pre_magna.y,
-      inter_coord.pre_magna.z
-    ));
-
-    // points.push(new THREE.Vector3(
-    //   inter_coord.dob_2_3.x,
-    //   inter_coord.dob_2_3.y,
-    //   inter_coord.dob_2_3.z
-    // ));
     // points.push(new THREE.Vector3(
     //   inter_coord.dob_2_4.x,
     //   inter_coord.dob_2_4.y,

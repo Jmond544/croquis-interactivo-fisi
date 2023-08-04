@@ -373,8 +373,15 @@ function Model3d() {
 
             const decanato = createObject(3.9,0.5,3.6,
               -1,0,-0.3, materialAdministrativos
-
             )
+
+            const aulas200 = createObject(4.7,0.5,1.5,
+              6.5,0,-5.3,
+              materialAulas); 
+
+              const publicidad = createObject(2.2,0.5,1.5,
+                6,0,-8.2,
+                materialAdministrativos); 
 
       /* Linea */
 

@@ -3,20 +3,20 @@ import "../style-sheets/Model3d.css";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { main_coord , inter_coord} from "../route_coordinates/Coordinates";
-import {mostrar} from '../graph/ConnectionGraph';
+import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
+import { mostrar } from '../graph/ConnectionGraph';
 
 
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 function Model3d() {
   const mountRef = useRef(null);
-  const controlsRef  = useRef(null);
+  const controlsRef = useRef(null);
   const [position, setPosition] = useState(false);
-  
+
   useEffect(() => {
-    
-    
+
+
 
     const initialCameraPosition = {
       x: 6,
@@ -59,88 +59,88 @@ function Model3d() {
 
     /* TRAZADO DE RUTAS */
 
-    const materialTrazoRutas = new THREE.LineBasicMaterial( { color: 0x0000ff, linewidth: 0.1 });
+    const materialTrazoRutas = new THREE.LineBasicMaterial({ color: 0x0000ff, linewidth: 0.1 });
     let trazoRutaPiso01;
     let trazoRutaPiso02;
     let trazoRutaPiso03;
-    function generarTrazadorRuta(inicio, fin){
+    function generarTrazadorRuta(inicio, fin) {
       const resCamino = mostrar(inicio, fin);
       for (const val in resCamino) {
         const pointsRuta = [];
         for (const element in resCamino[val]) {
-          pointsRuta.push( new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z) );
+          pointsRuta.push(new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z));
         }
-        const geometryRuta = new THREE.BufferGeometry().setFromPoints( pointsRuta );
-        if(val === 0){
-          trazoRutaPiso01 = new THREE.Line( geometryRuta, materialTrazoRutas );
+        const geometryRuta = new THREE.BufferGeometry().setFromPoints(pointsRuta);
+        if (val === 0) {
+          trazoRutaPiso01 = new THREE.Line(geometryRuta, materialTrazoRutas);
           scene.add(trazoRutaPiso01)
-        }else if (val === 1) {
-          trazoRutaPiso02 = new THREE.Line( geometryRuta, materialTrazoRutas );
+        } else if (val === 1) {
+          trazoRutaPiso02 = new THREE.Line(geometryRuta, materialTrazoRutas);
           scene.add(trazoRutaPiso02)
-        }else {
-          trazoRutaPiso03 = new THREE.Line( geometryRuta, materialTrazoRutas );
+        } else {
+          trazoRutaPiso03 = new THREE.Line(geometryRuta, materialTrazoRutas);
           scene.add(trazoRutaPiso03)
         }
         pointsRuta.length = 0;
       }
     }
 
-    generarTrazadorRuta('aulaNP','losa');
+    generarTrazadorRuta('aulaNP', 'losa');
 
     /* Funciones posicion */
     const ajustarEjeVertical = (objeto, valor) => {
-      return -(valor - objeto.geometry.parameters.height + objeto.geometry.parameters.height/2);
+      return -(valor - objeto.geometry.parameters.height + objeto.geometry.parameters.height / 2);
     }
 
     const createObject = (dimX, dimY, dimZ, ejeX, ejeY, ejeZ, material) => {
       const objeto = new THREE.Mesh(new THREE.BoxGeometry(dimX, dimY, dimZ), material);
       scene.add(objeto);
       objeto.position.x = ejeX;
-      objeto.position.y = ajustarEjeVertical(objeto,ejeY);
+      objeto.position.y = ajustarEjeVertical(objeto, ejeY);
       objeto.position.z = ejeZ;
       return objeto;
     }
 
     /* Pisos */
-      // PRIMER PISO
-      const shapePiso01 = new THREE.Shape();
-      shapePiso01.moveTo( 4, 1.5 ); // X, Z
-      shapePiso01.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
-      shapePiso01.lineTo( 9, -4.5 ); // aulas 100
-      shapePiso01.lineTo( 9, -2 ); // quiosco y gradas
-      shapePiso01.lineTo( 11, -2 ); // quiosco y gradas
-      shapePiso01.lineTo( 11, -4.5 );
-      shapePiso01.lineTo( 13, -4.5 ); // aulas 100 lateral
-      shapePiso01.lineTo( 13, -9 );
-      shapePiso01.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso01.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso01.lineTo( 4, -25 ); // maquinas expendedoras
-      shapePiso01.lineTo( 12, -25 ); // maquinas expendedoras
-      shapePiso01.lineTo( 12, -32 ); // software pared este
-      shapePiso01.lineTo( -2, -32 ); // software pared norte
-      shapePiso01.lineTo( -2, -25 ); // software pared oeste
-      shapePiso01.lineTo( 1.5, -25 ); // software pared sur
-      shapePiso01.lineTo( 1.5, -24 ); // espacio
-      shapePiso01.lineTo( -3, -24 ); // mini parque
-      shapePiso01.lineTo( -3, -22 ); 
-      shapePiso01.lineTo( 1.5, -22 ); // fin parque
-      shapePiso01.lineTo( 1.5, -21 ); // pasillo
-      shapePiso01.lineTo( -3, -21 ); // Auditorio
-      shapePiso01.lineTo( -3, -15 ); // Auditorio
-      shapePiso01.lineTo( 1.5, -15 ); // Fin Auditorio
-      shapePiso01.lineTo( -1, -16 ); // baños
-      shapePiso01.lineTo( -1, -12 ); // baños
-      shapePiso01.lineTo( -1, -10 ); // gradas
-      shapePiso01.lineTo( -1, -9 ); // espacio
-      shapePiso01.lineTo( -1, -8 ); // usgom
-      shapePiso01.lineTo( -1, -7 ); // espacio
-      shapePiso01.lineTo( -1, -4.5); // direccion de escuela
+    // PRIMER PISO
+    const shapePiso01 = new THREE.Shape();
+    shapePiso01.moveTo(4, 1.5); // X, Z
+    shapePiso01.lineTo(4, -4.5); // esquina recepcion aulas 100
+    shapePiso01.lineTo(9, -4.5); // aulas 100
+    shapePiso01.lineTo(9, -2); // quiosco y gradas
+    shapePiso01.lineTo(11, -2); // quiosco y gradas
+    shapePiso01.lineTo(11, -4.5);
+    shapePiso01.lineTo(13, -4.5); // aulas 100 lateral
+    shapePiso01.lineTo(13, -9);
+    shapePiso01.lineTo(4, -9); // aulas 100 lateral
+    shapePiso01.lineTo(4, -9); // aulas 100 lateral
+    shapePiso01.lineTo(4, -25); // maquinas expendedoras
+    shapePiso01.lineTo(12, -25); // maquinas expendedoras
+    shapePiso01.lineTo(12, -32); // software pared este
+    shapePiso01.lineTo(-2, -32); // software pared norte
+    shapePiso01.lineTo(-2, -25); // software pared oeste
+    shapePiso01.lineTo(1.5, -25); // software pared sur
+    shapePiso01.lineTo(1.5, -24); // espacio
+    shapePiso01.lineTo(-3, -24); // mini parque
+    shapePiso01.lineTo(-3, -22);
+    shapePiso01.lineTo(1.5, -22); // fin parque
+    shapePiso01.lineTo(1.5, -21); // pasillo
+    shapePiso01.lineTo(-3, -21); // Auditorio
+    shapePiso01.lineTo(-3, -15); // Auditorio
+    shapePiso01.lineTo(1.5, -15); // Fin Auditorio
+    shapePiso01.lineTo(-1, -16); // baños
+    shapePiso01.lineTo(-1, -12); // baños
+    shapePiso01.lineTo(-1, -10); // gradas
+    shapePiso01.lineTo(-1, -9); // espacio
+    shapePiso01.lineTo(-1, -8); // usgom
+    shapePiso01.lineTo(-1, -7); // espacio
+    shapePiso01.lineTo(-1, -4.5); // direccion de escuela
 
 
-      shapePiso01.lineTo( -3, -4.5 );
-      shapePiso01.lineTo( -3, 1.5 );
-      shapePiso01.moveTo( 4, 1.5 );
-      
+    shapePiso01.lineTo(-3, -4.5);
+    shapePiso01.lineTo(-3, 1.5);
+    shapePiso01.moveTo(4, 1.5);
+
     const extrudeSettings = {
       depth: 0.1,
       bevelEnabled: false,
@@ -149,417 +149,417 @@ function Model3d() {
       bevelOffset: 0,
       bevelSegments: 0
     };
-      
-    const geometryPiso01 = new THREE.ExtrudeGeometry( shapePiso01, extrudeSettings );
-    const materialPiso01 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
-    const piso01 = new THREE.Mesh( geometryPiso01, materialPiso01 ) ;
-    piso01.rotation.x = 3.141593/2;
+
+    const geometryPiso01 = new THREE.ExtrudeGeometry(shapePiso01, extrudeSettings);
+    const materialPiso01 = new THREE.MeshStandardMaterial({ color: 0x4A4E69 });
+    const piso01 = new THREE.Mesh(geometryPiso01, materialPiso01);
+    piso01.rotation.x = 3.141593 / 2;
     piso01.position.y = -2;
-    scene.add( piso01 );
+    scene.add(piso01);
 
     //Piso Parque
 
     const shapePisoParque = new THREE.Shape();
-    shapePisoParque.moveTo(4,-25);
-    shapePisoParque.lineTo(4,-9);
-    shapePisoParque.lineTo(15,-9);
-    shapePisoParque.lineTo(15,-25);
-    shapePisoParque.moveTo(4,-25);
-    const geometryPisoParque = new THREE.ExtrudeGeometry(shapePisoParque,extrudeSettings);
-    const materialPisoParque = new THREE.MeshStandardMaterial({color: 0xDCDCDC});
-    const pisoParque = new THREE.Mesh(geometryPisoParque,materialPisoParque);
-    pisoParque.rotation.x = 3.141593/2;
+    shapePisoParque.moveTo(4, -25);
+    shapePisoParque.lineTo(4, -9);
+    shapePisoParque.lineTo(15, -9);
+    shapePisoParque.lineTo(15, -25);
+    shapePisoParque.moveTo(4, -25);
+    const geometryPisoParque = new THREE.ExtrudeGeometry(shapePisoParque, extrudeSettings);
+    const materialPisoParque = new THREE.MeshStandardMaterial({ color: 0xDCDCDC });
+    const pisoParque = new THREE.Mesh(geometryPisoParque, materialPisoParque);
+    pisoParque.rotation.x = 3.141593 / 2;
     pisoParque.position.y = -2;
     scene.add(pisoParque)
 
     // SEGUNDO PISO
 
     const shapePiso02 = new THREE.Shape();
-      shapePiso02.moveTo( 4, 1.5 ); // X, Z
-      shapePiso02.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
-      shapePiso02.lineTo( 9, -4.5 ); // aulas 100
-      shapePiso02.lineTo( 9, -2 ); // quiosco y gradas
-      shapePiso02.lineTo( 11, -2 ); // quiosco y gradas
-      shapePiso02.lineTo( 11, -4.5 );
-      shapePiso02.lineTo( 13, -4.5 ); // aulas 100 lateral
-      shapePiso02.lineTo( 13, -9 );
-      shapePiso02.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso02.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso02.lineTo( 4, -25 ); // maquinas expendedoras
-      shapePiso02.lineTo( 12, -25 ); // maquinas expendedoras
-      shapePiso02.lineTo( 12, -32 ); // software pared este
-      shapePiso02.lineTo( -2, -32 ); // software pared norte
-      shapePiso02.lineTo( -2, -25 ); // software pared oeste
-      shapePiso02.lineTo( 1.5, -25 ); // software pared sur
-      shapePiso02.lineTo( 1.5, -24 ); // espacio
-      shapePiso02.lineTo( 1.5, -22 ); // fin parque
-      shapePiso02.lineTo( 1.5, -21 ); // pasillo
-      shapePiso02.lineTo( -3, -21 ); // Auditorio
-      shapePiso02.lineTo( -3, -15 ); // Auditorio
-      shapePiso02.lineTo( 1.5, -15 ); // Fin Auditorio
-      shapePiso02.lineTo( -1, -16 ); // baños
-      shapePiso02.lineTo( -1, -12 ); // baños
-      shapePiso02.lineTo( -1, -10 ); // gradas
-      shapePiso02.lineTo( -1, -9 ); // espacio
-      shapePiso02.lineTo( -1, -8 ); // usgom
-      shapePiso02.lineTo( -1, -7 ); // espacio
-      shapePiso02.lineTo( -1, -4.5); // direccion de escuela
+    shapePiso02.moveTo(4, 1.5); // X, Z
+    shapePiso02.lineTo(4, -4.5); // esquina recepcion aulas 100
+    shapePiso02.lineTo(9, -4.5); // aulas 100
+    shapePiso02.lineTo(9, -2); // quiosco y gradas
+    shapePiso02.lineTo(11, -2); // quiosco y gradas
+    shapePiso02.lineTo(11, -4.5);
+    shapePiso02.lineTo(13, -4.5); // aulas 100 lateral
+    shapePiso02.lineTo(13, -9);
+    shapePiso02.lineTo(4, -9); // aulas 100 lateral
+    shapePiso02.lineTo(4, -9); // aulas 100 lateral
+    shapePiso02.lineTo(4, -25); // maquinas expendedoras
+    shapePiso02.lineTo(12, -25); // maquinas expendedoras
+    shapePiso02.lineTo(12, -32); // software pared este
+    shapePiso02.lineTo(-2, -32); // software pared norte
+    shapePiso02.lineTo(-2, -25); // software pared oeste
+    shapePiso02.lineTo(1.5, -25); // software pared sur
+    shapePiso02.lineTo(1.5, -24); // espacio
+    shapePiso02.lineTo(1.5, -22); // fin parque
+    shapePiso02.lineTo(1.5, -21); // pasillo
+    shapePiso02.lineTo(-3, -21); // Auditorio
+    shapePiso02.lineTo(-3, -15); // Auditorio
+    shapePiso02.lineTo(1.5, -15); // Fin Auditorio
+    shapePiso02.lineTo(-1, -16); // baños
+    shapePiso02.lineTo(-1, -12); // baños
+    shapePiso02.lineTo(-1, -10); // gradas
+    shapePiso02.lineTo(-1, -9); // espacio
+    shapePiso02.lineTo(-1, -8); // usgom
+    shapePiso02.lineTo(-1, -7); // espacio
+    shapePiso02.lineTo(-1, -4.5); // direccion de escuela
 
-      shapePiso02.lineTo( -3, -4.5 );
-      shapePiso02.lineTo( -3, 1.5 );
-      shapePiso02.moveTo( 4, 1.5 );
+    shapePiso02.lineTo(-3, -4.5);
+    shapePiso02.lineTo(-3, 1.5);
+    shapePiso02.moveTo(4, 1.5);
 
-    const geometryPiso02 = new THREE.ExtrudeGeometry( shapePiso02, extrudeSettings );
-    const materialPiso02 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
-    const piso02 = new THREE.Mesh( geometryPiso02, materialPiso02 ) ;
-    piso02.rotation.x = 3.141593/2;
+    const geometryPiso02 = new THREE.ExtrudeGeometry(shapePiso02, extrudeSettings);
+    const materialPiso02 = new THREE.MeshStandardMaterial({ color: 0x4A4E69 });
+    const piso02 = new THREE.Mesh(geometryPiso02, materialPiso02);
+    piso02.rotation.x = 3.141593 / 2;
 
     piso02.position.y = 0;
-    scene.add( piso02 );
+    scene.add(piso02);
 
-    
+
     //3er piso
     const shapePiso03 = new THREE.Shape();
-      shapePiso03.moveTo( 4, 1.5 ); // X, Z
-      shapePiso03.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
-      shapePiso03.lineTo( 9, -4.5 ); // aulas 100
-      shapePiso03.lineTo( 9, -2 ); // quiosco y gradas
-      shapePiso03.lineTo( 11, -2 ); // quiosco y gradas
-      shapePiso03.lineTo( 11, -4.5 );
-      shapePiso03.lineTo( 13, -4.5 ); // aulas 100 lateral
-      shapePiso03.lineTo( 13, -9 );
-      shapePiso03.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso03.lineTo( 4, -9 ); // aulas 100 lateral
-      shapePiso03.lineTo( 4, -25 ); // maquinas expendedoras
-      shapePiso03.lineTo( 12, -25 ); // maquinas expendedoras
-      shapePiso03.lineTo( 12, -32 ); // software pared este
-      shapePiso03.lineTo( -2, -32 ); // software pared norte
-      shapePiso03.lineTo( -2, -25 ); // software pared oeste
-      shapePiso03.lineTo( 1.5, -25 ); // software pared sur
-      shapePiso03.lineTo( 1.5, -24 ); // espacio
-      shapePiso03.lineTo( 1.5, -22 ); // fin parque
-      shapePiso03.lineTo( 1.5, -21 ); // pasillo
-      shapePiso03.lineTo( -3, -21 ); // Auditorio
-      shapePiso03.lineTo( -3, -15 ); // Auditorio
-      shapePiso03.lineTo( 1.5, -15 ); // Fin Auditorio
-      shapePiso03.lineTo( -1, -16 ); // baños
-      shapePiso03.lineTo( -1, -12 ); // baños
-      shapePiso03.lineTo( -1, -10 ); // gradas
-      shapePiso03.lineTo( -1, -9 ); // espacio
-      shapePiso03.lineTo( -1, -8 ); // usgom
-      shapePiso03.lineTo( -1, -7 ); // espacio
-      shapePiso03.lineTo( -1, -4.5); // direccion de escuela
+    shapePiso03.moveTo(4, 1.5); // X, Z
+    shapePiso03.lineTo(4, -4.5); // esquina recepcion aulas 100
+    shapePiso03.lineTo(9, -4.5); // aulas 100
+    shapePiso03.lineTo(9, -2); // quiosco y gradas
+    shapePiso03.lineTo(11, -2); // quiosco y gradas
+    shapePiso03.lineTo(11, -4.5);
+    shapePiso03.lineTo(13, -4.5); // aulas 100 lateral
+    shapePiso03.lineTo(13, -9);
+    shapePiso03.lineTo(4, -9); // aulas 100 lateral
+    shapePiso03.lineTo(4, -9); // aulas 100 lateral
+    shapePiso03.lineTo(4, -25); // maquinas expendedoras
+    shapePiso03.lineTo(12, -25); // maquinas expendedoras
+    shapePiso03.lineTo(12, -32); // software pared este
+    shapePiso03.lineTo(-2, -32); // software pared norte
+    shapePiso03.lineTo(-2, -25); // software pared oeste
+    shapePiso03.lineTo(1.5, -25); // software pared sur
+    shapePiso03.lineTo(1.5, -24); // espacio
+    shapePiso03.lineTo(1.5, -22); // fin parque
+    shapePiso03.lineTo(1.5, -21); // pasillo
+    shapePiso03.lineTo(-3, -21); // Auditorio
+    shapePiso03.lineTo(-3, -15); // Auditorio
+    shapePiso03.lineTo(1.5, -15); // Fin Auditorio
+    shapePiso03.lineTo(-1, -16); // baños
+    shapePiso03.lineTo(-1, -12); // baños
+    shapePiso03.lineTo(-1, -10); // gradas
+    shapePiso03.lineTo(-1, -9); // espacio
+    shapePiso03.lineTo(-1, -8); // usgom
+    shapePiso03.lineTo(-1, -7); // espacio
+    shapePiso03.lineTo(-1, -4.5); // direccion de escuela
 
-      shapePiso03.lineTo( -3, -4.5 );
-      shapePiso03.lineTo( -3, 1.5 );
-      shapePiso03.moveTo( 4, 1.5 );
+    shapePiso03.lineTo(-3, -4.5);
+    shapePiso03.lineTo(-3, 1.5);
+    shapePiso03.moveTo(4, 1.5);
 
-    const geometryPiso03 = new THREE.ExtrudeGeometry( shapePiso02, extrudeSettings );
-    const materialPiso03 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
-    const piso03 = new THREE.Mesh( geometryPiso02, materialPiso02 ) ;
-    piso03.rotation.x = 3.141593/2;
+    const geometryPiso03 = new THREE.ExtrudeGeometry(shapePiso02, extrudeSettings);
+    const materialPiso03 = new THREE.MeshStandardMaterial({ color: 0x4A4E69 });
+    const piso03 = new THREE.Mesh(geometryPiso02, materialPiso02);
+    piso03.rotation.x = 3.141593 / 2;
     piso03.position.y = 2;
-    scene.add( piso03 );
+    scene.add(piso03);
 
     // CAMINO 1ER PISO
     const shapeCamino1 = new THREE.Shape();
 
-    shapeCamino1.moveTo( 0.5, 1.7 ); // inicio derecho
-    shapeCamino1.lineTo( 0.5, -0.5 ); // recepcion1
-    shapeCamino1.lineTo( 3.5, -0.5 ); // recepcion2
+    shapeCamino1.moveTo(0.5, 1.7); // inicio derecho
+    shapeCamino1.lineTo(0.5, -0.5); // recepcion1
+    shapeCamino1.lineTo(3.5, -0.5); // recepcion2
 
-    shapeCamino1.lineTo( 3.5, -6.25 ); // pasillo salones derecho
-    shapeCamino1.lineTo( 4, -6.25 ); // pasillo salones largo
+    shapeCamino1.lineTo(3.5, -6.25); // pasillo salones derecho
+    shapeCamino1.lineTo(4, -6.25); // pasillo salones largo
 
-    shapeCamino1.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
-    shapeCamino1.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
-    shapeCamino1.lineTo( 8, -4.3 ); // pasillo salida izquierdo
-    shapeCamino1.lineTo( 8 , -3.3 ); // pasillo salida derecho
-    shapeCamino1.lineTo( 10.1, -3.3 ); // pasillo salida derecho
-    
-    shapeCamino1.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
-    shapeCamino1.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
+    shapeCamino1.lineTo(9.9, -6.25); // pasillo salida izquierdo
+    shapeCamino1.lineTo(9.9, -4.3); // pasillo salida izquierdo
+    shapeCamino1.lineTo(8, -4.3); // pasillo salida izquierdo
+    shapeCamino1.lineTo(8, -3.3); // pasillo salida derecho
+    shapeCamino1.lineTo(10.1, -3.3); // pasillo salida derecho
 
-    shapeCamino1.lineTo( 10.9, -6.25 ); // pasillo salida derecho
+    shapeCamino1.lineTo(10.9, -3.3); // pasillo escaleras derecho
+    shapeCamino1.lineTo(10.9, -4.3); // pasillo escaleras izquierda
 
-    shapeCamino1.lineTo( 12.5, -6.25 ); // pasillo salones largo
-    
-    shapeCamino1.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
-    shapeCamino1.lineTo( 12.5, -7.25 ); // pasillo salones largo
-    shapeCamino1.lineTo( 4, -7.25 ); // pasillo salones largo
-    shapeCamino1.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
-    
-    shapeCamino1.lineTo( 3.5, -11 ); // area verde
+    shapeCamino1.lineTo(10.9, -6.25); // pasillo salida derecho
 
-    
-    shapeCamino1.lineTo( 13.5, -11 ); // area verde derecho
-    shapeCamino1.lineTo( 13.5, -8 ); // area verde derecho
-    
-    shapeCamino1.lineTo( 14.5, -8 ); // area verde izquierdo
-    shapeCamino1.lineTo( 14.5, -12 ); // area verde izquierdo
-    shapeCamino1.lineTo( 8, -12 ); // area verde
-    shapeCamino1.lineTo( 8, -15 ); // area verde
-    shapeCamino1.lineTo( 7, -16 ); // area verde
-    shapeCamino1.lineTo( 7, -12 ); // area verde
-    shapeCamino1.lineTo( 3.5, -12 ); // area verde
-    
-    shapeCamino1.lineTo( 3.5, -28 ); // pasillo software
+    shapeCamino1.lineTo(12.5, -6.25); // pasillo salones largo
 
-    shapeCamino1.lineTo( 11, -28 ); // pasillo software
-    shapeCamino1.lineTo( 11, -29 ); // pasillo software
-    shapeCamino1.lineTo( -1.5, -29 ); // pasillo software
-    shapeCamino1.lineTo( -1.5, -28 ); // pasillo software
+    shapeCamino1.lineTo(12.5, -6.25); // pasillo salida izquierdo
+    shapeCamino1.lineTo(12.5, -7.25); // pasillo salones largo
+    shapeCamino1.lineTo(4, -7.25); // pasillo salones largo
+    shapeCamino1.lineTo(3.5, -7.25); // pasillo salones izquierdo
 
-    shapeCamino1.lineTo( 2.5, -28 ); // pasillo principal
-    shapeCamino1.lineTo( 2.5, -1.5 ); // recepcion2
-    shapeCamino1.lineTo( -0.5, -1.5 ); // recepcion1
-    shapeCamino1.lineTo( -0.5, 1.7 ); // inicio izquierdo
-    
-    shapeCamino1.lineTo( 0.5, 1.7 );
+    shapeCamino1.lineTo(3.5, -11); // area verde
 
-    const geometryCamino = new THREE.ExtrudeGeometry( shapeCamino1, extrudeSettings );
-    const materialCamino = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
-    const camino1 = new THREE.Mesh( geometryCamino, materialCamino ) ;
-    camino1.rotation.x = 3.141593/2;
+
+    shapeCamino1.lineTo(13.5, -11); // area verde derecho
+    shapeCamino1.lineTo(13.5, -8); // area verde derecho
+
+    shapeCamino1.lineTo(14.5, -8); // area verde izquierdo
+    shapeCamino1.lineTo(14.5, -12); // area verde izquierdo
+    shapeCamino1.lineTo(8, -12); // area verde
+    shapeCamino1.lineTo(8, -15); // area verde
+    shapeCamino1.lineTo(7, -16); // area verde
+    shapeCamino1.lineTo(7, -12); // area verde
+    shapeCamino1.lineTo(3.5, -12); // area verde
+
+    shapeCamino1.lineTo(3.5, -28); // pasillo software
+
+    shapeCamino1.lineTo(11, -28); // pasillo software
+    shapeCamino1.lineTo(11, -29); // pasillo software
+    shapeCamino1.lineTo(-1.5, -29); // pasillo software
+    shapeCamino1.lineTo(-1.5, -28); // pasillo software
+
+    shapeCamino1.lineTo(2.5, -28); // pasillo principal
+    shapeCamino1.lineTo(2.5, -1.5); // recepcion2
+    shapeCamino1.lineTo(-0.5, -1.5); // recepcion1
+    shapeCamino1.lineTo(-0.5, 1.7); // inicio izquierdo
+
+    shapeCamino1.lineTo(0.5, 1.7);
+
+    const geometryCamino = new THREE.ExtrudeGeometry(shapeCamino1, extrudeSettings);
+    const materialCamino = new THREE.MeshStandardMaterial({ color: 0x9A8C98 });
+    const camino1 = new THREE.Mesh(geometryCamino, materialCamino);
+    camino1.rotation.x = 3.141593 / 2;
     camino1.position.y = -1.9;
-    scene.add( camino1 );
+    scene.add(camino1);
 
     // CAMINO 2DO PISO
     const shapeCamino2 = new THREE.Shape();
-    shapeCamino2.moveTo( 2.5, -0.5 ); // inicio derecho
-    shapeCamino2.lineTo( 3.5, -0.5 ); // recepcion2
+    shapeCamino2.moveTo(2.5, -0.5); // inicio derecho
+    shapeCamino2.lineTo(3.5, -0.5); // recepcion2
 
-    shapeCamino2.lineTo( 3.5, -6.25 ); // pasillo salones derecho
-    shapeCamino2.lineTo( 4, -6.25 ); // pasillo salones largo
+    shapeCamino2.lineTo(3.5, -6.25); // pasillo salones derecho
+    shapeCamino2.lineTo(4, -6.25); // pasillo salones largo
 
-    shapeCamino2.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
-    shapeCamino2.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
-    shapeCamino2.lineTo( 10.1, -3.3 ); // pasillo salida derecho
-    
-    shapeCamino2.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
-    shapeCamino2.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
+    shapeCamino2.lineTo(9.9, -6.25); // pasillo salida izquierdo
+    shapeCamino2.lineTo(9.9, -4.3); // pasillo salida izquierdo
+    shapeCamino2.lineTo(10.1, -3.3); // pasillo salida derecho
 
-    shapeCamino2.lineTo( 10.9, -6.25 ); // pasillo salida derecho
+    shapeCamino2.lineTo(10.9, -3.3); // pasillo escaleras derecho
+    shapeCamino2.lineTo(10.9, -4.3); // pasillo escaleras izquierda
 
-    shapeCamino2.lineTo( 12.5, -6.25 ); // pasillo salones largo
-    
-    shapeCamino2.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
-    shapeCamino2.lineTo( 12.5, -7.25 ); // pasillo salones largo
-    shapeCamino2.lineTo( 4, -7.25 ); // pasillo salones largo
-    shapeCamino2.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
-    
-    shapeCamino2.lineTo( 3.5, -28 ); // pasillo software
+    shapeCamino2.lineTo(10.9, -6.25); // pasillo salida derecho
 
-    shapeCamino2.lineTo( 11, -28 ); // pasillo software
-    shapeCamino2.lineTo( 11, -29 ); // pasillo software
-    shapeCamino2.lineTo( -1.5, -29 ); // pasillo software
-    shapeCamino2.lineTo( -1.5, -28 ); // pasillo software
+    shapeCamino2.lineTo(12.5, -6.25); // pasillo salones largo
 
-    shapeCamino2.lineTo( 2.5, -28 ); // pasillo principal
-    shapeCamino2.lineTo( 2.5, -1.5 ); // recepcion2
-    
-    shapeCamino2.lineTo( 2.5, -0.5 );
+    shapeCamino2.lineTo(12.5, -6.25); // pasillo salida izquierdo
+    shapeCamino2.lineTo(12.5, -7.25); // pasillo salones largo
+    shapeCamino2.lineTo(4, -7.25); // pasillo salones largo
+    shapeCamino2.lineTo(3.5, -7.25); // pasillo salones izquierdo
 
-    const geometryCamino2 = new THREE.ExtrudeGeometry( shapeCamino2, extrudeSettings );
-    const materialCamino2 = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
-    const camino2 = new THREE.Mesh( geometryCamino2, materialCamino2 ) ;
-    camino2.rotation.x = 3.141593/2;
+    shapeCamino2.lineTo(3.5, -28); // pasillo software
+
+    shapeCamino2.lineTo(11, -28); // pasillo software
+    shapeCamino2.lineTo(11, -29); // pasillo software
+    shapeCamino2.lineTo(-1.5, -29); // pasillo software
+    shapeCamino2.lineTo(-1.5, -28); // pasillo software
+
+    shapeCamino2.lineTo(2.5, -28); // pasillo principal
+    shapeCamino2.lineTo(2.5, -1.5); // recepcion2
+
+    shapeCamino2.lineTo(2.5, -0.5);
+
+    const geometryCamino2 = new THREE.ExtrudeGeometry(shapeCamino2, extrudeSettings);
+    const materialCamino2 = new THREE.MeshStandardMaterial({ color: 0x9A8C98 });
+    const camino2 = new THREE.Mesh(geometryCamino2, materialCamino2);
+    camino2.rotation.x = 3.141593 / 2;
     camino2.position.y = 0.1;
     //scene.add( camino2 );
 
     //CAMINO 3er PISO
 
     const shapeCamino3 = new THREE.Shape();
-    shapeCamino3.moveTo( 2.5, -0.5 ); // inicio derecho
-    shapeCamino3.lineTo( 3.5, -0.5 ); // recepcion2
+    shapeCamino3.moveTo(2.5, -0.5); // inicio derecho
+    shapeCamino3.lineTo(3.5, -0.5); // recepcion2
 
-    shapeCamino3.lineTo( 3.5, -6.25 ); // pasillo salones derecho
-    shapeCamino3.lineTo( 4, -6.25 ); // pasillo salones largo
+    shapeCamino3.lineTo(3.5, -6.25); // pasillo salones derecho
+    shapeCamino3.lineTo(4, -6.25); // pasillo salones largo
 
-    shapeCamino3.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
-    shapeCamino3.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
-    shapeCamino3.lineTo( 10.1, -3.3 ); // pasillo salida derecho
-    
-    shapeCamino3.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
-    shapeCamino3.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
+    shapeCamino3.lineTo(9.9, -6.25); // pasillo salida izquierdo
+    shapeCamino3.lineTo(9.9, -4.3); // pasillo salida izquierdo
+    shapeCamino3.lineTo(10.1, -3.3); // pasillo salida derecho
 
-    shapeCamino3.lineTo( 10.9, -6.25 ); // pasillo salida derecho
+    shapeCamino3.lineTo(10.9, -3.3); // pasillo escaleras derecho
+    shapeCamino3.lineTo(10.9, -4.3); // pasillo escaleras izquierda
 
-    shapeCamino3.lineTo( 12.5, -6.25 ); // pasillo salones largo
-    
-    shapeCamino3.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
-    shapeCamino3.lineTo( 12.5, -7.25 ); // pasillo salones largo
-    shapeCamino3.lineTo( 4, -7.25 ); // pasillo salones largo
-    shapeCamino3.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
-    
-    shapeCamino3.lineTo( 3.5, -28 ); // pasillo software
+    shapeCamino3.lineTo(10.9, -6.25); // pasillo salida derecho
 
-    shapeCamino3.lineTo( 11, -28 ); // pasillo software
-    shapeCamino3.lineTo( 11, -29 ); // pasillo software
-    shapeCamino3.lineTo( -1.5, -29 ); // pasillo software
-    shapeCamino3.lineTo( -1.5, -28 ); // pasillo software
+    shapeCamino3.lineTo(12.5, -6.25); // pasillo salones largo
 
-    shapeCamino3.lineTo( 2.5, -28 ); // pasillo principal
-    shapeCamino3.lineTo( 2.5, -1.5 ); // recepcion2
-    
-    shapeCamino3.lineTo( 2.5, -0.5 );
-    
-    const geometryCamino3 = new THREE.ExtrudeGeometry( shapeCamino3, extrudeSettings );
-    const materialCamino3 = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
-    const camino3 = new THREE.Mesh( geometryCamino3, materialCamino3 ) ;
-    camino3.rotation.x = 3.141593/2;
+    shapeCamino3.lineTo(12.5, -6.25); // pasillo salida izquierdo
+    shapeCamino3.lineTo(12.5, -7.25); // pasillo salones largo
+    shapeCamino3.lineTo(4, -7.25); // pasillo salones largo
+    shapeCamino3.lineTo(3.5, -7.25); // pasillo salones izquierdo
+
+    shapeCamino3.lineTo(3.5, -28); // pasillo software
+
+    shapeCamino3.lineTo(11, -28); // pasillo software
+    shapeCamino3.lineTo(11, -29); // pasillo software
+    shapeCamino3.lineTo(-1.5, -29); // pasillo software
+    shapeCamino3.lineTo(-1.5, -28); // pasillo software
+
+    shapeCamino3.lineTo(2.5, -28); // pasillo principal
+    shapeCamino3.lineTo(2.5, -1.5); // recepcion2
+
+    shapeCamino3.lineTo(2.5, -0.5);
+
+    const geometryCamino3 = new THREE.ExtrudeGeometry(shapeCamino3, extrudeSettings);
+    const materialCamino3 = new THREE.MeshStandardMaterial({ color: 0x9A8C98 });
+    const camino3 = new THREE.Mesh(geometryCamino3, materialCamino3);
+    camino3.rotation.x = 3.141593 / 2;
     camino3.position.y = 2.1;
-    scene.add( camino3 );
+    scene.add(camino3);
 
 
 
     //ESCALERAS
     const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
     function crearEscaleras1(x, y, z) {
-    
+
       // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
       escaleraParte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-    
+
       // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
       escaleraParte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-    
+
       // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
       const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
         escaleraParte1.geometry,
         escaleraParte2.geometry,
-      ],true);
-    
+      ], true);
+
       // Crear el Mesh combinado utilizando la geometría combinada y el material original
       const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-    
+
       return meshCombinado;
     }
 
 
     function crearEscaleras2(x, y, z) {
 
-    
+
       // Crear escaleraParte1
-      const escaleraParte1 = createObject(1 * Math.sqrt(2)-0.1, 0.04, 0.4, x , y - 1.4, z- 0.2, materialEscalera);
+      const escaleraParte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x, y - 1.4, z - 0.2, materialEscalera);
       escaleraParte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
-    
+
       // Crear escaleraParte2
-      const escaleraParte2 = createObject(1 * Math.sqrt(2)-0.1, 0.04, 0.4, x , y - 0.5, z+ 0.2, materialEscalera);
+      const escaleraParte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x, y - 0.5, z + 0.2, materialEscalera);
       escaleraParte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
-    
+
       // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
       const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
         escaleraParte1.geometry,
         escaleraParte2.geometry,
-      ],true);
-    
+      ], true);
+
       // Crear el Mesh combinado utilizando la geometría combinada y el material original
       const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
       return meshCombinado;
     }
-
-    
-    
-    function crearEscaleras3(x, y, z) {
-    
-      // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
-      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-    
-      // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
-      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-    
-      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParte1.geometry,
-        escaleraParte2.geometry,
-      ],true);
-    
-      // Crear el Mesh combinado utilizando la geometría combinada y el material original
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-    
-      return meshCombinado;
-    }
-
-
-    const escalera1_1 = crearEscaleras1 (3,2,1);
-    scene.add(escalera1_1);
-
-    const escalera1_2=crearEscaleras1(10.5,2,-2.5);
-    scene.add(escalera1_2);
-
-    const escalera1_3 = crearEscaleras2(1,2,-10.6);
-    scene.add(escalera1_3);
-
-    const escalera1_4 = crearEscaleras3(3.1,2,-30.5);
-    scene.add(escalera1_4);
-
-    const escalera1_5 = crearEscaleras3(10,2,-30.5);
-    scene.add(escalera1_5);
-
-    const escalera2_1 = crearEscaleras1 (3,0,1);
-    scene.add(escalera1_1);
-
-    const escalera2_2=crearEscaleras1(10.5,0,-2.5);
-    scene.add(escalera1_2);
-
-    const escalera2_3 = crearEscaleras2(1,0,-10.6);
-    scene.add(escalera1_3);
-
-    const escalera2_4 = crearEscaleras3(3.1,0,-30.5);
-    scene.add(escalera1_4);
-
-    const escalera2_5 = crearEscaleras3(10,0,-30.5);
-    scene.add(escalera1_5);
-
 
 
 
     function crearEscaleras3(x, y, z) {
-    
+
       // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
       escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-    
+
       // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
       escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-    
+
       // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
       const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
         escaleraParte1.geometry,
         escaleraParte2.geometry,
-      ],true);
-    
+      ], true);
+
       // Crear el Mesh combinado utilizando la geometría combinada y el material original
       const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-    
+
       return meshCombinado;
     }
 
 
-    function crearEscaleraParque(x,y,z){
-      const escaleraParque = createObject(1,2,3.4,
-        x,y,z,materialEscalera);
-        const escaleraParqueSubida = createObject(1,0.04,2*Math.sqrt(2)-0.1,
-    x,y-1,z+2.65,materialEscalera);
-    escaleraParqueSubida.rotation.x=Math.PI/4;
-    const escaleraParqueSubida2 = createObject(1,0.04,2*Math.sqrt(2)-0.1,
-    x,y-1,z-2.65,materialEscalera)
-    escaleraParqueSubida2.rotation.x=-Math.PI/4;
-    const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-      escaleraParqueSubida.geometry,
-      escaleraParqueSubida2.geometry,
-    ],true);
+    const escalera1_1 = crearEscaleras1(3, 2, 1);
+    scene.add(escalera1_1);
 
-    const meshCombinado = new THREE.Mesh(geometriaCombinada,materialEscalera);
-    return meshCombinado;
+    const escalera1_2 = crearEscaleras1(10.5, 2, -2.5);
+    scene.add(escalera1_2);
+
+    const escalera1_3 = crearEscaleras2(1, 2, -10.6);
+    scene.add(escalera1_3);
+
+    const escalera1_4 = crearEscaleras3(3.1, 2, -30.5);
+    scene.add(escalera1_4);
+
+    const escalera1_5 = crearEscaleras3(10, 2, -30.5);
+    scene.add(escalera1_5);
+
+    const escalera2_1 = crearEscaleras1(3, 0, 1);
+    scene.add(escalera1_1);
+
+    const escalera2_2 = crearEscaleras1(10.5, 0, -2.5);
+    scene.add(escalera1_2);
+
+    const escalera2_3 = crearEscaleras2(1, 0, -10.6);
+    scene.add(escalera1_3);
+
+    const escalera2_4 = crearEscaleras3(3.1, 0, -30.5);
+    scene.add(escalera1_4);
+
+    const escalera2_5 = crearEscaleras3(10, 0, -30.5);
+    scene.add(escalera1_5);
+
+
+
+
+    function crearEscaleras3(x, y, z) {
+
+      // Crear escaleraParte1
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+
+      // Crear escaleraParte2
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+
+      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParte1.geometry,
+        escaleraParte2.geometry,
+      ], true);
+
+      // Crear el Mesh combinado utilizando la geometría combinada y el material original
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+
+      return meshCombinado;
     }
 
-    const escaleraParque = crearEscaleraParque(4.5,2,-17.9);
+
+    function crearEscaleraParque(x, y, z) {
+      const escaleraParque = createObject(1, 2, 3.4,
+        x, y, z, materialEscalera);
+      const escaleraParqueSubida = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
+        x, y - 1, z + 2.65, materialEscalera);
+      escaleraParqueSubida.rotation.x = Math.PI / 4;
+      const escaleraParqueSubida2 = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
+        x, y - 1, z - 2.65, materialEscalera)
+      escaleraParqueSubida2.rotation.x = -Math.PI / 4;
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParqueSubida.geometry,
+        escaleraParqueSubida2.geometry,
+      ], true);
+
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+      return meshCombinado;
+    }
+
+    const escaleraParque = crearEscaleraParque(4.5, 2, -17.9);
     scene.add(escaleraParque);
 
 
@@ -577,34 +577,34 @@ function Model3d() {
     // pisoParque.position.y = -2;
     // scene.add(pisoParque)
 
-    
+
 
     // const camino1 = createObject(1,0.1,1.5,
-                                  //0,2,0.9,
-                                  //new THREE.MeshStandardMaterial({ color: 0x9A8C98 }));
+    //0,2,0.9,
+    //new THREE.MeshStandardMaterial({ color: 0x9A8C98 }));
 
     /* Entradas */
 
-    const geometry = new THREE.TorusGeometry( 0.5, 0.2, 30, 100 ); 
-    const material = new THREE.MeshStandardMaterial( { color: 0xffff00 } ); 
-    const entrada1 = new THREE.Mesh( geometry, material );
+    const geometry = new THREE.TorusGeometry(0.5, 0.2, 30, 100);
+    const material = new THREE.MeshStandardMaterial({ color: 0xffff00 });
+    const entrada1 = new THREE.Mesh(geometry, material);
     entrada1.position.x = 0;
     entrada1.position.y = -1.5;
     entrada1.position.z = 1.9;
-    scene.add( entrada1 );
+    scene.add(entrada1);
 
-    const entrada2 = new THREE.Mesh( geometry, material );
+    const entrada2 = new THREE.Mesh(geometry, material);
     entrada2.position.x = 8;
     entrada2.position.z = -3.8;
     entrada2.position.y = -1.5;
-    entrada2.rotation.y = 3.141593/2;
-    scene.add( entrada2 );
+    entrada2.rotation.y = 3.141593 / 2;
+    scene.add(entrada2);
 
-    const entrada3 = new THREE.Mesh( geometry, material );
+    const entrada3 = new THREE.Mesh(geometry, material);
     entrada3.position.x = 14;
     entrada3.position.z = -8;
     entrada3.position.y = -1.5;
-    scene.add( entrada3 );
+    scene.add(entrada3);
 
     /* Aulas */
 
@@ -615,140 +615,166 @@ function Model3d() {
     const materialAdministrativos = new THREE.MeshStandardMaterial({ color: 0xf28482 });
     const materialSSHH = new THREE.MeshStandardMaterial({ color: 0x90e0ef });
     const materialDeportes = new THREE.MeshStandardMaterial({ color: 0xc7f9cc });
-    const materialComedor = new THREE.MeshStandardMaterial({color: 0xBAB7B7});
-    const materialDataCenter = new THREE.MeshStandardMaterial({color: 0xF7E11E4});
-    const materialMagna = new THREE.MeshStandardMaterial({color: 0xF1E17E27})
+    const materialComedor = new THREE.MeshStandardMaterial({ color: 0xBAB7B7 });
+    const materialDataCenter = new THREE.MeshStandardMaterial({ color: 0xF7E11E4 });
+    const materialMagna = new THREE.MeshStandardMaterial({ color: 0xF1E17E27 })
 
     //Aulas del piso 1
-    
+
     const atencionDoc = createObject(1, 0.5, 1, // 
-                                      1.5, 2, 0.9,
-                                      materialAdministrativos);
-    
-
-    const economia = createObject(1.9,0.5,1.3,
-                                  -2,2,-1,
-                                  materialAdministrativos);
-
-    const dga = createObject(2.5,0.5,2.5,
-      -1.70,2,-3.2,
+      1.5, 2, 0.9,
       materialAdministrativos);
 
-    const cerseu = createObject(2,0.5,1.8,
-                              0.9,2,-2.9,
-                              materialAdministrativos);
 
-    const direccionEscuela = createObject(1.5,0.5,2,
-                                          1.13,2,-5.5,
-                                          materialAdministrativos);
+    const economia = createObject(1.9, 0.5, 1.3,
+      -2, 2, -1,
+      materialAdministrativos);
 
-    const usgom = createObject(1.5,0.5,1.8,
-                              1.13,2,-8,
-                              materialAdministrativos);
+    const dga = createObject(2.5, 0.5, 2.5,
+      -1.70, 2, -3.2,
+      materialAdministrativos);
 
-    
-    const SSHH_Sistemas_1 = createObject(1.5,0.5,3,
-                                  1.13,2,-13,
-                                  materialSSHH);
+    const cerseu = createObject(2, 0.5, 1.8,
+      0.9, 2, -2.9,
+      materialAdministrativos);
 
-    const auditorio = createObject(4,0.5,5,
-                                  -0.2,2,-18,
-                                  materialEscenarios);
-    
-    const aulas100 = createObject(4.7,0.5,1.5,
-      6.5,2,-5.3,
-      materialAulas); 
+    const direccionEscuela = createObject(1.5, 0.5, 2,
+      1.13, 2, -5.5,
+      materialAdministrativos);
 
-    const quiosco = createObject(0.9,0.5,1,
-      9.5,2,-2.5,
-      material1); 
-    
-    const aulas100v2 = createObject(8.7,0.5,1.5,
-      8.5,2,-8.2,
-      materialAulas); 
-    
-    const capilla = createObject(1.5,0.5,1,
-      8,2,-10,
+    const usgom = createObject(1.5, 0.5, 1.8,
+      1.13, 2, -8,
+      materialAdministrativos);
+
+
+    const SSHH_Sistemas_1 = createObject(1.5, 0.5, 3,
+      1.13, 2, -13,
+      materialSSHH);
+
+    const auditorio = createObject(4, 0.5, 5,
+      -0.2, 2, -18,
+      materialEscenarios);
+
+    const aulas100 = createObject(4.7, 0.5, 1.5,
+      6.5, 2, -5.3,
+      materialAulas);
+
+    const quiosco = createObject(0.9, 0.5, 1,
+      9.5, 2, -2.5,
       material1);
 
-    const losaDeportiva = createObject(5,0.5,8,
-      9,2,-19,
+    const aulas100v2 = createObject(8.7, 0.5, 1.5,
+      8.5, 2, -8.2,
+      materialAulas);
+
+    const capilla = createObject(1.5, 0.5, 1,
+      8, 2, -10,
+      material1);
+
+    const losaDeportiva = createObject(5, 0.5, 8,
+      9, 2, -19,
       materialDeportes);
 
-    const vestidores = createObject(3,0.5,1,
-      10.5,2,-13,
+    const vestidores = createObject(3, 0.5, 1,
+      10.5, 2, -13,
       materialDeportes);
 
-    const SSHH_Software_1 = createObject(2,0.5,2,
-      7,2,-26,
-      materialSSHH); 
+    const SSHH_Software_1 = createObject(2, 0.5, 2,
+      7, 2, -26,
+      materialSSHH);
+
+    const aulasNuevoPabellon1 = createObject(5, 0.5, 2,
+      6.5, 2, -31,
+      materialAulas);
+
+    const aulasNuevoPabellon1_v2 = createObject(3.9, 0.5, 2,
+      0, 2, -31,
+      materialAulas);
+
+    //Aulas del piso 2
+
+    const SSHH_Sistemas_2 = createObject(1.5, 0.5, 3,
+      1.13, 0, -13,
+      materialSSHH);
+
+    const SSHH_Software_2 = createObject(2, 0.5, 2,
+      7, 0, -26,
+      materialSSHH);
+
+    const comedor = createObject(4, 0.5, 5,
+      -0.2, 0, -18,
+      materialComedor);
+
+    const LaboratoriosNuevoPabellon = createObject(5, 0.5, 2,
+      6.5, 0, -31,
+      materialAulas);
+
+    const aulasNuevoPabellon2_v2 = createObject(3.9, 0.5, 2,
+      0, 0, -31,
+      materialAulas);
+
+    const microDataCenter = createObject(2, 0.5, 2,
+      9.5, 0, -26, materialDataCenter)
+
+    const decanato = createObject(3.9, 0.5, 3.6,
+      -1, 0, -0.3, materialAdministrativos
+    )
+
+    const aulas200 = createObject(4.7, 0.5, 1.5,
+      6.5, 0, -5.3,
+      materialAulas);
+
     
-    const aulasNuevoPabellon1 = createObject(5,0.5,2,
-      6.5,2,-31,
-      materialAulas); 
-    
-    const aulasNuevoPabellon1_v2 = createObject(3.9,0.5,2,
-      0,2,-31,
-      materialAulas); 
 
-      //Aulas del piso 2
+    const aulas200v2 = createObject(5, 0.5, 1.5,
+      6.5, 0, -8.2,
+      materialAulas);
 
-      const SSHH_Sistemas_2 = createObject(1.5,0.5,3,
-        1.13,0,-13,
-        materialSSHH);
+    const tercio = createObject(1, 0.5, 1.5,
+      9.7, 0, -8.2,
+      materialAdministrativos);
 
-      const SSHH_Software_2 = createObject(2,0.5,2,
-          7,0,-26,
-          materialSSHH); 
+    const Magna = createObject(1, 0.5, 1.5,
+      12, 0, -8.2,
+      materialMagna
+    )
 
-      const comedor = createObject(4,0.5,5,
-            -0.2,0,-18,
-            materialComedor);    
-      
-            const LaboratoriosNuevoPabellon = createObject(5,0.5,2,
-              6.5,0,-31,
-              materialAulas);
+    const salaCatedraticos = createObject(0.7, 0.5, 0.7,
+      3.6, 0, -10,
+      materialAdministrativos);
 
-        const aulasNuevoPabellon2_v2 = createObject(3.9,0.5,2,
-          0,0,-31,
-          materialAulas); 
+    const musica = createObject(2, 0.5, 1.8,
+      2, -2, -31,materialEscenarios
+    )
+    const publicidad = createObject(2, 0.5, 1.5,
+          6, -2, -8.2,
+          materialAdministrativos);
+    const SSHH_Sistemas_3 = createObject(1.5, 0.5, 3,
+      1.13, -2, -13,
+      materialSSHH);
 
-          const microDataCenter = createObject(2,0.5,2,
-            9.5,0,-26, materialDataCenter)
+    const SSHH_Software_3 = createObject(2, 0.5, 2,
+      7, -2, -26,
+      materialSSHH);
 
-            const decanato = createObject(3.9,0.5,3.6,
-              -1,0,-0.3, materialAdministrativos
-            )
+      const UNAYOE = createObject(3.9, 0.5, 6,
+      -1, -2, -1.5, materialAdministrativos
+    )
 
-            const aulas200 = createObject(4.7,0.5,1.5,
-              6.5,0,-5.3,
-              materialAulas); 
+    const Matricula = createObject(1.5, 0.5, 1,
+      1.13, -2, -9.6,
+      materialAdministrativos);
+      const dirSoft = createObject(1.5, 0.5, 2,
+        1.13, -2, -8,
+        materialAdministrativos);
 
-              const publicidad = createObject(2,0.5,1.5,
-                6,0,-8.2,
-                materialAdministrativos); 
+        const dirSist = createObject(1.5, 0.5, 2,
+          1.13, -2, -5.9,
+          materialAdministrativos);
 
-                const aulas200v2= createObject(2,0.5,1.5,
-                  8.1,0,-8.2,
-                  materialAulas);
+    /* Linea */
 
-                  const tercio = createObject(1,0.5,1.5,
-                    9.7,0,-8.2,
-                    materialAdministrativos);
-
-                   const Magna = createObject(1,0.5,1.5,
-                    12,0,-8.2,
-                    materialMagna
-                   )
-
-                   const salaCatedraticos = createObject(0.7,0.5,0.7,
-                    3.6,0,-10,
-                    materialAdministrativos);
-                    
-
-      /* Linea */
-
-    const material2 = new THREE.LineBasicMaterial( { color: 0x0000ff, linewidth: 0.1 });
+    const material2 = new THREE.LineBasicMaterial({ color: 0x0000ff, linewidth: 0.1 });
     const points = [];
     // points.push( new THREE.Vector3(
     //   main_coord.entrada_1.x,
@@ -983,12 +1009,12 @@ function Model3d() {
     //   main_coord.entrada_2.z
     //  ) );
 
-    const geometry2 = new THREE.BufferGeometry().setFromPoints( points );
+    const geometry2 = new THREE.BufferGeometry().setFromPoints(points);
 
-    const line = new THREE.Line( geometry2, material2 );
+    const line = new THREE.Line(geometry2, material2);
 
-    scene.add( line );
-    
+    scene.add(line);
+
 
 
     const animate = () => {
@@ -1006,15 +1032,15 @@ function Model3d() {
       controls.update();
     };
 
-    controlsRef.current = {handleResetClick};
+    controlsRef.current = { handleResetClick };
 
     renderer.render(scene, camera);
 
     /* Reajuste automàtico de tamaño */
-    const resize = ()=>{
+    const resize = () => {
       const updatedWidth = currentRef.clientWidth;
       const updatedHeight = currentRef.clientHeight;
-      renderer.setSize(updatedWidth,updatedHeight);
+      renderer.setSize(updatedWidth, updatedHeight);
       camera.aspect = updatedWidth / updatedHeight;
       camera.updateProjectionMatrix();
     }
@@ -1022,13 +1048,13 @@ function Model3d() {
 
     return () => {
       currentRef.removeChild(renderer.domElement);
-      window.addEventListener('resize',resize);
+      window.addEventListener('resize', resize);
     };
   }, []);
 
   useEffect(() => {
     controlsRef.current.handleResetClick();
-  },[position]);
+  }, [position]);
 
 
   return (

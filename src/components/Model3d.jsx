@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord , inter_coord} from "../route_coordinates/Coordinates";
+//import {mostrar} from '../graph/ConnectionGraph';
 
 function Model3d() {
   const mountRef = useRef(null);
@@ -11,6 +12,7 @@ function Model3d() {
   const [position, setPosition] = useState(false);
   
   useEffect(() => {
+    //mostrar();
     const initialCameraPosition = {
       x: 6,
       y: 5,

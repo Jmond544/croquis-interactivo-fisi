@@ -21,7 +21,8 @@ const main_coord = {
 
   //Piso 2
 
-
+  decanato: {x:-1, y:0.2, z:-1},
+  comedor: {x:2, y:0.2, z:-17},
   //Piso 3
 
 
@@ -64,9 +65,29 @@ const inter_coord = {
 
     //pre_
 
+    pre_SSHH_2_1: {x:3, y:0.2, z:-14.25},
+    pre_SSHH_2_2: {x:6.5, y:0.2, z:-28.5},
+    pre_escalera_2_2: {x:3, y:0.2, z:-9.7},
+    //pre_escalera_1_3: {x:4.5, y:-1.8, z:-11.5},
+    pre_escalera_2_4: {x:3, y:0.2, z:-28.5},
+    pre_escalera_2_5: {x:9.8, y:0.2, z:-28.5},
+    pre_escalera_2_1: {x:3, y:0.2, z:-1},
+    pre_comedor: {x:3, y:0.2, z:-17},
+    pre_magna: {x:12, y:0.2, z:-6.75},
+
+
     //dob_
 
+    dob_2_3: {x:3, y:0.2, z:-6.75},
+    dob_2_4: {x:10.4, y:0.2, z:-6.75},
+
     //iniEscalera_
+    iniEscalera_2_1: {x:3, y:0.2, z:-0.5},
+    iniEscalera_2_5: {x:9.8, y:0.2, z:-29},
+  iniEscalera_2_4: {x:2.5, y:0.2, z:-29},
+  iniEscalera_2_2: {x:2.5, y: 0.2, z:-9.7},
+  iniEscalera_2_6: {x:10.4, y:0.2, z:-3.2},
+  
 
     //mid_Escalera_
 

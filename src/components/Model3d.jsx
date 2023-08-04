@@ -6,6 +6,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord , inter_coord} from "../route_coordinates/Coordinates";
 import {mostrar} from '../graph/ConnectionGraph';
 
+
+import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
+
 function Model3d() {
   const mountRef = useRef(null);
   const controlsRef  = useRef(null);
@@ -154,6 +157,8 @@ function Model3d() {
     piso01.position.y = -2;
     scene.add( piso01 );
 
+    //Piso Parque
+
     const shapePisoParque = new THREE.Shape();
     shapePisoParque.moveTo(4,-25);
     shapePisoParque.lineTo(4,-9);
@@ -208,9 +213,53 @@ function Model3d() {
     const materialPiso02 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
     const piso02 = new THREE.Mesh( geometryPiso02, materialPiso02 ) ;
     piso02.rotation.x = 3.141593/2;
-    piso02.position.y = -0;
-    //scene.add( piso02 );
+
+    piso02.position.y = 0;
+    scene.add( piso02 );
+
     
+    //3er piso
+    const shapePiso03 = new THREE.Shape();
+      shapePiso03.moveTo( 4, 1.5 ); // X, Z
+      shapePiso03.lineTo( 4, -4.5 ); // esquina recepcion aulas 100
+      shapePiso03.lineTo( 9, -4.5 ); // aulas 100
+      shapePiso03.lineTo( 9, -2 ); // quiosco y gradas
+      shapePiso03.lineTo( 11, -2 ); // quiosco y gradas
+      shapePiso03.lineTo( 11, -4.5 );
+      shapePiso03.lineTo( 13, -4.5 ); // aulas 100 lateral
+      shapePiso03.lineTo( 13, -9 );
+      shapePiso03.lineTo( 4, -9 ); // aulas 100 lateral
+      shapePiso03.lineTo( 4, -9 ); // aulas 100 lateral
+      shapePiso03.lineTo( 4, -25 ); // maquinas expendedoras
+      shapePiso03.lineTo( 12, -25 ); // maquinas expendedoras
+      shapePiso03.lineTo( 12, -32 ); // software pared este
+      shapePiso03.lineTo( -2, -32 ); // software pared norte
+      shapePiso03.lineTo( -2, -25 ); // software pared oeste
+      shapePiso03.lineTo( 1.5, -25 ); // software pared sur
+      shapePiso03.lineTo( 1.5, -24 ); // espacio
+      shapePiso03.lineTo( 1.5, -22 ); // fin parque
+      shapePiso03.lineTo( 1.5, -21 ); // pasillo
+      shapePiso03.lineTo( -3, -21 ); // Auditorio
+      shapePiso03.lineTo( -3, -15 ); // Auditorio
+      shapePiso03.lineTo( 1.5, -15 ); // Fin Auditorio
+      shapePiso03.lineTo( -1, -16 ); // baños
+      shapePiso03.lineTo( -1, -12 ); // baños
+      shapePiso03.lineTo( -1, -10 ); // gradas
+      shapePiso03.lineTo( -1, -9 ); // espacio
+      shapePiso03.lineTo( -1, -8 ); // usgom
+      shapePiso03.lineTo( -1, -7 ); // espacio
+      shapePiso03.lineTo( -1, -4.5); // direccion de escuela
+
+      shapePiso03.lineTo( -3, -4.5 );
+      shapePiso03.lineTo( -3, 1.5 );
+      shapePiso03.moveTo( 4, 1.5 );
+
+    const geometryPiso03 = new THREE.ExtrudeGeometry( shapePiso02, extrudeSettings );
+    const materialPiso03 = new THREE.MeshStandardMaterial( { color: 0x4A4E69 } );
+    const piso03 = new THREE.Mesh( geometryPiso02, materialPiso02 ) ;
+    piso03.rotation.x = 3.141593/2;
+    piso03.position.y = 2;
+    scene.add( piso03 );
 
     // CAMINO 1ER PISO
     const shapeCamino1 = new THREE.Shape();
@@ -318,6 +367,98 @@ function Model3d() {
     camino2.position.y = 0.1;
     //scene.add( camino2 );
 
+    //CAMINO 3er PISO
+
+    const shapeCamino3 = new THREE.Shape();
+    shapeCamino3.moveTo( 2.5, -0.5 ); // inicio derecho
+    shapeCamino3.lineTo( 3.5, -0.5 ); // recepcion2
+
+    shapeCamino3.lineTo( 3.5, -6.25 ); // pasillo salones derecho
+    shapeCamino3.lineTo( 4, -6.25 ); // pasillo salones largo
+
+    shapeCamino3.lineTo( 9.9, -6.25 ); // pasillo salida izquierdo
+    shapeCamino3.lineTo( 9.9, -4.3 ); // pasillo salida izquierdo
+    shapeCamino3.lineTo( 10.1, -3.3 ); // pasillo salida derecho
+    
+    shapeCamino3.lineTo( 10.9, -3.3 ); // pasillo escaleras derecho
+    shapeCamino3.lineTo( 10.9, -4.3 ); // pasillo escaleras izquierda
+
+    shapeCamino3.lineTo( 10.9, -6.25 ); // pasillo salida derecho
+
+    shapeCamino3.lineTo( 12.5, -6.25 ); // pasillo salones largo
+    
+    shapeCamino3.lineTo( 12.5, -6.25 ); // pasillo salida izquierdo
+    shapeCamino3.lineTo( 12.5, -7.25 ); // pasillo salones largo
+    shapeCamino3.lineTo( 4, -7.25 ); // pasillo salones largo
+    shapeCamino3.lineTo( 3.5, -7.25 ); // pasillo salones izquierdo
+    
+    shapeCamino3.lineTo( 3.5, -28 ); // pasillo software
+
+    shapeCamino3.lineTo( 11, -28 ); // pasillo software
+    shapeCamino3.lineTo( 11, -29 ); // pasillo software
+    shapeCamino3.lineTo( -1.5, -29 ); // pasillo software
+    shapeCamino3.lineTo( -1.5, -28 ); // pasillo software
+
+    shapeCamino3.lineTo( 2.5, -28 ); // pasillo principal
+    shapeCamino3.lineTo( 2.5, -1.5 ); // recepcion2
+    
+    shapeCamino3.lineTo( 2.5, -0.5 );
+    
+    const geometryCamino3 = new THREE.ExtrudeGeometry( shapeCamino3, extrudeSettings );
+    const materialCamino3 = new THREE.MeshStandardMaterial( { color: 0x9A8C98 } );
+    const camino3 = new THREE.Mesh( geometryCamino3, materialCamino3 ) ;
+    camino3.rotation.x = 3.141593/2;
+    camino3.position.y = 2.1;
+    scene.add( camino3 );
+
+
+
+    //ESCALERAS
+    function crearEscaleras(x, y, z) {
+      const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
+    
+      // Crear escaleraParte1
+      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x - 0.2, y - 1.4, z, materialEscalera);
+      escaleraParte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+    
+      // Crear escaleraParte2
+      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2)-0.1, x + 0.2, y - 0.5, z, materialEscalera);
+      escaleraParte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+    
+      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
+      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
+        escaleraParte1.geometry,
+        escaleraParte2.geometry,
+      ],true);
+    
+      // Crear el Mesh combinado utilizando la geometría combinada y el material original
+      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+    
+      return meshCombinado;
+    }
+    
+
+    const escalera1_1 = crearEscaleras (3,2,1);
+    
+    scene.add(escalera1_1);
+
+
+
+
+    // const shapePisoParque = new THREE.Shape();
+    // shapePisoParque.moveTo(4,-25);
+    // shapePisoParque.lineTo(4,-9);
+    // shapePisoParque.lineTo(15,-9);
+    // shapePisoParque.lineTo(15,-25);
+    // shapePisoParque.moveTo(4,-25);
+    // const geometryPisoParque = new THREE.ExtrudeGeometry(shapePisoParque,extrudeSettings);
+    // const materialPisoParque = new THREE.MeshStandardMaterial({color: 0xDCDCDC});
+    // const pisoParque = new THREE.Mesh(geometryPisoParque,materialPisoParque);
+    // pisoParque.rotation.x = 3.141593/2;
+    // pisoParque.position.y = -2;
+    // scene.add(pisoParque)
+
+    
 
     // const camino1 = createObject(1,0.1,1.5,
                                   //0,2,0.9,

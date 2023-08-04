@@ -85,7 +85,7 @@ function Model3d() {
       }
     }
 
-    generarTrazadorRuta('aulaNP', 'losa');
+    //generarTrazadorRuta('aulaNP', 'losa');
 
     /* Funciones posicion */
     const ajustarEjeVertical = (objeto, valor) => {
@@ -365,7 +365,7 @@ function Model3d() {
     const camino2 = new THREE.Mesh(geometryCamino2, materialCamino2);
     camino2.rotation.x = 3.141593 / 2;
     camino2.position.y = 0.1;
-    //scene.add( camino2 );
+    scene.add( camino2 );
 
     //CAMINO 3er PISO
 
@@ -791,20 +791,20 @@ function Model3d() {
 
     const material2 = new THREE.LineBasicMaterial({ color: 0x0000ff, linewidth: 0.1 });
     const points = [];
-    // points.push( new THREE.Vector3(
-    //   main_coord.entrada_1.x,
-    //   main_coord.entrada_1.y,
-    //   main_coord.entrada_1.z ) );
-    // points.push( new THREE.Vector3( 
-    //   inter_coord.dob_1_1.x,
-    //   inter_coord.dob_1_1.y,
-    //   inter_coord.dob_1_1.z
-    //  ) );
+    points.push( new THREE.Vector3(
+       main_coord.entrada_1.x,
+       main_coord.entrada_1.y,
+       main_coord.entrada_1.z ) );
+    points.push( new THREE.Vector3( 
+       inter_coord.dob_1_1.x,
+       inter_coord.dob_1_1.y,
+       inter_coord.dob_1_1.z
+      ) );
     //  points.push( new THREE.Vector3(
-    //   main_coord.economia.x,
-    //   main_coord.economia.y,
-    //   main_coord.economia.z
-    //  ) );
+    //    main_coord.economia.x,
+    //    main_coord.economia.y,
+    //    main_coord.economia.z
+    //   ) );
     //  points.push( new THREE.Vector3( 
     //   inter_coord.dob_1_1.x,
     //   inter_coord.dob_1_1.y,
@@ -842,11 +842,11 @@ function Model3d() {
     //   main_coord.atDoc.y,
     //   main_coord.atDoc.z
     //  ) );
-    //  points.push( new THREE.Vector3( 
-    //   inter_coord.dob_1_2.x,
-    //   inter_coord.dob_1_2.y,
-    //   inter_coord.dob_1_2.z
-    //  ) );
+      points.push( new THREE.Vector3( 
+       inter_coord.dob_1_2.x,
+       inter_coord.dob_1_2.y,
+       inter_coord.dob_1_2.z
+      ) );
     //  points.push( new THREE.Vector3( 
     //   inter_coord.iniEscalera_1_1.x,
     //   inter_coord.iniEscalera_1_1.y,

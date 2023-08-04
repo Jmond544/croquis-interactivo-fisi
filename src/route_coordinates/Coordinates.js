@@ -49,6 +49,7 @@ const inter_coord = {
   dob_1_5: {x:10.4, y:-1.8, z:-3.8},
   iniEscalera_1_6: {x:10.4, y:-1.8, z:-3.2},
   pre_kiosko: {x:9.2, y:-1.8, z:-3.8},
+  mid_Escalera_1_1: {x:3, y:-0.8, z:1.5},
 }
 
 export { main_coord, inter_coord };

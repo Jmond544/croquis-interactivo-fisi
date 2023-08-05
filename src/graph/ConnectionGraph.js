@@ -4,6 +4,7 @@ import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 
 const graph = new Graph();
 
+// piso 01
 graph.addNode('entrada_1',main_coord.entrada_1);
 graph.addNode('economia',main_coord.economia);
 graph.addNode('dga',main_coord.dga);
@@ -23,6 +24,29 @@ graph.addNode('capilla',main_coord.capilla);
 graph.addNode('vestidores',main_coord.vestidores);
 graph.addNode('entrada_3',main_coord.entrada_3);
 
+// piso 02
+graph.addNode('decanato',main_coord.decanato);
+graph.addNode('comedor',main_coord.comedor);
+graph.addNode('magna',main_coord.magna);
+graph.addNode('aulas200',main_coord.aulas200);
+graph.addNode('salaCatedraticos',main_coord.salaCatedraticos);
+graph.addNode('microDataCenter',main_coord.microDataCenter);
+graph.addNode('aulaNP2',main_coord.aulaNP2);
+graph.addNode('tercio',main_coord.tercio);
+graph.addNode('SSHH_2_1',main_coord.SSHH_2_1);
+graph.addNode('SSHH_2_2',main_coord.SSHH_2_2);
+
+// Piso 03
+graph.addNode('UNAYOE',main_coord.UNAYOE);
+graph.addNode('dirSist',main_coord.dirSist);
+graph.addNode('dirSoft',main_coord.dirSoft);
+graph.addNode('matricula',main_coord.matricula);
+graph.addNode('SSHH_3_1',main_coord.SSHH_3_1);
+graph.addNode('SSHH_3_2',main_coord.SSHH_3_2);
+graph.addNode('musica',main_coord.musica);
+
+
+//  Piso 01
 graph.addNode('dob_1_1',inter_coord.dob_1_1);
 graph.addNode('pre_cerceu',inter_coord.pre_cerceu);
 graph.addNode('pre_AtDoc',inter_coord.pre_AtDoc);
@@ -52,7 +76,57 @@ graph.addNode('dob_1_4',inter_coord.dob_1_4);
 graph.addNode('dob_1_5',inter_coord.dob_1_5);
 graph.addNode('iniEscalera_1_6',inter_coord.iniEscalera_1_6);
 graph.addNode('pre_kiosko',inter_coord.pre_kiosko);
-graph.addNode('mid_Escalera_1_1',inter_coord.mid_Escalera_1_1);
+
+graph.addNode('mid_Escalera_1_1', inter_coord.mid_Escalera_1_1);
+graph.addNode('mid_Escalera_1_2', inter_coord.mid_Escalera_1_2);
+graph.addNode('mid_Escalera_1_6', inter_coord.mid_Escalera_1_6);
+graph.addNode('mid_Escalera_1_4', inter_coord.mid_Escalera_1_4);
+graph.addNode('mid_Escalera_1_5', inter_coord.mid_Escalera_1_5);
+
+graph.addNode('pre_aulas200', inter_coord.pre_aulas200);
+graph.addNode('pre_aulaNP2', inter_coord.pre_aulaNP2);
+graph.addNode('pre_SSHH_2_1', inter_coord.pre_SSHH_2_1);
+graph.addNode('pre_SSHH_2_2', inter_coord.pre_SSHH_2_2);
+graph.addNode('pre_escalera_2_2', inter_coord.pre_escalera_2_2);
+graph.addNode('pre_escalera_2_4', inter_coord.pre_escalera_2_4);
+graph.addNode('pre_escalera_2_5', inter_coord.pre_escalera_2_5);
+graph.addNode('pre_escalera_2_1', inter_coord.pre_escalera_2_1);
+graph.addNode('pre_comedor', inter_coord.pre_comedor);
+graph.addNode('pre_magna', inter_coord.pre_magna);
+graph.addNode('pre_salaCatedraticos', inter_coord.pre_salaCatedraticos);
+graph.addNode('pre_tercio', inter_coord.pre_tercio);
+
+graph.addNode('dob_2_3', inter_coord.dob_2_3);
+graph.addNode('dob_2_4', inter_coord.dob_2_4);
+
+graph.addNode('iniEscalera_2_1', inter_coord.iniEscalera_2_1);
+graph.addNode('iniEscalera_2_5', inter_coord.iniEscalera_2_5);
+graph.addNode('iniEscalera_2_4', inter_coord.iniEscalera_2_4);
+graph.addNode('iniEscalera_2_2', inter_coord.iniEscalera_2_2);
+graph.addNode('iniEscalera_2_6', inter_coord.iniEscalera_2_6);
+
+graph.addNode('mid_Escalera_2_1', inter_coord.mid_Escalera_2_1);
+graph.addNode('mid_Escalera_2_2', inter_coord.mid_Escalera_2_2);
+graph.addNode('mid_Escalera_2_6', inter_coord.mid_Escalera_2_6);
+graph.addNode('mid_Escalera_2_4', inter_coord.mid_Escalera_2_4);
+graph.addNode('mid_Escalera_2_5', inter_coord.mid_Escalera_2_5);
+
+graph.addNode('fin_Escalera_3_2', inter_coord.fin_Escalera_3_2);
+graph.addNode('fin_Escalera_3_1', inter_coord.fin_Escalera_3_1);
+graph.addNode('fin_Escalera_3_6', inter_coord.fin_Escalera_3_6);
+graph.addNode('fin_Escalera_3_4', inter_coord.fin_Escalera_3_4);
+graph.addNode('fin_Escalera_3_5', inter_coord.fin_Escalera_3_5);
+
+// piso 3
+graph.addNode('pre_escalera_3_1', inter_coord.pre_escalera_3_1);
+graph.addNode('pre_dirSist', inter_coord.pre_dirSist);
+graph.addNode('pre_dirSoft', inter_coord.pre_dirSoft);
+graph.addNode('pre_matricula', inter_coord.pre_matricula);
+graph.addNode('pre_SSHH_3_1', inter_coord.pre_SSHH_3_1);
+graph.addNode('pre_SSHH_3_2', inter_coord.pre_SSHH_3_2);
+graph.addNode('pre_musica', inter_coord.pre_musica);
+
+graph.addNode('dob_3_1', inter_coord.dob_3_1);
 
 
 // Función para calcular la distancia entre dos nodos
@@ -95,7 +169,6 @@ addEdgeWithDistance("iniEscalera_1_6", "dob_1_5");
 addEdgeWithDistance("pre_kiosko", "dob_1_5");
 addEdgeWithDistance("pre_kiosko", "kiosko");
 addEdgeWithDistance("pre_kiosko", "entrada_2");
-
 addEdgeWithDistance("pre_USGOM", "dob_1_3");
 addEdgeWithDistance("pre_USGOM", "USGOM");
 addEdgeWithDistance("pre_USGOM", "pre_escalera_1_2");
@@ -124,6 +197,20 @@ addEdgeWithDistance("vestidores", "pre_vestidores");
 addEdgeWithDistance("dob_1_8", "pre_vestidores");
 addEdgeWithDistance("dob_1_8", "entrada_3");
 addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_1_1");
+addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_2_1");
+addEdgeWithDistance("decanato", "iniEscalera_2_1");
+addEdgeWithDistance("dob_2_3", "iniEscalera_2_1");
+addEdgeWithDistance("dob_2_3", "pre_aulas200");
+addEdgeWithDistance("pre_aulas200", "aulas200");
+addEdgeWithDistance("pre_aulas200", "pre_tercio");
+addEdgeWithDistance("tercio", "pre_tercio");
+addEdgeWithDistance("dob_2_4", "pre_tercio");
+addEdgeWithDistance("pre_magna", "pre_tercio");
+addEdgeWithDistance("pre_magna", "magna");
+addEdgeWithDistance("dob_2_4", "iniEscalera_2_6");
+addEdgeWithDistance("mid_Escalera_1_6", "iniEscalera_2_6");
+addEdgeWithDistance("mid_Escalera_1_6", "iniEscalera_1_6");
+
 
 // Implementar Dijkstra
 
@@ -131,7 +218,7 @@ addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_1_1");
 
 function mostrar(source, target) {
   const arrGen = [];
-  const list = [];
+  let list = [];
   console.log(graph.hasEdge('cerseu','pre_cerceu'));
   const path = dijkstra.bidirectional(graph, source, target);
   console.log("Camino de entrada_1 a cerseu:", path);
@@ -150,16 +237,18 @@ function mostrar(source, target) {
     if (/^mid_Escalera_.+$/.test(path[nodo])) {
       arrGen.push([...list]);
       list.length = 0;
+      list.push(coordinates);
     }
   }
-  if(arrGen.length === 0){
-    arrGen.push([...list]);
-  }
+
+  arrGen.push([...list]);
+
   // for (const val in arrGen) {
-  //   for (const element in arrGen[val]) {
-  //     console.log(arrGen[val][element].x+';'+arrGen[val][element].y+';'+arrGen[val][element].z);
-  //   }
-  // }
+    //   for (const element in arrGen[val]) {
+      //     console.log(arrGen[val][element].x+';'+arrGen[val][element].y+';'+arrGen[val][element].z);
+      //   }
+      // }
+  console.log(arrGen)
   return arrGen;
 }
 

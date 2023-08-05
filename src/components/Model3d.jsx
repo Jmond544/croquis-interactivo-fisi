@@ -1303,8 +1303,8 @@ function Model3d() {
       </div>
       <div ref={mountRef} className="container-3d"></div>
       <div className='barra-inferior'>
-        <div>
-          <button onClick={() => setPosition(!position)}>Reset position</button>
+        <div className="control-pisos">
+            <button className="button-reset" onClick={() => setPosition(!position)}>Reiniciar posición</button>
         </div>
         <div className="control-pisos">
           <ButtonCheckBox tipo={'piso01'} setEstado={setEstadoPiso01} />

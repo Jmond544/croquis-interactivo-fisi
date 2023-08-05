@@ -72,12 +72,15 @@ function Model3d() {
     const generarTrazadorRuta = (inicio, fin) => {
       if(trazoRutaPiso01 != null){
         scene.remove(trazoRutaPiso01)
+        trazoRutaPiso01 = null;
       }
       if(trazoRutaPiso02 != null){
         scene.remove(trazoRutaPiso02)
+        trazoRutaPiso02 = null;
       }
       if(trazoRutaPiso03 != null){
         scene.remove(trazoRutaPiso03)
+        trazoRutaPiso03 = null;
       }
       if(inicio!=null && fin != null){
         const resCamino = mostrar(inicio, fin);
@@ -1093,7 +1096,7 @@ addPointToPoints(inter_coord.dob_1_6);
 
     const line = new THREE.Line(geometry2, material2);
 
-    scene.add(line);
+    //scene.add(line);
 
 
 

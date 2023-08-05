@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/croquis-interactivo-fisi/static/css/main.84cc9f1a.css",
-    "main.js": "/croquis-interactivo-fisi/static/js/main.7f1bf10e.js",
+    "main.css": "/croquis-interactivo-fisi/static/css/main.0621c998.css",
+    "main.js": "/croquis-interactivo-fisi/static/js/main.6bf41b3c.js",
+    "static/media/logo_unmsm.png": "/croquis-interactivo-fisi/static/media/logo_unmsm.b84e6960096b11d821e8.png",
+    "static/media/logo_FISI.png": "/croquis-interactivo-fisi/static/media/logo_FISI.37c2836c76e79c2b8cc1.png",
     "index.html": "/croquis-interactivo-fisi/index.html",
-    "main.84cc9f1a.css.map": "/croquis-interactivo-fisi/static/css/main.84cc9f1a.css.map",
-    "main.7f1bf10e.js.map": "/croquis-interactivo-fisi/static/js/main.7f1bf10e.js.map"
+    "main.0621c998.css.map": "/croquis-interactivo-fisi/static/css/main.0621c998.css.map",
+    "main.6bf41b3c.js.map": "/croquis-interactivo-fisi/static/js/main.6bf41b3c.js.map"
   },
   "entrypoints": [
-    "static/css/main.84cc9f1a.css",
-    "static/js/main.7f1bf10e.js"
+    "static/css/main.0621c998.css",
+    "static/js/main.6bf41b3c.js"
   ]
 }

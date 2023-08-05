@@ -32,8 +32,10 @@ const main_coord = {
   SSHH_2_1: {x:2, y:0.2, z:-14.25},
   SSHH_2_2: {x:6.5, y:0.2, z:-27},
   //Piso 3
-
-
+  UNAYOE: {x:0, y:2.2, z:-1.5},
+  dirSist: {x:1, y:2.2, z:-5.6},
+  dirSoft: {x:1, y:2.2, z:-8},
+  matricula: {x:1, y:2.2, z:-9.5},
 };
 
 const inter_coord = {
@@ -123,8 +125,14 @@ const inter_coord = {
   //Piso 3
 
     //pre_
+    pre_escalera_3_1: {x:3, y:2.2, z:-1.5},
+    pre_dirSist: {x:3, y:2.2, z:-5.6},
+    pre_dirSoft:{x:3, y:2.2, z:-8},
+    pre_matricula:{x:3, y:2.2, z:-9.5},
+    pre_SSHH_3_1: {x:3, y:2.2, z:-14.25},
 
     //dob_
+    dob_3_1: {x:3, y:2.2, z:-6.6},
 }
 
 export { main_coord, inter_coord };

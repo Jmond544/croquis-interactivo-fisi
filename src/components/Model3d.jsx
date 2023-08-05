@@ -529,28 +529,6 @@ function Model3d() {
 
 
 
-    function crearEscaleras3(x, y, z) {
-
-      // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
-      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-
-      // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
-      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-
-      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParte1.geometry,
-        escaleraParte2.geometry,
-      ], true);
-
-      // Crear el Mesh combinado utilizando la geometría combinada y el material original
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-
-      return meshCombinado;
-    }
-
 
     function crearEscaleraParque(x, y, z) {
       const escaleraParque = createObject(1, 2, 3.4,
@@ -817,12 +795,21 @@ function Model3d() {
     
 
     
-    addPointToPoints(inter_coord.pre_escalera_1_5);
-    addPointToPoints(inter_coord.iniEscalera_1_5);
-    addPointToPoints(inter_coord.mid_Escalera_1_5);
-    addPointToPoints(inter_coord.iniEscalera_2_5);
-    addPointToPoints(inter_coord.mid_Escalera_2_5);
-    addPointToPoints(inter_coord.fin_Escalera_3_5);
+    addPointToPoints(inter_coord.dob_1_2);
+    addPointToPoints(inter_coord.iniEscalera_1_1);
+    addPointToPoints(inter_coord.mid_Escalera_1_1);
+    addPointToPoints(inter_coord.iniEscalera_2_1);
+    addPointToPoints(inter_coord.mid_Escalera_2_1);
+    addPointToPoints(inter_coord.fin_Escalera_3_1);
+    addPointToPoints(inter_coord.pre_escalera_3_1);
+    addPointToPoints(inter_coord.pre_dirSist);
+    addPointToPoints(main_coord.dirSist);
+    addPointToPoints(inter_coord.dob_3_1);
+    addPointToPoints(inter_coord.pre_dirSoft);
+    addPointToPoints(main_coord.dirSoft);
+    addPointToPoints(inter_coord.pre_matricula);
+    addPointToPoints(main_coord.matricula);
+    addPointToPoints(inter_coord.pre_SSHH_3_1);
 
     //addPointToPoints(inter_coord.iniEscalera_2_1);
     //addPointToPoints(inter_coord.mid_Escalera_2_1);

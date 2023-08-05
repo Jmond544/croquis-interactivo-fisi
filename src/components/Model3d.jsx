@@ -6,12 +6,16 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { main_coord, inter_coord } from "../route_coordinates/Coordinates";
 import { mostrar } from '../graph/ConnectionGraph';
 import TextInputs from "./TextInputs";
+import ButtonCheckBox from "./ButtonCheckBox";
 
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js";
 
 function Model3d() {
   const mountRef = useRef(null);
   const controlsRef = useRef(null);
+  const [estadoPiso01, setEstadoPiso01] = useState([true]);
+  const [estadoPiso02, setEstadoPiso02] = useState([true]);
+  const [estadoPiso03, setEstadoPiso03] = useState([true]);
   const [position, setPosition] = useState(false);
   let currentOrigen = null;
   let currentDestino = null;
@@ -65,7 +69,7 @@ function Model3d() {
     let trazoRutaPiso01;
     let trazoRutaPiso02;
     let trazoRutaPiso03;
-    function generarTrazadorRuta(inicio, fin) {
+    const generarTrazadorRuta = (inicio, fin) => {
       if(trazoRutaPiso01 != null){
         scene.remove(trazoRutaPiso01)
       }
@@ -105,7 +109,6 @@ function Model3d() {
 
     const createObject = (dimX, dimY, dimZ, ejeX, ejeY, ejeZ, material) => {
       const objeto = new THREE.Mesh(new THREE.BoxGeometry(dimX, dimY, dimZ), material);
-      scene.add(objeto);
       objeto.position.x = ejeX;
       objeto.position.y = ajustarEjeVertical(objeto, ejeY);
       objeto.position.z = ejeZ;
@@ -166,7 +169,6 @@ function Model3d() {
     const piso01 = new THREE.Mesh(geometryPiso01, materialPiso01);
     piso01.rotation.x = 3.141593 / 2;
     piso01.position.y = -2;
-    scene.add(piso01);
 
     //Piso Parque
 
@@ -181,7 +183,6 @@ function Model3d() {
     const pisoParque = new THREE.Mesh(geometryPisoParque, materialPisoParque);
     pisoParque.rotation.x = 3.141593 / 2;
     pisoParque.position.y = -2;
-    scene.add(pisoParque)
 
     // SEGUNDO PISO
 
@@ -226,7 +227,6 @@ function Model3d() {
     piso02.rotation.x = 3.141593 / 2;
 
     piso02.position.y = 0;
-    scene.add(piso02);
 
 
     //3er piso
@@ -265,12 +265,9 @@ function Model3d() {
     shapePiso03.lineTo(-3, 1.5);
     shapePiso03.moveTo(4, 1.5);
 
-    const geometryPiso03 = new THREE.ExtrudeGeometry(shapePiso02, extrudeSettings);
-    const materialPiso03 = new THREE.MeshStandardMaterial({ color: 0x4A4E69 });
     const piso03 = new THREE.Mesh(geometryPiso02, materialPiso02);
     piso03.rotation.x = 3.141593 / 2;
     piso03.position.y = 2;
-    scene.add(piso03);
 
     // CAMINO 1ER PISO
     const shapeCamino1 = new THREE.Shape();
@@ -333,7 +330,6 @@ function Model3d() {
     const camino1 = new THREE.Mesh(geometryCamino, materialCamino);
     camino1.rotation.x = 3.141593 / 2;
     camino1.position.y = -1.9;
-    scene.add(camino1);
 
     // CAMINO 2DO PISO
     const shapeCamino2 = new THREE.Shape();
@@ -376,7 +372,6 @@ function Model3d() {
     const camino2 = new THREE.Mesh(geometryCamino2, materialCamino2);
     camino2.rotation.x = 3.141593 / 2;
     camino2.position.y = 0.1;
-    scene.add( camino2 );
 
     //CAMINO 3er PISO
 
@@ -420,13 +415,12 @@ function Model3d() {
     const camino3 = new THREE.Mesh(geometryCamino3, materialCamino3);
     camino3.rotation.x = 3.141593 / 2;
     camino3.position.y = 2.1;
-    scene.add(camino3);
 
 
 
     //ESCALERAS
     const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
-    function crearEscaleras1(x, y, z) {
+    const crearEscaleras1 = (x, y, z) => {
 
       // Crear escaleraParte1
       const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
@@ -449,7 +443,7 @@ function Model3d() {
     }
 
 
-    function crearEscaleras2(x, y, z) {
+    const crearEscaleras2 = (x, y, z) => {
 
 
       // Crear escaleraParte1
@@ -473,7 +467,7 @@ function Model3d() {
 
 
 
-    function crearEscaleras3(x, y, z) {
+    const crearEscaleras3 = (x, y, z) => {
 
       // Crear escaleraParte1
       const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
@@ -497,36 +491,24 @@ function Model3d() {
 
 
     const escalera1_1 = crearEscaleras1(3, 2, 1);
-    scene.add(escalera1_1);
 
     const escalera1_2 = crearEscaleras1(10.5, 2, -2.5);
-    scene.add(escalera1_2);
 
     const escalera1_3 = crearEscaleras2(1, 2, -10.6);
-    scene.add(escalera1_3);
 
     const escalera1_4 = crearEscaleras3(3.1, 2, -30.5);
-    scene.add(escalera1_4);
 
     const escalera1_5 = crearEscaleras3(10, 2, -30.5);
-    scene.add(escalera1_5);
 
     const escalera2_1 = crearEscaleras1(3, 0, 1);
-    scene.add(escalera1_1);
 
     const escalera2_2 = crearEscaleras1(10.5, 0, -2.5);
-    scene.add(escalera1_2);
 
     const escalera2_3 = crearEscaleras2(1, 0, -10.6);
-    scene.add(escalera1_3);
 
     const escalera2_4 = crearEscaleras3(3.1, 0, -30.5);
-    scene.add(escalera1_4);
 
     const escalera2_5 = crearEscaleras3(10, 0, -30.5);
-    scene.add(escalera1_5);
-
-
 
 
 
@@ -549,7 +531,6 @@ function Model3d() {
     }
 
     const escaleraParque = crearEscaleraParque(4.5, 2, -17.9);
-    scene.add(escaleraParque);
 
 
 
@@ -580,20 +561,17 @@ function Model3d() {
     entrada1.position.x = 0;
     entrada1.position.y = -1.5;
     entrada1.position.z = 1.9;
-    scene.add(entrada1);
 
     const entrada2 = new THREE.Mesh(geometry, material);
     entrada2.position.x = 8;
     entrada2.position.z = -3.8;
     entrada2.position.y = -1.5;
     entrada2.rotation.y = 3.141593 / 2;
-    scene.add(entrada2);
 
     const entrada3 = new THREE.Mesh(geometry, material);
     entrada3.position.x = 14;
     entrada3.position.z = -8;
     entrada3.position.y = -1.5;
-    scene.add(entrada3);
 
     /* Aulas */
 
@@ -732,6 +710,7 @@ function Model3d() {
       3.6, 0, -10,
       materialAdministrativos);
 
+// Tercer piso
     const musica = createObject(2, 0.5, 1.8,
       2, -2, -31,materialEscenarios
     )
@@ -1096,7 +1075,7 @@ function Model3d() {
       controls.update();
     };
 
-    controlsRef.current = { handleResetClick, generarTrazadorRuta };
+    
 
     renderer.render(scene, camera);
 
@@ -1110,6 +1089,133 @@ function Model3d() {
     }
     window.addEventListener('resize', resize)
 
+    // Agregando elementos (por piso) a las listas
+    const objetosPiso01=[];
+    const objetosPiso02=[];
+    const objetosPiso03=[];
+
+    objetosPiso01.push(piso01);
+    objetosPiso01.push(trazoRutaPiso01);
+    objetosPiso01.push(pisoParque);
+    objetosPiso01.push(camino1);
+    objetosPiso01.push(entrada1);
+    objetosPiso01.push(entrada2);
+    objetosPiso01.push(entrada3);
+    objetosPiso01.push(atencionDoc);
+    objetosPiso01.push(economia);
+    objetosPiso01.push(dga);
+    objetosPiso01.push(cerseu);
+    objetosPiso01.push(direccionEscuela);
+    objetosPiso01.push(usgom);
+    objetosPiso01.push(SSHH_Sistemas_1);
+    objetosPiso01.push(auditorio);
+    objetosPiso01.push(aulas100);
+    objetosPiso01.push(quiosco);
+    objetosPiso01.push(aulas100v2);
+    objetosPiso01.push(losaDeportiva);
+    objetosPiso01.push(vestidores);
+    objetosPiso01.push(SSHH_Software_1);
+    objetosPiso01.push(aulasNuevoPabellon1);
+    objetosPiso01.push(aulasNuevoPabellon1_v2);
+    objetosPiso01.push(capilla);
+    
+    objetosPiso01.push(escalera1_1);
+    objetosPiso01.push(escalera1_2);
+    objetosPiso01.push(escalera1_3);
+    objetosPiso01.push(escalera1_4);
+    objetosPiso01.push(escalera1_5);
+    objetosPiso01.push(escaleraParque);
+
+    objetosPiso02.push(piso02);
+    objetosPiso02.push(trazoRutaPiso02);
+    objetosPiso02.push(camino2);
+    objetosPiso02.push(SSHH_Sistemas_2);
+    objetosPiso02.push(SSHH_Software_2);
+    objetosPiso02.push(comedor);
+    objetosPiso02.push(LaboratoriosNuevoPabellon);
+    objetosPiso02.push(aulasNuevoPabellon2_v2);
+    objetosPiso02.push(microDataCenter);
+    objetosPiso02.push(decanato);
+    objetosPiso02.push(aulas200);
+    objetosPiso02.push(aulas200v2);
+    objetosPiso02.push(tercio);
+    objetosPiso02.push(Magna);
+    objetosPiso02.push(salaCatedraticos);
+    
+    objetosPiso02.push(escalera2_1);
+    objetosPiso02.push(escalera2_2);
+    objetosPiso02.push(escalera2_3);
+    objetosPiso02.push(escalera2_4);
+    objetosPiso02.push(escalera2_5);
+    
+    objetosPiso03.push(piso03);
+    objetosPiso03.push(trazoRutaPiso03);
+    objetosPiso03.push(camino3);
+    objetosPiso03.push(musica);
+    objetosPiso03.push(publicidad);
+    objetosPiso03.push(SSHH_Sistemas_3);
+    objetosPiso03.push(SSHH_Software_3);
+    objetosPiso03.push(UNAYOE);
+    objetosPiso03.push(Matricula);
+    objetosPiso03.push(dirSoft);
+    objetosPiso03.push(dirSist);
+    objetosPiso03.push(soporte);
+    objetosPiso03.push(DepAcaSist);
+    objetosPiso03.push(Laboratorios3_1);
+    objetosPiso03.push(Laboratorios3_2);
+
+
+    const eliminarPiso = (numero) => {
+      switch (numero) {
+        case 1:
+          for(const element in objetosPiso01){
+            scene.remove(objetosPiso01[element]);
+          }
+          break;
+        case 2:
+          for(const element in objetosPiso02){
+            scene.remove(objetosPiso02[element]);
+          }
+          break;
+        case 3:
+          for(const element in objetosPiso03){
+            scene.remove(objetosPiso03[element]);
+          }
+          break;
+      
+        default:
+          break;
+      }
+    }
+
+    const agregarPiso = (numero) => {
+      switch (numero) {
+        case 1:
+          for(const element in objetosPiso01){
+            if(capilla===objetosPiso01[element]){
+              console.log(element)
+            }
+            scene.add(objetosPiso01[element]);
+          }
+          break;
+        case 2:
+          for(const element in objetosPiso02){
+            scene.add(objetosPiso02[element]);
+          }
+          break;
+        case 3:
+          for(const element in objetosPiso03){
+            scene.add(objetosPiso03[element]);
+          }
+          break;
+      
+        default:
+          break;
+      }
+    }
+
+    controlsRef.current = { handleResetClick, generarTrazadorRuta, eliminarPiso, agregarPiso };
+
     return () => {
       currentRef.removeChild(renderer.domElement);
       window.addEventListener('resize', resize);
@@ -1119,6 +1225,30 @@ function Model3d() {
   useEffect(() => {
     controlsRef.current.handleResetClick();
   }, [position]);
+
+  useEffect(() => {
+    if(estadoPiso01){
+      controlsRef.current.agregarPiso(1);
+    }else{
+      controlsRef.current.eliminarPiso(1);
+    }
+  }, [estadoPiso01]);
+
+  useEffect(() => {
+    if(estadoPiso02){
+      controlsRef.current.agregarPiso(2);
+    }else{
+      controlsRef.current.eliminarPiso(2);
+    }
+  }, [estadoPiso02]);
+
+  useEffect(() => {
+    if(estadoPiso03){
+      controlsRef.current.agregarPiso(3);
+    }else{
+      controlsRef.current.eliminarPiso(3);
+    }
+  }, [estadoPiso03]);
   
   function callGenerarTrazadorRuta(origen, destino, tipo){
     if (tipo === 'origen') {
@@ -1136,7 +1266,16 @@ function Model3d() {
         <TextInputs tipo={'destino'} generarTrazadorRuta={callGenerarTrazadorRuta} />
       </div>
       <div ref={mountRef} className="container-3d"></div>
-      <button onClick={() => setPosition(!position)}>Reset position</button>
+      <div className='barra-inferior'>
+        <div>
+          <button onClick={() => setPosition(!position)}>Reset position</button>
+        </div>
+        <div className="control-pisos">
+          <ButtonCheckBox tipo={'piso01'} setEstado={setEstadoPiso01} />
+          <ButtonCheckBox tipo={'piso02'} setEstado={setEstadoPiso02} />
+          <ButtonCheckBox tipo={'piso03'} setEstado={setEstadoPiso03} />
+        </div>
+      </div>
     </div>
   );
 }

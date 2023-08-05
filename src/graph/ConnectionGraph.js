@@ -44,6 +44,11 @@ graph.addNode('matricula',main_coord.matricula);
 graph.addNode('SSHH_3_1',main_coord.SSHH_3_1);
 graph.addNode('SSHH_3_2',main_coord.SSHH_3_2);
 graph.addNode('musica',main_coord.musica);
+graph.addNode('laboratoriosNP3',main_coord.laboratoriosNP3);
+graph.addNode('publicidad',main_coord.publicidad);
+graph.addNode('soporte',main_coord.soporte);
+graph.addNode('depAcaSist',main_coord.depAcaSist);
+graph.addNode('laboratorios3',main_coord.laboratorios3);
 
 
 //  Piso 01
@@ -77,6 +82,9 @@ graph.addNode('dob_1_5',inter_coord.dob_1_5);
 graph.addNode('iniEscalera_1_6',inter_coord.iniEscalera_1_6);
 graph.addNode('pre_kiosko',inter_coord.pre_kiosko);
 
+graph.addNode('fin_EscaleraParque',inter_coord.fin_EscaleraParque);
+graph.addNode('mid_Escalera_Parque',inter_coord.mid_Escalera_Parque);
+
 graph.addNode('mid_Escalera_1_1', inter_coord.mid_Escalera_1_1);
 graph.addNode('mid_Escalera_1_2', inter_coord.mid_Escalera_1_2);
 graph.addNode('mid_Escalera_1_6', inter_coord.mid_Escalera_1_6);
@@ -95,6 +103,7 @@ graph.addNode('pre_comedor', inter_coord.pre_comedor);
 graph.addNode('pre_magna', inter_coord.pre_magna);
 graph.addNode('pre_salaCatedraticos', inter_coord.pre_salaCatedraticos);
 graph.addNode('pre_tercio', inter_coord.pre_tercio);
+graph.addNode('pre_escaleraParque', inter_coord.pre_escaleraParque);
 
 graph.addNode('dob_2_3', inter_coord.dob_2_3);
 graph.addNode('dob_2_4', inter_coord.dob_2_4);
@@ -125,8 +134,14 @@ graph.addNode('pre_matricula', inter_coord.pre_matricula);
 graph.addNode('pre_SSHH_3_1', inter_coord.pre_SSHH_3_1);
 graph.addNode('pre_SSHH_3_2', inter_coord.pre_SSHH_3_2);
 graph.addNode('pre_musica', inter_coord.pre_musica);
+graph.addNode('pre_laboratoriosNP3', inter_coord.pre_laboratoriosNP3);
+graph.addNode('pre_publicidad', inter_coord.pre_publicidad);
+graph.addNode('pre_soporte', inter_coord.pre_soporte);
+graph.addNode('pre_depAcaSist', inter_coord.pre_depAcaSist);
+graph.addNode('pre_laboratorios3', inter_coord.pre_laboratorios3);
 
 graph.addNode('dob_3_1', inter_coord.dob_3_1);
+graph.addNode('dob_3_2', inter_coord.dob_3_2);
 
 
 // Función para calcular la distancia entre dos nodos
@@ -220,8 +235,12 @@ addEdgeWithDistance("pre_SSHH_2_1", "pre_salaCatedraticos");
 addEdgeWithDistance("pre_SSHH_2_1", "SSHH_2_1");
 
 addEdgeWithDistance("pre_SSHH_2_1", "pre_comedor");
+addEdgeWithDistance("pre_escaleraParque", "pre_comedor");
+addEdgeWithDistance("pre_escaleraParque", "fin_EscaleraParque");
+addEdgeWithDistance("mid_Escalera_Parque", "fin_EscaleraParque");
+addEdgeWithDistance("iniEscalera_1_3", "fin_EscaleraParque");
 
-addEdgeWithDistance("comedor", "pre_comedor");
+addEdgeWithDistance("comedor", "pre_escaleraParque");
 addEdgeWithDistance("pre_escalera_2_4", "pre_comedor");
 addEdgeWithDistance("pre_escalera_2_4", "iniEscalera_2_4");
 addEdgeWithDistance("iniEscalera_2_4", "mid_Escalera_2_4");
@@ -235,6 +254,38 @@ addEdgeWithDistance("microDataCenter", "pre_escalera_2_5");
 addEdgeWithDistance("iniEscalera_2_5", "pre_escalera_2_5");
 addEdgeWithDistance("iniEscalera_2_5", "mid_Escalera_2_5");
 addEdgeWithDistance("fin_Escalera_3_5", "mid_Escalera_2_5");
+
+addEdgeWithDistance("pre_escalera_3_1", "fin_Escalera_3_1");
+addEdgeWithDistance("pre_escalera_3_1", "UNAYOE");
+addEdgeWithDistance("pre_escalera_3_1", "pre_dirSist");
+addEdgeWithDistance("dirSist", "pre_dirSist");
+addEdgeWithDistance("dob_3_1", "pre_dirSist");
+addEdgeWithDistance("dob_3_1", "pre_dirSoft");
+addEdgeWithDistance("dirSoft", "pre_dirSoft");
+addEdgeWithDistance("pre_matricula", "pre_dirSoft");
+addEdgeWithDistance("pre_matricula", "matricula");
+addEdgeWithDistance("pre_matricula", "fin_Escalera_3_2");
+addEdgeWithDistance("pre_SSHH_3_1", "fin_Escalera_3_2");
+addEdgeWithDistance("pre_SSHH_3_1", "SSHH_3_1");
+addEdgeWithDistance("pre_SSHH_3_1", "fin_Escalera_3_4");
+addEdgeWithDistance("pre_musica", "fin_Escalera_3_4");
+addEdgeWithDistance("pre_musica", "musica");
+addEdgeWithDistance("pre_SSHH_3_2", "fin_Escalera_3_4");
+addEdgeWithDistance("pre_SSHH_3_2", "SSHH_3_2");
+addEdgeWithDistance("pre_SSHH_3_2", "pre_laboratoriosNP3");
+addEdgeWithDistance("laboratoriosNP3", "pre_laboratoriosNP3");
+addEdgeWithDistance("fin_Escalera_3_5", "pre_laboratoriosNP3");
+
+addEdgeWithDistance("dob_3_1", "pre_publicidad");
+addEdgeWithDistance("publicidad", "pre_publicidad");
+addEdgeWithDistance("pre_laboratorios3", "pre_publicidad");
+addEdgeWithDistance("pre_laboratorios3", "laboratorios3");
+addEdgeWithDistance("pre_laboratorios3", "pre_soporte");
+addEdgeWithDistance("soporte", "pre_soporte");
+addEdgeWithDistance("pre_depAcaSist", "pre_soporte");
+addEdgeWithDistance("pre_depAcaSist", "depAcaSist");
+addEdgeWithDistance("pre_depAcaSist", "dob_3_2");
+addEdgeWithDistance("fin_Escalera_3_6", "dob_3_2");
 
 
 // Implementar Dijkstra

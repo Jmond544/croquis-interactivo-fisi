@@ -77,7 +77,7 @@ const main_coord = {
   iniEscalera_1_6: {x:10.4, y:-1.8, z:-3.2},
   pre_kiosko: {x:9.2, y:-1.8, z:-3.8},
 
-  fin_EscaleraParque: {x:4.5, y:0.2, z:-18},
+  fin_EscaleraParque: {x:4.5, y:0.2, z:-16},
 
   mid_Escalera_Parque: {x:4.5, y:0.2, z:-16},
   

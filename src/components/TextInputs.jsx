@@ -114,6 +114,11 @@ function TextInputs( { tipo, generarTrazadorRuta } ) {
             <option value="SSHH antiguo pabellón 3" id='SSHH_3_1'>Tercer piso</option>
             <option value="SSHH nuevo pabellón 3" id='SSHH_3_2'>Tercer piso</option>
             <option value="Salón de música" id='musica'>Tercer piso</option>
+            <option value="Laboratorios nuevo pabellón 3" id='laboratoriosNP3'>Tercer piso</option>
+            <option value="Publicidad" id='publicidad'>Tercer piso</option>
+            <option value="Soporte" id='soporte'>Tercer piso</option>
+            <option value="Departamento académico, sistemas" id='depAcaSist'>Tercer piso</option>
+            <option value="Laboratorios antiguo pabellón 3, sistemas" id='laboratorios3'>Tercer piso</option>
             
         </datalist>
         <button className='inpuit-button'

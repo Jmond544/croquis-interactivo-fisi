@@ -67,41 +67,22 @@ function Model3d() {
 
     const materialTrazoRutas = new THREE.LineBasicMaterial({ color: 0x0000ff, linewidth: 0.1 });
     let trazoRutaPiso01;
-    let trazoRutaPiso02;
-    let trazoRutaPiso03;
     const generarTrazadorRuta = (inicio, fin) => {
-      if(trazoRutaPiso01 != null){
+      if(inicio!=null && fin != null){
         scene.remove(trazoRutaPiso01)
         trazoRutaPiso01 = null;
-      }
-      if(trazoRutaPiso02 != null){
-        scene.remove(trazoRutaPiso02)
-        trazoRutaPiso02 = null;
-      }
-      if(trazoRutaPiso03 != null){
-        scene.remove(trazoRutaPiso03)
-        trazoRutaPiso03 = null;
-      }
-      if(inicio!=null && fin != null){
         const resCamino = mostrar(inicio, fin);
+        const pointsRuta = [];
         for (const val in resCamino) {
-          const pointsRuta = [];
           for (const element in resCamino[val]) {
             pointsRuta.push(new THREE.Vector3(resCamino[val][element].x, resCamino[val][element].y, resCamino[val][element].z));
           }
-          const geometryRuta = new THREE.BufferGeometry().setFromPoints(pointsRuta);
-          if (val === 0) {
-            trazoRutaPiso01 = new THREE.Line(geometryRuta, materialTrazoRutas);
-            scene.add(trazoRutaPiso01)
-          } else if (val === 1) {
-            trazoRutaPiso02 = new THREE.Line(geometryRuta, materialTrazoRutas);
-            scene.add(trazoRutaPiso02)
-          } else {
-            trazoRutaPiso03 = new THREE.Line(geometryRuta, materialTrazoRutas);
-            scene.add(trazoRutaPiso03)
-          }
-          pointsRuta.length = 0;
+          
         }
+        const geometryRuta = new THREE.BufferGeometry().setFromPoints(pointsRuta);
+        trazoRutaPiso01 = new THREE.Line(geometryRuta, materialTrazoRutas);
+        scene.add(trazoRutaPiso01)
+        pointsRuta.length = 0;
       }
     }
 
@@ -1146,7 +1127,7 @@ addPointToPoints(inter_coord.dob_1_6);
     // objetosPiso01.push(escaleraParque);
 
     objetosPiso02.push(piso02);
-    objetosPiso02.push(trazoRutaPiso02);
+    // objetosPiso02.push(trazoRutaPiso02);
     objetosPiso02.push(camino2);
     objetosPiso02.push(SSHH_Sistemas_2);
     objetosPiso02.push(SSHH_Software_2);
@@ -1173,7 +1154,7 @@ addPointToPoints(inter_coord.dob_1_6);
     objetosPiso02.push(escalera3_2_5Parte2);
     
     objetosPiso03.push(piso03);
-    objetosPiso03.push(trazoRutaPiso03);
+    // objetosPiso03.push(trazoRutaPiso03);
     objetosPiso03.push(camino3);
     objetosPiso03.push(musica);
     objetosPiso03.push(publicidad);

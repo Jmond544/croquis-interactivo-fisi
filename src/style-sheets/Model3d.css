@@ -8,7 +8,7 @@
 }
 
 .container-principal {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,7 +16,7 @@
     background-color: rgb(245, 245, 245);
 }
 .container-3d {
-    height: 75vh;
+    min-height: 65vh;
     width: 90%;
 }
 
@@ -39,4 +39,41 @@
     display: flex;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-reset {
+    margin: 10px;
+    text-align: center;
+    border: none;
+    background-color: rgb(98, 21, 24);;
+    color: #FFF;
+    box-shadow: 0 2px 20px rgb(98, 21, 24);;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+@media (max-width: 840px) {
+    
+    .container-principal {
+        height: auto;
+    }
+    
+    .barra-inferior{
+        display: flex;
+        flex-direction: column;
+    }
+    .container-inputs{
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-3d canvas {
+        margin-top: 5px;
+    }
+    .control-pisos {
+        margin: 10px;
+    }
 }

@@ -25,9 +25,9 @@ function Model3d() {
 
 
     const initialCameraPosition = {
-      x: 6,
-      y: 5,
-      z: 8,
+      x: 0,
+      y: 4,
+      z: 9,
     };
 
     const currentRef = mountRef.current;
@@ -194,7 +194,9 @@ function Model3d() {
     shapePiso02.lineTo(4, -4.5); // esquina recepcion aulas 100
     shapePiso02.lineTo(9, -4.5); // aulas 100
     shapePiso02.lineTo(9, -2); // quiosco y gradas
-    shapePiso02.lineTo(11, -2); // quiosco y gradas
+    shapePiso02.lineTo(10, -2); // quiosco y gradas
+    shapePiso02.lineTo(10, -3); // quiosco y gradas
+    shapePiso02.lineTo(11, -3); // quiosco y gradas
     shapePiso02.lineTo(11, -4.5);
     shapePiso02.lineTo(13, -4.5); // aulas 100 lateral
     shapePiso02.lineTo(13, -9);
@@ -230,43 +232,6 @@ function Model3d() {
     piso02.rotation.x = 3.141593 / 2;
 
     piso02.position.y = 0;
-
-
-    //3er piso
-    const shapePiso03 = new THREE.Shape();
-    shapePiso03.moveTo(4, 1.5); // X, Z
-    shapePiso03.lineTo(4, -4.5); // esquina recepcion aulas 100
-    shapePiso03.lineTo(9, -4.5); // aulas 100
-    shapePiso03.lineTo(9, -2); // quiosco y gradas
-    shapePiso03.lineTo(11, -2); // quiosco y gradas
-    shapePiso03.lineTo(11, -4.5);
-    shapePiso03.lineTo(13, -4.5); // aulas 100 lateral
-    shapePiso03.lineTo(13, -9);
-    shapePiso03.lineTo(4, -9); // aulas 100 lateral
-    shapePiso03.lineTo(4, -9); // aulas 100 lateral
-    shapePiso03.lineTo(4, -25); // maquinas expendedoras
-    shapePiso03.lineTo(12, -25); // maquinas expendedoras
-    shapePiso03.lineTo(12, -32); // software pared este
-    shapePiso03.lineTo(-2, -32); // software pared norte
-    shapePiso03.lineTo(-2, -25); // software pared oeste
-    shapePiso03.lineTo(1.5, -25); // software pared sur
-    shapePiso03.lineTo(1.5, -24); // espacio
-    shapePiso03.lineTo(1.5, -22); // fin parque
-    shapePiso03.lineTo(1.5, -21); // pasillo
-    shapePiso03.lineTo(-3, -21); // Auditorio
-    shapePiso03.lineTo(-3, -15); // Auditorio
-    shapePiso03.lineTo(1.5, -15); // Fin Auditorio
-    shapePiso03.lineTo(-1, -16); // baños
-    shapePiso03.lineTo(-1, -12); // baños
-    shapePiso03.lineTo(-1, -10); // gradas
-    shapePiso03.lineTo(-1, -9); // espacio
-    shapePiso03.lineTo(-1, -8); // usgom
-    shapePiso03.lineTo(-1, -7); // espacio
-    shapePiso03.lineTo(-1, -4.5); // direccion de escuela
-
-    shapePiso03.lineTo(-3, -4.5);
-    shapePiso03.lineTo(-3, 1.5);
-    shapePiso03.moveTo(4, 1.5);
 
     const piso03 = new THREE.Mesh(geometryPiso02, materialPiso02);
     piso03.rotation.x = 3.141593 / 2;
@@ -344,7 +309,7 @@ function Model3d() {
 
     shapeCamino2.lineTo(9.9, -6.25); // pasillo salida izquierdo
     shapeCamino2.lineTo(9.9, -4.3); // pasillo salida izquierdo
-    shapeCamino2.lineTo(10.1, -3.3); // pasillo salida derecho
+    shapeCamino2.lineTo(9.9, -3.3); // pasillo salida derecho
 
     shapeCamino2.lineTo(10.9, -3.3); // pasillo escaleras derecho
     shapeCamino2.lineTo(10.9, -4.3); // pasillo escaleras izquierda
@@ -387,7 +352,7 @@ function Model3d() {
 
     shapeCamino3.lineTo(9.9, -6.25); // pasillo salida izquierdo
     shapeCamino3.lineTo(9.9, -4.3); // pasillo salida izquierdo
-    shapeCamino3.lineTo(10.1, -3.3); // pasillo salida derecho
+    shapeCamino3.lineTo(9.9, -3.3); // pasillo salida derecho
 
     shapeCamino3.lineTo(10.9, -3.3); // pasillo escaleras derecho
     shapeCamino3.lineTo(10.9, -4.3); // pasillo escaleras izquierda
@@ -1251,20 +1216,23 @@ addPointToPoints(inter_coord.dob_1_6);
       switch (numero) {
         case 1:
           for(const element in objetosPiso01){
-            if(capilla===objetosPiso01[element]){
-              console.log(element)
+            if (objetosPiso01[element]){
+              scene.add(objetosPiso01[element]);
             }
-            scene.add(objetosPiso01[element]);
           }
           break;
         case 2:
           for(const element in objetosPiso02){
-            scene.add(objetosPiso02[element]);
+            if (objetosPiso02[element]){
+              scene.add(objetosPiso02[element]);
+            }
           }
           break;
         case 3:
           for(const element in objetosPiso03){
-            scene.add(objetosPiso03[element]);
+            if (objetosPiso03[element]){
+              scene.add(objetosPiso03[element]);
+            }
           }
           break;
       
@@ -1326,8 +1294,8 @@ addPointToPoints(inter_coord.dob_1_6);
       </div>
       <div ref={mountRef} className="container-3d"></div>
       <div className='barra-inferior'>
-        <div>
-          <button onClick={() => setPosition(!position)}>Reset position</button>
+        <div className="control-pisos">
+            <button className="button-reset" onClick={() => setPosition(!position)}>Reiniciar posición</button>
         </div>
         <div className="control-pisos">
           <ButtonCheckBox tipo={'piso01'} setEstado={setEstadoPiso01} />

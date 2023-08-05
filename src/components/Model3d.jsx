@@ -420,117 +420,215 @@ function Model3d() {
 
     //ESCALERAS
     const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
-    const crearEscaleras1 = (x, y, z) => {
 
-      // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
-      escaleraParte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
 
-      // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
-      escaleraParte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+    const crearEscaleras1 = (x2_1, y2_1, z2_1) => {
 
-      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParte1.geometry,
-        escaleraParte2.geometry,
-      ], true);
+      const escalera2_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x2_1 - 0.2, y2_1 - 1.4, z2_1, materialEscalera);
+      escalera2_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera2_1Parte1);
 
-      // Crear el Mesh combinado utilizando la geometría combinada y el material original
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+      const escalera2_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x2_1 + 0.2, y2_1 - 0.5, z2_1, materialEscalera);
+      escalera2_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera2_1Parte2);
+    }
 
-      return meshCombinado;
+    const crearEscaleras2 = (x2_1_3, y2_1_3, z2_1_3) => {
+
+
+      const escalera2_1_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 1.4, z2_1_3 - 0.2, materialEscalera);
+      escalera2_1_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
+
+      const escalera2_1_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 0.5, z2_1_3 + 0.2, materialEscalera);
+      escalera2_1_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
+    }
+
+    const crearEscaleras3 = (x3_1_4, y3_1_4, z3_1_4) => {
+
+      const escalera3_1_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 - 0.2, y3_1_4 - 1.4, z3_1_4, materialEscalera);
+      escalera3_1_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera3_1_4Parte1);
+      const escalera3_1_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 + 0.2, y3_1_4 - 0.5, z3_1_4, materialEscalera);
+      escalera3_1_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera3_1_4Parte2);
     }
 
 
-    const crearEscaleras2 = (x, y, z) => {
+//ESCALERA PISO 1
+  
+      //crearEscaleras1
 
+    let x1_1_1=3;
+    let y1_1_1=2;
+    let z1_1_1=1;
 
-      // Crear escaleraParte1
-      const escaleraParte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x, y - 1.4, z - 0.2, materialEscalera);
-      escaleraParte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
+    const escalera1_1_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_1 - 0.2, y1_1_1 - 1.4, z1_1_1, materialEscalera);
+      escalera1_1_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera1_1_1Parte1);
 
-      // Crear escaleraParte2
-      const escaleraParte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x, y - 0.5, z + 0.2, materialEscalera);
-      escaleraParte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
+    const escalera1_1_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_1 + 0.2, y1_1_1 - 0.5, z1_1_1, materialEscalera);
+      escalera1_1_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera1_1_1Parte2);
 
-      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParte1.geometry,
-        escaleraParte2.geometry,
-      ], true);
+    
 
-      // Crear el Mesh combinado utilizando la geometría combinada y el material original
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-      return meshCombinado;
-    }
+    let x1_1_2=10.5;
+    let y1_1_2=2;
+    let z1_1_2=-2.5;
 
+    const escalera1_1_2Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_2 - 0.2, y1_1_2 - 1.4, z1_1_2, materialEscalera);
+      escalera1_1_2Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera1_1_2Parte1);
 
+      const escalera1_1_2Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_2 + 0.2, y1_1_2 - 0.5, z1_1_2, materialEscalera);
+      escalera1_1_2Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera1_1_2Parte2);
 
-    const crearEscaleras3 = (x, y, z) => {
+      //crearEscaleras2
 
-      // Crear escaleraParte1
-      const escaleraParte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x - 0.2, y - 1.4, z, materialEscalera);
-      escaleraParte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+    //const escalera1_3 = crearEscaleras2(1, 2, -10.6);
 
-      // Crear escaleraParte2
-      const escaleraParte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x + 0.2, y - 0.5, z, materialEscalera);
-      escaleraParte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+    let x2_1_3=1;
+    let y2_1_3=2;
+    let z2_1_3=-10.6;
 
-      // Fusionar las geometrías de las dos partes de la escalera en una sola geometría combinada
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParte1.geometry,
-        escaleraParte2.geometry,
-      ], true);
+    const escalera2_1_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 1.4, z2_1_3 - 0.2, materialEscalera);
+      escalera2_1_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera2_1_3Parte1);
 
-      // Crear el Mesh combinado utilizando la geometría combinada y el material original
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
+      const escalera2_1_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 0.5, z2_1_3 + 0.2, materialEscalera);
+      escalera2_1_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera2_1_3Parte2);
 
-      return meshCombinado;
-    }
+      //crearEscaleras3
 
-
-    const escalera1_1 = crearEscaleras1(3, 2, 1);
-
-    const escalera1_2 = crearEscaleras1(10.5, 2, -2.5);
-
-    const escalera1_3 = crearEscaleras2(1, 2, -10.6);
-
-    const escalera1_4 = crearEscaleras3(3.1, 2, -30.5);
-
-    const escalera1_5 = crearEscaleras3(10, 2, -30.5);
-
-    const escalera2_1 = crearEscaleras1(3, 0, 1);
-
-    const escalera2_2 = crearEscaleras1(10.5, 0, -2.5);
-
-    const escalera2_3 = crearEscaleras2(1, 0, -10.6);
-
-    const escalera2_4 = crearEscaleras3(3.1, 0, -30.5);
-
-    const escalera2_5 = crearEscaleras3(10, 0, -30.5);
+    let x3_1_4 = 3.1;
+    let y3_1_4 = 2;
+    let z3_1_4 = -30.5;
+    
+    const escalera3_1_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 - 0.2, y3_1_4 - 1.4, z3_1_4, materialEscalera);
+      escalera3_1_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera3_1_4Parte1);
+      const escalera3_1_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 + 0.2, y3_1_4 - 0.5, z3_1_4, materialEscalera);
+      escalera3_1_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera3_1_4Parte2);
 
 
 
-    function crearEscaleraParque(x, y, z) {
-      const escaleraParque = createObject(1, 2, 3.4,
-        x, y, z, materialEscalera);
-      const escaleraParqueSubida = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
-        x, y - 1, z + 2.65, materialEscalera);
-      escaleraParqueSubida.rotation.x = Math.PI / 4;
-      const escaleraParqueSubida2 = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
-        x, y - 1, z - 2.65, materialEscalera)
-      escaleraParqueSubida2.rotation.x = -Math.PI / 4;
-      const geometriaCombinada = BufferGeometryUtils.mergeGeometries([
-        escaleraParqueSubida.geometry,
-        escaleraParqueSubida2.geometry,
-      ], true);
 
-      const meshCombinado = new THREE.Mesh(geometriaCombinada, materialEscalera);
-      return meshCombinado;
-    }
+    //const escalera1_5 = crearEscaleras3(10, 2, -30.5);
 
-    const escaleraParque = crearEscaleraParque(4.5, 2, -17.9);
+    let x3_1_5 = 10;
+    let y3_1_5 = 2;
+    let z3_1_5 = -30.5;
+    
+    const escalera3_1_5Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_5 - 0.2, y3_1_5 - 1.4, z3_1_5, materialEscalera);
+      escalera3_1_5Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera3_1_5Parte1);
+      const escalera3_1_5Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_5 + 0.2, y3_1_5 - 0.5, z3_1_5, materialEscalera);
+      escalera3_1_5Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera3_1_5Parte2);
+
+//Escalera PISO 2
+
+      //crearEscaleras1
+
+    //const escalera2_1 = crearEscaleras1(3, 0, 1);
+
+    let x1_2_1=3;
+    let y1_2_1=0;
+    let z1_2_1=1;
+
+    const escalera1_2_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_1 - 0.2, y1_2_1 - 1.4, z1_2_1, materialEscalera);
+      escalera1_2_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera1_2_1Parte1);
+
+      const escalera1_2_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_1 + 0.2, y1_2_1 - 0.5, z1_2_1, materialEscalera);
+      escalera1_2_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera1_2_1Parte2);
+
+    //const escalera2_2 = crearEscaleras1(10.5, 0, -2.5);
+
+    let x1_2_2=10.5;
+    let y1_2_2=0;
+    let z1_2_2=-2.5;
+
+    const escalera1_2_2Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_2 - 0.2, y1_2_2 - 1.4, z1_2_2, materialEscalera);
+      escalera1_2_2Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera1_2_2Parte1);
+
+      const escalera1_2_2Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_2 + 0.2, y1_2_2 - 0.5, z1_2_2, materialEscalera);
+      escalera1_2_2Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera1_2_2Parte2);
+
+      //crearEscaleras2
+
+    //const escalera2_3 = crearEscaleras2(1, 0, -10.6);
+
+    let x2_2_3=1;
+    let y2_2_3=0;
+    let z2_2_3=-10.6;
+
+    const escalera2_2_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_2_3, y2_2_3 - 1.4, z2_2_3 - 0.2, materialEscalera);
+      escalera2_2_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera2_2_3Parte1);
+
+      const escalera2_2_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_2_3, y2_2_3 - 0.5, z2_2_3 + 0.2, materialEscalera);
+      escalera2_2_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera2_2_3Parte2);
+
+      //crearEscaleras3
+
+    //const escalera2_4 = crearEscaleras3(3.1, 0, -30.5);
+
+    let x3_2_4 = 3.1;
+    let y3_2_4 = 0;
+    let z3_2_4 = -30.5;
+    
+    const escalera3_2_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_4 - 0.2, y3_2_4 - 1.4, z3_2_4, materialEscalera);
+      escalera3_2_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera3_2_4Parte1);
+      const escalera3_2_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_4 + 0.2, y3_2_4 - 0.5, z3_2_4, materialEscalera);
+      escalera3_2_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera3_2_4Parte2);
+
+    //const escalera2_5 = crearEscaleras3(10, 0, -30.5);
+
+    let x3_2_5 = 10;
+    let y3_2_5 = 0;
+    let z3_2_5 = -30.5;
+    
+    const escalera3_2_5Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_5 - 0.2, y3_2_5 - 1.4, z3_2_5, materialEscalera);
+      escalera3_2_5Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
+      scene.add(escalera3_2_5Parte1);
+      const escalera3_2_5Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_5 + 0.2, y3_2_5 - 0.5, z3_2_5, materialEscalera);
+      escalera3_2_5Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
+      scene.add(escalera3_2_5Parte2);
+
+
+
+
+
+    //ESCALERA PARQUE
+
+  
+    let xEscaleraParque= 4.5;
+    let yEscaleraParque=2;
+    let zEscaleraParque = -17.9;
+
+    const escaleraParque = createObject(1, 2, 3.4,
+      xEscaleraParque, yEscaleraParque, zEscaleraParque, materialEscalera);
+    const escaleraParqueSubida = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
+      xEscaleraParque, yEscaleraParque - 1, zEscaleraParque + 2.65, materialEscalera);
+    escaleraParqueSubida.rotation.x = Math.PI / 4;
+    scene.add(escaleraParqueSubida);
+    const escaleraParqueSubida2 = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
+      xEscaleraParque, yEscaleraParque - 1, zEscaleraParque - 2.65, materialEscalera)
+    escaleraParqueSubida2.rotation.x = -Math.PI / 4;
+    scene.add(escaleraParqueSubida2);
+
+
+
 
 
 
@@ -789,6 +887,11 @@ function Model3d() {
     addPointToPoints(inter_coord.pre_matricula);
     addPointToPoints(main_coord.matricula);
     addPointToPoints(inter_coord.pre_SSHH_3_1);
+    addPointToPoints(main_coord.SSHH_3_1  );
+    addPointToPoints(inter_coord.pre_musica);
+    addPointToPoints(main_coord.musica);
+    addPointToPoints(inter_coord.pre_SSHH_3_2);
+    addPointToPoints(main_coord.SSHH_3_2);
 
     //addPointToPoints(inter_coord.iniEscalera_2_1);
     //addPointToPoints(inter_coord.mid_Escalera_2_1);
@@ -1119,12 +1222,12 @@ function Model3d() {
     objetosPiso01.push(aulasNuevoPabellon1_v2);
     objetosPiso01.push(capilla);
     
-    objetosPiso01.push(escalera1_1);
-    objetosPiso01.push(escalera1_2);
-    objetosPiso01.push(escalera1_3);
-    objetosPiso01.push(escalera1_4);
-    objetosPiso01.push(escalera1_5);
-    objetosPiso01.push(escaleraParque);
+    // objetosPiso01.push(escalera1_1);
+    // objetosPiso01.push(escalera1_2);
+    // objetosPiso01.push(escalera1_3);
+    // objetosPiso01.push(escalera1_4);
+    // objetosPiso01.push(escalera1_5);
+    // objetosPiso01.push(escaleraParque);
 
     objetosPiso02.push(piso02);
     objetosPiso02.push(trazoRutaPiso02);
@@ -1142,11 +1245,11 @@ function Model3d() {
     objetosPiso02.push(Magna);
     objetosPiso02.push(salaCatedraticos);
     
-    objetosPiso02.push(escalera2_1);
-    objetosPiso02.push(escalera2_2);
-    objetosPiso02.push(escalera2_3);
-    objetosPiso02.push(escalera2_4);
-    objetosPiso02.push(escalera2_5);
+    // objetosPiso02.push(escalera2_1);
+    // objetosPiso02.push(escalera2_2);
+    // objetosPiso02.push(escalera2_3);
+    // objetosPiso02.push(escalera2_4);
+    // objetosPiso02.push(escalera2_5);
     
     objetosPiso03.push(piso03);
     objetosPiso03.push(trazoRutaPiso03);

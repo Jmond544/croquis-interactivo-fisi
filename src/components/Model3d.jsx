@@ -816,14 +816,14 @@ function Model3d() {
     }
     
 
-    //addPointToPoints(inter_coord.dob_1_2);
-    addPointToPoints(inter_coord.dob_1_5);
-    addPointToPoints(inter_coord.iniEscalera_1_6);
-    addPointToPoints(inter_coord.mid_Escalera_1_6);
-    addPointToPoints(inter_coord.iniEscalera_2_6);
-    addPointToPoints(inter_coord.mid_Escalera_2_6);
-    addPointToPoints(inter_coord.fin_Escalera_3_6)
-    //addPointToPoints(inter_coord.mid_Escalera_1_6);
+    
+    addPointToPoints(inter_coord.pre_escalera_1_5);
+    addPointToPoints(inter_coord.iniEscalera_1_5);
+    addPointToPoints(inter_coord.mid_Escalera_1_5);
+    addPointToPoints(inter_coord.iniEscalera_2_5);
+    addPointToPoints(inter_coord.mid_Escalera_2_5);
+    addPointToPoints(inter_coord.fin_Escalera_3_5);
+
     //addPointToPoints(inter_coord.iniEscalera_2_1);
     //addPointToPoints(inter_coord.mid_Escalera_2_1);
     //addPointToPoints(inter_coord.fin_Escalera_3_1);

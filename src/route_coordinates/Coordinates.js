@@ -71,6 +71,8 @@ const inter_coord = {
   mid_Escalera_1_1: {x:3, y:-0.8, z:1.5},
   mid_Escalera_1_2: {x:0.5, y:-0.8, z: -10.5},
   mid_Escalera_1_6: {x:10.4, y:-0.8, z:-2},
+  mid_Escalera_1_4: {x:3.2, y:-0.8, z:-31},
+  mid_Escalera_1_5: {x:10, y:-0.8, z:-31},
 
   //Piso 2
 
@@ -106,12 +108,16 @@ const inter_coord = {
     mid_Escalera_2_1: {x:3, y:1.2, z:1.5},
     mid_Escalera_2_2: {x:0.5, y: 1.2, z:-10.5},
     mid_Escalera_2_6: {x:10.4, y:1.2, z:-2},
+    mid_Escalera_2_4: {x:3.2, y:1.2, z:-31},
+    mid_Escalera_2_5: {x:10, y:1.2, z:-31},
 
     //fin_Escalera_
 
     fin_Escalera_3_2: {x:2.5, y: 2.2, z:-9.7},
     fin_Escalera_3_1: {x:3, y:2.2, z:-0.5},
     fin_Escalera_3_6: {x:10.4, y:2.2, z:-3.2},
+    fin_Escalera_3_4: {x:2.5, y:2.2, z:-29},
+    fin_Escalera_3_5: {x:9.8, y:2.2, z:-29},
 
   //Piso 3
 

@@ -29,7 +29,8 @@ const main_coord = {
   microDataCenter: {x:9.8, y:0.2, z:-27},
   aulaNP2: {x:8, y:0.2, z:-30},
   tercio:{x:9.7, y:0.2, z:-8},
-
+  SSHH_2_1: {x:2, y:0.2, z:-14.25},
+  SSHH_2_2: {x:6.5, y:0.2, z:-27},
   //Piso 3
 
 

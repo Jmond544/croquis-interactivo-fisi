@@ -39,6 +39,7 @@
     display: flex;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
 }
 
@@ -53,3 +54,26 @@
     border-radius: 30px;
 }
 
+@media (max-width: 840px) {
+    
+    .container-principal {
+        height: auto;
+    }
+    
+    .barra-inferior{
+        display: flex;
+        flex-direction: column;
+    }
+    .container-inputs{
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-3d canvas {
+        margin-top: 5px;
+    }
+    .control-pisos {
+        margin: 10px;
+    }
+}

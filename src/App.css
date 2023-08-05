@@ -6,6 +6,7 @@
 
 .container-general{
   background-color: rgb(98, 21, 24);
+  width: 100%;
   height: 100vh;
 }
 .header {
@@ -41,4 +42,11 @@
   align-items: center;
   text-align: center;
   color: #FFF;
+}
+
+@media (max-width: 840px) {
+  .container-general{
+    width: auto;
+    height: auto;
+  }
 }

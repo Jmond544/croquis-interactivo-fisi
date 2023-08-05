@@ -10,6 +10,7 @@
     border-radius: 30px;
     padding: 5px 10px;
     transition: .5s ease;
+    margin: 5px;
 }
 
 .icon-left {
@@ -61,4 +62,17 @@
     /* Estilos para las opciones del datalist */
     font-size: 20px;
     color: #333;
+}
+
+@media (max-width: 840px) {
+    .container-input {
+        background-color: #FFF;
+        height: 35px;
+        max-width: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+        margin: 10px;
+    }
 }

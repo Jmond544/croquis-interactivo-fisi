@@ -819,27 +819,14 @@ function Model3d() {
     
 
     
-    addPointToPoints(inter_coord.dob_1_2);
-    addPointToPoints(inter_coord.iniEscalera_1_1);
-    addPointToPoints(inter_coord.mid_Escalera_1_1);
-    addPointToPoints(inter_coord.iniEscalera_2_1);
-    addPointToPoints(inter_coord.mid_Escalera_2_1);
-    addPointToPoints(inter_coord.fin_Escalera_3_1);
-    addPointToPoints(inter_coord.pre_escalera_3_1);
-    addPointToPoints(inter_coord.pre_dirSist);
-    addPointToPoints(main_coord.dirSist);
-    addPointToPoints(inter_coord.dob_3_1);
-    addPointToPoints(inter_coord.pre_dirSoft);
-    addPointToPoints(main_coord.dirSoft);
-    addPointToPoints(inter_coord.pre_matricula);
-    addPointToPoints(main_coord.matricula);
-    addPointToPoints(inter_coord.pre_SSHH_3_1);
-    addPointToPoints(main_coord.SSHH_3_1  );
-    addPointToPoints(inter_coord.pre_musica);
-    addPointToPoints(main_coord.musica);
-    addPointToPoints(inter_coord.pre_SSHH_3_2);
-    addPointToPoints(main_coord.SSHH_3_2);
-
+    addPointToPoints(inter_coord.dob_2_3);
+    addPointToPoints(inter_coord.pre_SSHH_2_1);
+    addPointToPoints(inter_coord.pre_escaleraParque);
+addPointToPoints(inter_coord.fin_EscaleraParque);
+addPointToPoints(inter_coord.mid_Escalera_Parque);
+addPointToPoints(inter_coord.iniEscalera_1_3);
+addPointToPoints(inter_coord.pre_escalera_1_3);
+addPointToPoints(inter_coord.dob_1_6);
     //addPointToPoints(inter_coord.iniEscalera_2_1);
     //addPointToPoints(inter_coord.mid_Escalera_2_1);
     //addPointToPoints(inter_coord.fin_Escalera_3_1);
@@ -1178,6 +1165,7 @@ function Model3d() {
     objetosPiso01.push(escalera3_1_4Parte2);
     objetosPiso01.push(escalera3_1_5Parte1);
     objetosPiso01.push(escalera3_1_5Parte2);
+    objetosPiso01.push(escaleraParque);
     objetosPiso01.push(escaleraParqueSubida);
     objetosPiso01.push(escaleraParqueSubida2);
 

@@ -39,6 +39,11 @@ const main_coord = {
   SSHH_3_1: {x:2, y:2.2, z:-14.25},
   SSHH_3_2: {x:6.5, y:2.2, z:-27},
   musica: {x:2,y:2.2,z:-30.5},
+  laboratoriosNP3: {x:10, y:2.2, z:-27},
+  publicidad: {x:5.9, y:2.2, z:-7.5},
+  soporte:{x:9, y:2.2, z:-7.5},
+  depAcaSist:{x:10, y:2.2, z:-7.5},
+  laboratorios3: {x:7, y:2.2, z:-6},
   };
   
   const inter_coord = {
@@ -52,7 +57,7 @@ const main_coord = {
   pre_escalera_1_2: {x:3, y:-1.8, z:-9.7},
   dob_1_6: {x:3, y:-1.8, z:-11.5},
   pre_escalera_1_3: {x:4.5, y:-1.8, z:-11.5},
-  iniEscalera_1_3: {x:4.5, y:-1.8, z:-12},
+  iniEscalera_1_3: {x:4.5, y:-1.8, z:-13.5},
   dob_1_7: {x:7.5, y:-1.8, z:-11.5},
   pre_vestidores: {x:10, y:-1.8, z:-11.5},
   dob_1_8: {x:14, y:-1.8, z:-11.5},
@@ -71,6 +76,10 @@ const main_coord = {
   dob_1_5: {x:10.4, y:-1.8, z:-3.8},
   iniEscalera_1_6: {x:10.4, y:-1.8, z:-3.2},
   pre_kiosko: {x:9.2, y:-1.8, z:-3.8},
+
+  fin_EscaleraParque: {x:4.5, y:0.2, z:-18},
+
+  mid_Escalera_Parque: {x:4.5, y:0.2, z:-16},
   
   //mid_
   
@@ -94,6 +103,7 @@ const main_coord = {
   pre_magna: {x:12, y:0.2, z:-6.75},
   pre_salaCatedraticos : {x:3, y:0.2, z:-10},
   pre_tercio: {x:9.7, y:0.2, z:-6.75},
+  pre_escaleraParque: {x:3, y:0.2, z:-18},
   
   //dob_
   
@@ -135,9 +145,15 @@ const main_coord = {
   pre_SSHH_3_1: {x:3, y:2.2, z:-14.25},
   pre_SSHH_3_2: {x:6.5, y:2.2, z:-28.5},
   pre_musica: {x:2,y:2.2,z:-28.5},
+  pre_laboratoriosNP3:{x:10, y:2.2, z:-28.5},
+  pre_publicidad:{x:5.9, y:2.2, z:-6.6},
+  pre_soporte:{x:9, y:2.2, z:-6.6},
+  pre_depAcaSist:{x:10, y:2.2, z:-6.6},
+  pre_laboratorios3: {x:7, y:2.2, z:-6.6},
   
   //dob_
   dob_3_1: {x:3, y:2.2, z:-6.6},
+  dob_3_2:{x:10.4, y:2.2, z:-6.6},
   }
   
   export { main_coord, inter_coord };

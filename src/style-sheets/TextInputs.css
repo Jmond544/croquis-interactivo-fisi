@@ -50,10 +50,6 @@
     transition: .5s ease;
 }
 
-.custom-input:hover {
-    width: 280px;
-}
-
 .custom-input:focus {
     outline: none;
     width: 280px;

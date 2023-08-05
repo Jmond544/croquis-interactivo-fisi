@@ -511,6 +511,7 @@ function Model3d() {
     const escalera2_5 = crearEscaleras3(10, 0, -30.5);
 
 
+
     function crearEscaleraParque(x, y, z) {
       const escaleraParque = createObject(1, 2, 3.4,
         x, y, z, materialEscalera);
@@ -762,30 +763,42 @@ function Model3d() {
 
     
 
-    points.push(new THREE.Vector3(
-       inter_coord.pre_comedor.x,
-       inter_coord.pre_comedor.y,
-       inter_coord.pre_comedor.z
-     ));
+  
+    function addPointToPoints(coord) {
+      points.push(new THREE.Vector3(
+        coord.x,
+        coord.y,
+        coord.z
+      ));
+    }
+    
 
-     points.push(new THREE.Vector3(
-      inter_coord.dob_2_4.x,
-      inter_coord.dob_2_4.y,
-      inter_coord.dob_2_4.z
-    ));
+    
+    addPointToPoints(inter_coord.dob_1_2);
+    addPointToPoints(inter_coord.iniEscalera_1_1);
+    addPointToPoints(inter_coord.mid_Escalera_1_1);
+    addPointToPoints(inter_coord.iniEscalera_2_1);
+    addPointToPoints(inter_coord.mid_Escalera_2_1);
+    addPointToPoints(inter_coord.fin_Escalera_3_1);
+    addPointToPoints(inter_coord.pre_escalera_3_1);
+    addPointToPoints(inter_coord.pre_dirSist);
+    addPointToPoints(main_coord.dirSist);
+    addPointToPoints(inter_coord.dob_3_1);
+    addPointToPoints(inter_coord.pre_dirSoft);
+    addPointToPoints(main_coord.dirSoft);
+    addPointToPoints(inter_coord.pre_matricula);
+    addPointToPoints(main_coord.matricula);
+    addPointToPoints(inter_coord.pre_SSHH_3_1);
+
+    //addPointToPoints(inter_coord.iniEscalera_2_1);
+    //addPointToPoints(inter_coord.mid_Escalera_2_1);
+    //addPointToPoints(inter_coord.fin_Escalera_3_1);
+    //addPointToPoints(inter_coord.fin_Escalera_3_1);
+    
+        //addPointToPoints(main_coord)
+    
 
 
-    points.push(new THREE.Vector3(
-      inter_coord.pre_magna.x,
-      inter_coord.pre_magna.y,
-      inter_coord.pre_magna.z
-    ));
-
-    // points.push(new THREE.Vector3(
-    //   inter_coord.dob_2_3.x,
-    //   inter_coord.dob_2_3.y,
-    //   inter_coord.dob_2_3.z
-    // ));
     // points.push(new THREE.Vector3(
     //   inter_coord.dob_2_4.x,
     //   inter_coord.dob_2_4.y,

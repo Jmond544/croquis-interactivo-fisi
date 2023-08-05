@@ -421,39 +421,6 @@ function Model3d() {
     //ESCALERAS
     const materialEscalera = new THREE.MeshStandardMaterial({ color: 0xF8CB19 });
 
-
-    const crearEscaleras1 = (x2_1, y2_1, z2_1) => {
-
-      const escalera2_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x2_1 - 0.2, y2_1 - 1.4, z2_1, materialEscalera);
-      escalera2_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera2_1Parte1);
-
-      const escalera2_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x2_1 + 0.2, y2_1 - 0.5, z2_1, materialEscalera);
-      escalera2_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera2_1Parte2);
-    }
-
-    const crearEscaleras2 = (x2_1_3, y2_1_3, z2_1_3) => {
-
-
-      const escalera2_1_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 1.4, z2_1_3 - 0.2, materialEscalera);
-      escalera2_1_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
-
-      const escalera2_1_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 0.5, z2_1_3 + 0.2, materialEscalera);
-      escalera2_1_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
-    }
-
-    const crearEscaleras3 = (x3_1_4, y3_1_4, z3_1_4) => {
-
-      const escalera3_1_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 - 0.2, y3_1_4 - 1.4, z3_1_4, materialEscalera);
-      escalera3_1_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera3_1_4Parte1);
-      const escalera3_1_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 + 0.2, y3_1_4 - 0.5, z3_1_4, materialEscalera);
-      escalera3_1_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera3_1_4Parte2);
-    }
-
-
 //ESCALERA PISO 1
   
       //crearEscaleras1
@@ -464,11 +431,9 @@ function Model3d() {
 
     const escalera1_1_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_1 - 0.2, y1_1_1 - 1.4, z1_1_1, materialEscalera);
       escalera1_1_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera1_1_1Parte1);
 
     const escalera1_1_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_1 + 0.2, y1_1_1 - 0.5, z1_1_1, materialEscalera);
       escalera1_1_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera1_1_1Parte2);
 
     
 
@@ -478,11 +443,9 @@ function Model3d() {
 
     const escalera1_1_2Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_2 - 0.2, y1_1_2 - 1.4, z1_1_2, materialEscalera);
       escalera1_1_2Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera1_1_2Parte1);
 
       const escalera1_1_2Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_1_2 + 0.2, y1_1_2 - 0.5, z1_1_2, materialEscalera);
       escalera1_1_2Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera1_1_2Parte2);
 
       //crearEscaleras2
 
@@ -494,11 +457,9 @@ function Model3d() {
 
     const escalera2_1_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 1.4, z2_1_3 - 0.2, materialEscalera);
       escalera2_1_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera2_1_3Parte1);
 
       const escalera2_1_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_1_3, y2_1_3 - 0.5, z2_1_3 + 0.2, materialEscalera);
       escalera2_1_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera2_1_3Parte2);
 
       //crearEscaleras3
 
@@ -508,10 +469,8 @@ function Model3d() {
     
     const escalera3_1_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 - 0.2, y3_1_4 - 1.4, z3_1_4, materialEscalera);
       escalera3_1_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera3_1_4Parte1);
       const escalera3_1_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_1_4 + 0.2, y3_1_4 - 0.5, z3_1_4, materialEscalera);
       escalera3_1_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera3_1_4Parte2);
 
 
 
@@ -541,11 +500,9 @@ function Model3d() {
 
     const escalera1_2_1Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_1 - 0.2, y1_2_1 - 1.4, z1_2_1, materialEscalera);
       escalera1_2_1Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera1_2_1Parte1);
 
       const escalera1_2_1Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_1 + 0.2, y1_2_1 - 0.5, z1_2_1, materialEscalera);
       escalera1_2_1Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera1_2_1Parte2);
 
     //const escalera2_2 = crearEscaleras1(10.5, 0, -2.5);
 
@@ -555,11 +512,9 @@ function Model3d() {
 
     const escalera1_2_2Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_2 - 0.2, y1_2_2 - 1.4, z1_2_2, materialEscalera);
       escalera1_2_2Parte1.rotation.x = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera1_2_2Parte1);
 
       const escalera1_2_2Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x1_2_2 + 0.2, y1_2_2 - 0.5, z1_2_2, materialEscalera);
       escalera1_2_2Parte2.rotation.x = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera1_2_2Parte2);
 
       //crearEscaleras2
 
@@ -571,11 +526,9 @@ function Model3d() {
 
     const escalera2_2_3Parte1 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_2_3, y2_2_3 - 1.4, z2_2_3 - 0.2, materialEscalera);
       escalera2_2_3Parte1.rotation.z = Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera2_2_3Parte1);
 
       const escalera2_2_3Parte2 = createObject(1 * Math.sqrt(2) - 0.1, 0.04, 0.4, x2_2_3, y2_2_3 - 0.5, z2_2_3 + 0.2, materialEscalera);
       escalera2_2_3Parte2.rotation.z = -Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera2_2_3Parte2);
 
       //crearEscaleras3
 
@@ -587,10 +540,8 @@ function Model3d() {
     
     const escalera3_2_4Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_4 - 0.2, y3_2_4 - 1.4, z3_2_4, materialEscalera);
       escalera3_2_4Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera3_2_4Parte1);
       const escalera3_2_4Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_4 + 0.2, y3_2_4 - 0.5, z3_2_4, materialEscalera);
       escalera3_2_4Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera3_2_4Parte2);
 
     //const escalera2_5 = crearEscaleras3(10, 0, -30.5);
 
@@ -600,10 +551,8 @@ function Model3d() {
     
     const escalera3_2_5Parte1 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_5 - 0.2, y3_2_5 - 1.4, z3_2_5, materialEscalera);
       escalera3_2_5Parte1.rotation.x = -Math.PI / 4; // 3. 141593 / 4
-      scene.add(escalera3_2_5Parte1);
       const escalera3_2_5Parte2 = createObject(0.4, 0.04, 1 * Math.sqrt(2) - 0.1, x3_2_5 + 0.2, y3_2_5 - 0.5, z3_2_5, materialEscalera);
       escalera3_2_5Parte2.rotation.x = Math.PI / 4; // -3.141593 / 4
-      scene.add(escalera3_2_5Parte2);
 
 
 
@@ -621,11 +570,9 @@ function Model3d() {
     const escaleraParqueSubida = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
       xEscaleraParque, yEscaleraParque - 1, zEscaleraParque + 2.65, materialEscalera);
     escaleraParqueSubida.rotation.x = Math.PI / 4;
-    scene.add(escaleraParqueSubida);
     const escaleraParqueSubida2 = createObject(1, 0.04, 2 * Math.sqrt(2) - 0.1,
       xEscaleraParque, yEscaleraParque - 1, zEscaleraParque - 2.65, materialEscalera)
     escaleraParqueSubida2.rotation.x = -Math.PI / 4;
-    scene.add(escaleraParqueSubida2);
 
 
 
@@ -1221,6 +1168,19 @@ function Model3d() {
     objetosPiso01.push(aulasNuevoPabellon1);
     objetosPiso01.push(aulasNuevoPabellon1_v2);
     objetosPiso01.push(capilla);
+    objetosPiso01.push(escalera1_1_1Parte1);
+    objetosPiso01.push(escalera1_1_1Parte2);
+    objetosPiso01.push(escalera1_1_2Parte1);
+    objetosPiso01.push(escalera1_1_2Parte2);
+    objetosPiso01.push(escalera2_1_3Parte1);
+    objetosPiso01.push(escalera2_1_3Parte2);
+    objetosPiso01.push(escalera3_1_4Parte1);
+    objetosPiso01.push(escalera3_1_4Parte2);
+    objetosPiso01.push(escalera3_1_5Parte1);
+    objetosPiso01.push(escalera3_1_5Parte2);
+    objetosPiso01.push(escaleraParqueSubida);
+    objetosPiso01.push(escaleraParqueSubida2);
+
     
     // objetosPiso01.push(escalera1_1);
     // objetosPiso01.push(escalera1_2);
@@ -1245,11 +1205,16 @@ function Model3d() {
     objetosPiso02.push(Magna);
     objetosPiso02.push(salaCatedraticos);
     
-    // objetosPiso02.push(escalera2_1);
-    // objetosPiso02.push(escalera2_2);
-    // objetosPiso02.push(escalera2_3);
-    // objetosPiso02.push(escalera2_4);
-    // objetosPiso02.push(escalera2_5);
+    objetosPiso02.push(escalera1_2_1Parte1);
+    objetosPiso02.push(escalera1_2_1Parte2);
+    objetosPiso02.push(escalera1_2_2Parte1);
+    objetosPiso02.push(escalera1_2_2Parte2);
+    objetosPiso02.push(escalera2_2_3Parte1);
+    objetosPiso02.push(escalera2_2_3Parte2);
+    objetosPiso02.push(escalera3_2_4Parte1);
+    objetosPiso02.push(escalera3_2_4Parte2);
+    objetosPiso02.push(escalera3_2_5Parte1);
+    objetosPiso02.push(escalera3_2_5Parte2);
     
     objetosPiso03.push(piso03);
     objetosPiso03.push(trazoRutaPiso03);

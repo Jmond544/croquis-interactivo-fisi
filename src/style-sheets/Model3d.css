@@ -8,7 +8,7 @@
 }
 
 .container-principal {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -16,7 +16,7 @@
     background-color: rgb(245, 245, 245);
 }
 .container-3d {
-    height: 75vh;
+    min-height: 65vh;
     width: 90%;
 }
 

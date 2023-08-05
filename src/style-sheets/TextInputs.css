@@ -52,7 +52,6 @@
 
 .custom-input:focus {
     outline: none;
-    width: 280px;
     border: none;
 }
 

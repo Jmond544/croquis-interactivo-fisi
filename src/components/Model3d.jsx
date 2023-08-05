@@ -1228,20 +1228,23 @@ function Model3d() {
       switch (numero) {
         case 1:
           for(const element in objetosPiso01){
-            if(capilla===objetosPiso01[element]){
-              console.log(element)
+            if (objetosPiso01[element]){
+              scene.add(objetosPiso01[element]);
             }
-            scene.add(objetosPiso01[element]);
           }
           break;
         case 2:
           for(const element in objetosPiso02){
-            scene.add(objetosPiso02[element]);
+            if (objetosPiso02[element]){
+              scene.add(objetosPiso02[element]);
+            }
           }
           break;
         case 3:
           for(const element in objetosPiso03){
-            scene.add(objetosPiso03[element]);
+            if (objetosPiso03[element]){
+              scene.add(objetosPiso03[element]);
+            }
           }
           break;
       

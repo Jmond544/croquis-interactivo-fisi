@@ -96,6 +96,25 @@ function TextInputs( { tipo, generarTrazadorRuta } ) {
                 value="Entrada 03" 
                 id='entrada_3'>Primer piso</option>
             
+            <option value="Decanato" id='decanato'>Segundo piso</option>
+            <option value="Comedor" id='comedor'>Segundo piso</option>
+            <option value="Aula magna" id='magna'>Segundo piso</option>
+            <option value="Aulas con código 200" id='aulas200'>Segundo piso</option>
+            <option value="Sala catedráticos" id='salaCatedraticos'>Segundo piso</option>
+            <option value="Micro data center" id='microDataCenter'>Segundo piso</option>
+            <option value="Aulas nuevo pabellón 2" id='aulaNP2'>Segundo piso</option>
+            <option value="Tercio" id='tercio'>Segundo piso</option>
+            <option value="SSHH antiguo pabellon 2" id='SSHH_2_1'>Segundo piso</option>
+            <option value="SSHH nuevo pabellon 2" id='SSHH_2_2'>Segundo piso</option>
+
+            <option value="UNAYOE" id='UNAYOE'>Tercer piso</option>
+            <option value="Dir. Sistemas" id='dirSist'>Tercer piso</option>
+            <option value="Dir. Software" id='dirSoft'>Tercer piso</option>
+            <option value="Matrícula" id='matricula'>Tercer piso</option>
+            <option value="SSHH antiguo pabellón 3" id='SSHH_3_1'>Tercer piso</option>
+            <option value="SSHH nuevo pabellón 3" id='SSHH_3_2'>Tercer piso</option>
+            <option value="Salón de música" id='musica'>Tercer piso</option>
+            
         </datalist>
         <button className='inpuit-button'
                 onClick={() => generarTrazadorRuta(origen, destino, tipo) }>

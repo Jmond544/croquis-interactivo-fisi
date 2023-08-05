@@ -21,7 +21,7 @@ const main_coord = {
   
   //Piso 2
   
-  decanato: {x:-1, y:0.2, z:-1},
+  decanato: {x:-1, y:0.2, z:-1}, //
   comedor: {x:2, y:0.2, z:-17},
   magna: {x:12, y:0.2, z:-8},
   aulas200: {x:6.5, y:0.2, z:-6},
@@ -74,7 +74,7 @@ const main_coord = {
   
   //mid_
   
-  mid_Escalera_1_1: {x:3, y:-0.8, z:1.5},
+  mid_Escalera_1_1: {x:3, y:-0.8, z:1.5}, //
   mid_Escalera_1_2: {x:0.5, y:-0.8, z: -10.5},
   mid_Escalera_1_6: {x:10.4, y:-0.8, z:-2},
   mid_Escalera_1_4: {x:3.2, y:-0.8, z:-31},
@@ -83,6 +83,7 @@ const main_coord = {
   //Piso 2
   
   //pre_
+  pre_aulas200: {x:6.5, y:0.2, z:-6.75},
   pre_aulaNP2: {x:8, y:0.2, z:-28.5},
   pre_SSHH_2_1: {x:3, y:0.2, z:-14.25},
   pre_SSHH_2_2: {x:6.5, y:0.2, z:-28.5},
@@ -99,10 +100,9 @@ const main_coord = {
   
   dob_2_3: {x:3, y:0.2, z:-6.75},
   dob_2_4: {x:10.4, y:0.2, z:-6.75},
-  dob_2_extra:{x:6.5, y:0.2, z:-6.75},
   
   //iniEscalera_
-  iniEscalera_2_1: {x:3, y:0.2, z:-0.5},
+  iniEscalera_2_1: {x:3, y:0.2, z:-0.5}, //
   iniEscalera_2_5: {x:9.8, y:0.2, z:-29},
   iniEscalera_2_4: {x:2.5, y:0.2, z:-29},
   iniEscalera_2_2: {x:2.5, y: 0.2, z:-9.7},

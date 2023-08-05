@@ -198,6 +198,8 @@ addEdgeWithDistance("dob_1_8", "pre_vestidores");
 addEdgeWithDistance("dob_1_8", "entrada_3");
 addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_1_1");
 addEdgeWithDistance("mid_Escalera_1_1", "iniEscalera_2_1");
+addEdgeWithDistance("mid_Escalera_2_1", "iniEscalera_2_1");
+addEdgeWithDistance("mid_Escalera_2_1", "fin_Escalera_3_1");
 addEdgeWithDistance("decanato", "iniEscalera_2_1");
 addEdgeWithDistance("dob_2_3", "iniEscalera_2_1");
 addEdgeWithDistance("dob_2_3", "pre_aulas200");
@@ -210,6 +212,29 @@ addEdgeWithDistance("pre_magna", "magna");
 addEdgeWithDistance("dob_2_4", "iniEscalera_2_6");
 addEdgeWithDistance("mid_Escalera_1_6", "iniEscalera_2_6");
 addEdgeWithDistance("mid_Escalera_1_6", "iniEscalera_1_6");
+addEdgeWithDistance("mid_Escalera_2_6", "iniEscalera_2_6");
+addEdgeWithDistance("mid_Escalera_2_6", "fin_Escalera_3_6");
+addEdgeWithDistance("dob_2_3", "pre_salaCatedraticos");
+addEdgeWithDistance("salaCatedraticos", "pre_salaCatedraticos");
+addEdgeWithDistance("pre_SSHH_2_1", "pre_salaCatedraticos");
+addEdgeWithDistance("pre_SSHH_2_1", "SSHH_2_1");
+
+addEdgeWithDistance("pre_SSHH_2_1", "pre_comedor");
+
+addEdgeWithDistance("comedor", "pre_comedor");
+addEdgeWithDistance("pre_escalera_2_4", "pre_comedor");
+addEdgeWithDistance("pre_escalera_2_4", "iniEscalera_2_4");
+addEdgeWithDistance("iniEscalera_2_4", "mid_Escalera_2_4");
+addEdgeWithDistance("fin_Escalera_3_4", "mid_Escalera_2_4");
+addEdgeWithDistance("pre_escalera_2_4", "pre_SSHH_2_2");
+addEdgeWithDistance("SSHH_2_2", "pre_SSHH_2_2");
+addEdgeWithDistance("pre_aulaNP2", "pre_SSHH_2_2");
+addEdgeWithDistance("pre_aulaNP2", "aulaNP2");
+addEdgeWithDistance("pre_aulaNP2", "pre_escalera_2_5");
+addEdgeWithDistance("microDataCenter", "pre_escalera_2_5");
+addEdgeWithDistance("iniEscalera_2_5", "pre_escalera_2_5");
+addEdgeWithDistance("iniEscalera_2_5", "mid_Escalera_2_5");
+addEdgeWithDistance("fin_Escalera_3_5", "mid_Escalera_2_5");
 
 
 // Implementar Dijkstra
